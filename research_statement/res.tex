@@ -1,0 +1,66 @@
+\documentclass[a4paper, 10pt]{article}
+\usepackage{fancyhdr}
+\usepackage{pagecounting}
+\usepackage[margin=1in]{geometry}
+
+
+
+\include{includes}
+\include{pygments}
+
+\begin{document}
+\thispagestyle{fancy}
+%\pagenumbering{gobble}
+%\fancyhead[location]{text} 
+% Leave Left and Right Header empty.
+\lhead{}
+\rhead{}
+%\rhead{\thepage}
+\fancyfoot[C]{\footnotesize \grayline{http://rayb.info}} 
+
+%\pagestyle{myheadings}
+%\markboth{Sundar Iyer}{Sundar Iyer}
+
+\pagestyle{fancy}
+\lhead{\grayline{\it Baishakhi Ray}}
+\rhead{\grayline{\thepage/\totalpages{}}}
+%\rhead{\thepage}
+%\renewcommand{\headrulewidth}{0pt} 
+%\renewcommand{\footrulewidth}{0pt} 
+%\fancyfoot[C]{\footnotesize http://www.stanford.edu/$\sim$sundaes/application} 
+%\ref{TotPages}
+
+% This kind of makes 10pt to 9 pt.
+\begin{small}
+
+%\vspace*{0.1cm}
+\begin{center}
+{\large \bf RESEARCH STATEMENT}\\
+\vspace*{0.1cm}
+{\normalsize Baishakhi Ray (bairay@ucdavis.edu)}
+\end{center}
+
+
+I am primarily interested in software engineering with a strong focus on empirical software engineering.
+In particular, I analyze large scale software repositories for both open source and proprietary software to 
+understand current software engineering practices. Based on this understanding, I develop novel program 
+analysis techniques to make software more reliable and secure.
+
+Modern day software are developed using smaller building blocks, \eg  
+My research, in particular, focuses on exploiting similarities in software. The concept of similarities is not new 
+to software engineering: Gabel and Su~\cite{Gabel2010:uniqueness} and Hindle et al.\cite{Hindle:2012} showed 
+that source code is in general repetitive and predictable in nature. There are also different software that serve
+ same purpose.  
+
+
+\vspace{0.5cm}
+
+
+\end{small}
+\begin{footnotesize}
+\bibliographystyle{abbrv}
+\bibliography{res}
+\end{footnotesize}
+
+\end{document}
+

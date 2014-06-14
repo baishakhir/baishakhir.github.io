@@ -1,0 +1,151 @@
+\usepackage{fancybox}
+
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+\DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\usepackage{amsmath}
+%\usepackage{floatrow}
+\usepackage{subfigure}
+\usepackage{caption}
+\DeclareCaptionType{copyrightbox}
+%\usepackage{subcaption}
+
+%\usepackage{verbatim}
+\usepackage{fancyvrb}
+\usepackage{color}
+\usepackage{algorithmic}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{mdwmath}
+\usepackage{mdwtab}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{eqparbox}
+%\usepackage{fixltx2e}
+\usepackage{stfloats}
+\usepackage{url}
+\usepackage{comment}
+\usepackage{framed}
+\usepackage{pdfsync}
+\usepackage{ifthen}
+\usepackage{balance}
+% call this with optional  [turnoff] to turn off notes and todos
+\usepackage[turnoff]{notes}
+%\usepackage{microtype}
+\usepackage{multirow}
+%\usepackage[]{biblatex}
+%\newtheorem{definition}{Definition}
+\usepackage{xspace}
+
+
+\renewcommand{\baselinestretch}{0.97}
+
+
+\newcommand{\cf}{\hbox{\emph{cf.}}\xspace}
+\newcommand{\deletia}{\ldots [deletia] \ldots}
+\newcommand{\etal}{\hbox{\emph{et al.}}\xspace}
+\newcommand{\eg}{\hbox{\emph{e.g.,}}\xspace}
+\newcommand{\ie}{\hbox{\emph{i.e.}}\xspace}
+\newcommand{\st}{\hbox{\emph{s.t.}}\xspace}
+\newcommand{\wrt}{\hbox{\emph{w.r.t.}}\xspace}
+\newcommand{\viz}{\hbox{\emph{viz.}}\xspace}
+\newcommand{\vs}{\hbox{\emph{v.s.}}\xspace}
+\newcommand{\etc}{\hbox{\emph{etc.}}\xspace}
+
+\newtheorem{theorem}{Theorem}[section]
+\newcommand{\defref}[1]{Definition~\ref{#1}}
+\newtheorem{definition}[theorem]{Definition}
+
+\newcommand{\varname}[1]{{\small\texttt{#1}}\xspace}
+%\newcommand{\tom}[1]{{\color{red} Tom: #1}\xspace}
+\newcommand{\ch}[1]{{\color{black} #1}\xspace}
+%\newfloatcommand{capbtabbox}{table}[][\FBwidth]
+
+\newcommand{\gh}{GitHub\xspace}
+
+\newcommand{\C}{{\tt C}\xspace}
+\newcommand{\cpp}{{\tt C++}\xspace}
+\newcommand{\csharp}{{\tt C\#}\xspace}
+\newcommand{\objc}{{\tt Objective-C}\xspace}
+\newcommand{\go}{{\tt Go}\xspace}
+\newcommand{\java}{{\tt Java}\xspace}
+\newcommand{\perl}{{\tt Perl}\xspace}
+\newcommand{\py}{{\tt Python}\xspace}
+\newcommand{\python}{{\tt Python}\xspace}
+\newcommand{\php}{{\tt Php}\xspace}
+\newcommand{\ruby}{{\tt Ruby}\xspace}
+\newcommand{\js}{{\tt Java\-Script}\xspace}
+\newcommand{\cs}{{\tt Coffee\-Script}\xspace}
+\newcommand{\ts}{{\tt Type\-Script}\xspace}
+\newcommand{\clojure}{{\tt Clojure}\xspace}
+\newcommand{\erlang}{{\tt Er\-lang}\xspace}
+\newcommand{\haskell}{{\tt Haskell}\xspace}
+\newcommand{\scala}{{\tt Scala}\xspace}
+
+\newcommand{\FDSM}{{\tt Functional-Dynamic-Strong-Managed}\xspace} 		
+\newcommand{\FSSM}{{\tt Functional-Static-Strong-Managed}\xspace}  		
+\newcommand{\PSSM}{{\tt Proc-Static-Strong-Managed}\xspace}         		
+\newcommand{\PSWU}{{\tt Proc-Static-Weak-Unmanaged}\xspace}         		
+\newcommand{\SDSM}{{\tt Script-Dynamic-Strong-Managed}\xspace}     		
+\newcommand{\SDWM}{{\tt Script-Dynamic-Weak-Managed}\xspace}        		
+
+\newcommand{\FDSMt}{{\tt Functional\--Dynamic\--Strong\--Managed}\xspace} 		
+\newcommand{\FSSMt}{{\tt Functional\--Static\--Strong\--Managed}\xspace}  		
+\newcommand{\PSSMt}{{\tt Proc Static\--Strong\--Managed}\xspace}         		
+\newcommand{\PSWUt}{{\tt Proc Static\--Weak\--Unmanaged}\xspace}         		
+\newcommand{\SDSMt}{{\tt Script\--Dynamic\--Strong\--Managed}\xspace}     		
+\newcommand{\SDWMt}{{\tt Script\--Dynamic\--Weak\--Managed}\xspace}        		
+
+%\newcommand{\pswu}{{procedural\-\_static\-\_weak\-\_unmanaged }\xspace}
+%\newcommand{\pssm}{{procedural\-\_static\-\_strong\-\_managed }\xspace}
+%\newcommand{\fssm}{{functional\_static\-\_strong\_manged }\xspace}
+%\newcommand{\fdsm}{{functional\_dynamic\-\_strong\_manged }\xspace}
+
+\newcommand{\fdsm}{{\tt Functional\--Dynamic\--Strong\--Managed}\xspace} 		
+\newcommand{\fssm}{{\tt Functional\--Static\--Strong\--Managed}\xspace}  		
+\newcommand{\pssm}{{\tt Proc\--Static\--Strong\--Managed}\xspace}         		
+\newcommand{\pswu}{{\tt Proc\--Static\--Weak\--Unmanaged}\xspace}         		
+\newcommand{\sdsm}{{\tt Script\--Dynamic\--Strong\--Managed}\xspace}     		
+\newcommand{\sdwm}{{\tt Script\--Dynamic\--Weak\--Managed}\xspace}        		
+
+
+
+\newcommand{\pd}[1]{{\scriptsize \todo{Prem:  {\color{blue} #1}}}}
+\newcommand{\tableshrink}[1]{\vspace{-0.25in}}
+
+
+%-------------------------------------------------------------------------------------------
+% Research Questions and Results
+%
+\newcounter{RQCounter}
+
+ %Pass in label for rq, then rq
+%
+
+\newcommand{\RQ}[2]{%
+\refstepcounter{RQCounter} \label{#1}
+	\vspace{0.1in} \noindent \textbf{RQ\arabic{RQCounter}.~#2 \vspace{0.05in}}
+	
+}
+
+\newcommand{\RQBoxed}[2]{%
+\refstepcounter{RQCounter} \label{#1}
+\begin{framed}%
+\filbreak
+	%\noindent\textbf{Research Question \arabic{RQCounter}: }%
+	\noindent\textbf{RQ\arabic{RQCounter}: }%
+#2\end{framed}
+}
+
+
+% Pass in label for associated research question
+%
+\newcommand{\RS}[2]{%
+\begin{framed}%
+\filbreak
+	%\noindent
+\textbf{Result {\ref{#1}}:~}{\emph {#2}}%
+\end{framed}
+}
+
+
