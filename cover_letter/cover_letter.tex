@@ -1,0 +1,86 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Long Lined Cover Letter
+% LaTeX Template
+% Version 1.0 (1/6/13)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Matthew J. Miller
+% http://www.matthewjmiller.net/howtos/customized-cover-letter-scripts/
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[10pt,stdletter,dateno,sigleft]{newlfm} % Extra options: 'sigleft' for a left-aligned signature, 'stdletternofrom' to remove the from address, 'letterpaper' for US letter paper - consult the newlfm class manual for more options
+
+\usepackage{charter} % Use the Charter font for the document text
+
+%\newsavebox{\Luiuc}\sbox{\Luiuc}{\parbox[b]{1.75in}{\vspace{0.5in}
+%\includegraphics[width=1.2\linewidth]{logo.png}}} 
+%\makeletterhead{Uiuc}{\Lheader{\usebox{\Luiuc}}}
+
+\newlfmP{sigsize=50pt} % Slightly decrease the height of the signature field
+\newlfmP{addrfromphone} % Print a phone number under the sender's address
+\newlfmP{addrfromemail} % Print an email address under the sender's address
+\PhrPhone{Phone} % Customize the "Telephone" text
+\PhrEmail{Email} % Customize the "E-mail" text
+
+%\lthUiuc % Print the company/institution logo
+
+%----------------------------------------------------------------------------------------
+%	YOUR NAME AND CONTACT INFORMATION
+%----------------------------------------------------------------------------------------
+
+%\namefrom{Baishakhi Ray} % Name
+
+\addrfrom{
+\today\\[12pt] % Date
+1850, Hanover Dr., Apt. 163\\ % Address
+%Apt. 163\\
+Davis, CA 95916
+}
+\phonefrom{(303) 748-2958} % Phone number
+\emailfrom{bairay@ucdavis.edu} % Email address
+
+%----------------------------------------------------------------------------------------
+%	ADDRESSEE AND GREETING/CLOSING
+%----------------------------------------------------------------------------------------
+
+\greetto{Dear Sir/Madam,} % Greeting text
+%\closeline{Sincerely yours,                                 
+ % Baishakhi Ray} % Closing text
+
+%\nameto{Mrs. Jane Smith} % Addressee of the letter above the to address
+
+%\addrto{
+%Recruitment Officer \\ % To address
+%The Corporation \\
+%123 Pleasant Lane \\
+%City, State 12345
+%}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+\begin{newlfm}
+
+I would like to apply for~\textit{2014 Rising Stars in EECS: An Academic Career Workshop for Women}, as I want to pursue my career in academia as a tenure-track faculty. I am currently a post-doctoral researcher in the department of Computer Science at University of California, Davis. I finished my Ph.D. in 2013 from the University of Texas at Austin. My research primarily focuses on software engineering.
+	
+A career in academia always fascinated me since it gives an opportunity to shape both the present and future of human civilization. While teaching and mentoring help society to propagate education, carrying out fundamental research curves the path for future endeavor. So far my journey in academia 
+has been nothing but overwhelming.  Everyday I have learned something new, solved challenges that hone my creative faculty, and teaching has helped me to improve my communication and presentation skill.
+
+I believe this workshop will give me an excellent opportunity to interact with other female researchers who are in similar stages of their career. Since researchers from different computer science sub-fields will present their research, I will get to know the state of the art in those domains. Most importantly, I am planning to go to academic job market in 2015; I believe advice from the faculty members will significantly help in my job search.
+I sincerely hope to attend the workshop.
+
+Regards, \\
+Baishakhi Ray
+\end{newlfm}
+\end{document}
