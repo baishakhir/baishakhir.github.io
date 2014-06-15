@@ -142,14 +142,13 @@ As part of our future work, we plan to integrate {\spa} with an integrated devel
 
 \subsection*{\small Automated Adversarial Testing of SSL/TLS Certificate Validation.}
 
-Some pieces of software are designed to serve identical purpose though they are part 
-of different software products or even implemented in completely isolated environments. 
-Such software parts may not have any structural similarities, however they should be
-semantically identical\textemdash given an input all of them should produce similar output.
-Based on this philosophy, we build an automated framework to test certificate validation implementations 
-of several popular SSL/TLS libraries including OpenSSL, GnuTLS, NSS, CyaSSL, GnuTLS,
-PolarSSL, MatrixSSL, etc.
- 
+Some pieces of software are designed to serve an identical purpose though they are part 
+of different products and are implemented in completely isolated environments. Such software 
+components may not share structural resemblance; however, they should be semantically 
+identical\textemdash given an input all of the similar components should produce similar output. 
+Based on this philosophy, we build a differential testing framework~\cite{KeemanDifferentialTesting1998} 
+to test certificate validation implementations of several popular SSL/TLS libraries including OpenSSL, 
+GnuTLS, NSS, CyaSSL, GnuTLS, PolarSSL, MatrixSSL, etc.
 
 Modern network security rests on the Secure Sockets Layer (SSL) and
 Transport Layer Security (TLS) protocols.  Distributed systems, mobile
@@ -157,10 +156,9 @@ and desktop applications, embedded devices, and all of secure Web rely
 on SSL/TLS for protection against network attacks.  This protection
 critically depends on whether SSL/TLS clients correctly validate X.509
 certificates presented by servers during the SSL/TLS handshake protocol.
-
 We design, implement, and apply the first methodology for large-scale
 testing of certificate validation logic in SSL/TLS implementations~\cite{brubaker2014using}.
-Our first ingredient is ``frankencerts,'' synthetic certificates that are
+Our first ingredient is {\em Frankencerts}, synthetic certificates that are
 randomly mutated from parts of real certificates and thus include unusual
 combinations of extensions and constraints.  Our second ingredient is
 differential testing: if one SSL/TLS implementation accepts a certificate
@@ -175,25 +173,23 @@ vulnerabilities.  For example, any server with a valid X.509 version
 certificates for any domain, enabling man-in-the-middle attacks against
 MatrixSSL and GnuTLS.  Several implementations also accept certificate
 authorities created by unauthorized issuers, as well as certificates
-not intended for server authentication.
-
-We also found serious vulnerabilities in how users are warned about
+not intended for server authentication. We also found serious vulnerabilities in how users are warned about
 certificate validation errors.  When presented with an expired,
 self-signed certificate, NSS, Safari, and Chrome (on Linux) report
 that the certificate has expired\textemdash a low-risk, often ignored
 error\textemdash but not that the connection is insecure against a
 man-in-the-middle attack.
 
-These results demonstrate that automated adversarial testing with
-frankencerts is a powerful methodology for discovering security flaws
-in SSL/TLS implementations.
+%These results demonstrate that automated adversarial testing with
+%frankencerts is a powerful methodology for discovering security flaws
+%in SSL/TLS implementations.
 
-\subsection*{\small Other research} I also work on other aspects of software and systems including 
-building an operating system abstractions for efficiently managing GPUs~\cite{rossbach2011ptask}, 
-developing a protocol for secure and reliable covert channel~\cite{ray2008protocol}, 
-implementing an ecosystem for Context-Aware Mobile Social Networks~\cite{beach2008whozthat, beach2009touch}, 
-analyzing API stability and adoption in Android Ecosystem~\cite{mcdonnell2013empirical}, and empirically analyzing 
-the bugs that are fixed multiple times in Mozilla and Eclipse software systems~\cite{park2012empirical}.
+\subsection*{\small Other research} I also worked on other aspects of software engineering including 
+an empirical study of API stability and adoption in the Android ecosystem~\cite{mcdonnell2013empirical}, 
+and empirically analyzing the bugs that are fixed multiple times in Mozilla and Eclipse software~\cite{park2012empirical}.
+I further built several systems software, \eg an operating system abstractions for efficiently managing GPUs~\cite{rossbach2011ptask}, 
+ a protocol for secure and reliable covert channel~\cite{ray2008protocol}, and an ecosystem for Context-Aware Mobile Social Networks~\cite{beach2008whozthat, beach2009touch}, 
+
 
 
 \vspace{0.5cm}
@@ -219,19 +215,21 @@ in support of one position or the other tends to be anecdotal.
 
 Using the vast amount of open source code available  in \gh, I am planning to shed some empirical light 
 on the effect of language features such as static \vs dynamic typing, strong \vs weak typing on software quality. 
-Empirical evidence for the associations,  if any,  that exist between programming language
+Empirical evidences for the associations,  if any,  that exist between programming language
 choice, their properties, usage domains, and code quality, can help developers make more
-educated choices. Also, such knowledge will also help language designer to architect future languages.
+educated choices. Also, such knowledge will guide language designer to architect language features.
 
 
-\subsection*{\small Studying co-evolution of software ecosystem.}
-In a product family, when a related feature or bug fix is introduced in one project, it may need to be eventually ported to other projects.
-In my study of cross-system porting I find that average time to port an edit from one system to another is more than 2 years.
- Sometimes it even takes up to 10 years for an edit to be propagated. It will be helpful to build a notification system 
- for co-evolution to promote a fast and timely patch application. When a relevant edit is introduced in one project, all the related components of other projects may need to be notified. However, we cannot notify all the changes, as the forked projects usually evolve independently in different directions. Naively notifying all the changes will significantly increase the false positives. First, we have to find which components across the projects are closely related in terms of cross-system porting. Since ported edits are not confined within files having similar names or directory structures, establishing such relationships can be challenging. Prior porting history may be useful for identifying relevant components. 
+\subsection*{\small Studying evolution of software ecosystem.}
 
-I would like to investigate whether similar bug reports in two forked projects are fixed similarly. Extending prior approaches to find duplicate bug reports~\cite{dupBugReport:Wang:ICSE2008,dupBugReport:Nguyen:ASE2012}, we can find similar bug reports across different forked projects and extract their corresponding fixed patches. Then, {\rep} can verify how similar these fixed patches are.
-This will help us to determine whether two similar bug reports in two related projects undergo similar fixes. If we confirm that a large number of fixes are actually similar, it would motivate building a patch recommendation system. When a new bug will be reported in a project, we will look for a similar bug report in the  sibling projects and suggest its fix. 
+In a software ecosystem, when a related feature or bug fix is introduced in one project, it may need to be eventually ported to other projects.
+However, such patch propagation does not take place efficiently. In our previous study of cross-system porting~\cite{Ray2012} we find that average time to port an edit from one system to another is more than 2 years. Sometimes it even takes up to 10 years for an edit to be propagated.
+I would like to build a notification system for co-evolution to promote a fast and timely patch application. When a relevant edit is introduced in one project, all the related components of other projects may need to be notified. However, one cannot notify all the changes, as the forked projects usually evolve independently in different directions. Naively notifying all the changes will significantly increase the false positives. First, we have to find which components across the projects are closely related in terms of cross-system porting. Since ported edits are not confined within files having similar names or directory structures, establishing such relationships can be challenging. Prior porting history may be useful for identifying relevant components. 
+
+I would further like to investigate whether similar bug reports in two peer projects are fixed similarly. 
+Extending prior approaches to find duplicate bug reports~\cite{dupBugReport:Wang:ICSE2008,dupBugReport:Nguyen:ASE2012}, 
+we can find similar bug reports across different peer projects and extract their corresponding fixed patches. 
+Then, {\rep} can measure similarity between the fixed patches. This will help us to determine whether two similar bug reports in two related projects undergo similar fixes. If we confirm that a large number of fixes are actually similar, it would motivate building a patch recommendation system. When a new bug will be reported in a project, we will look for a similar bug report in the  sibling projects and suggest its fix. 
 
 \subsection*{\small Finding vulnerabilities in security sensitive software.} 
 I would like to continue my research of detecting security vulnerabilities using sophisticated software engineering tools. 
@@ -239,6 +237,8 @@ One such project I am interested in is tracking the error code propagation in a 
 clients often mask or ignore error code returned from APIs. I am interested to understand how these ignored error code affect security 
 properties of software. I further would like to implement a generic framework that can efficiently manage such security sensitive error code.
 
+\vspace*{1\baselineskip}
+\noindent
 In summary, I remain broadly interested in software engineering and would like to build tools to make future software better.
 
 
