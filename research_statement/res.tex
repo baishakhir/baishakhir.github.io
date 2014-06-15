@@ -46,12 +46,74 @@ In particular, I analyze large scale software repositories for both open source 
 understand current software engineering practices. Based on this understanding, I develop novel program 
 analysis techniques to make software more reliable and secure.
 
-Modern day software are developed using smaller building blocks, \eg  
-My research, in particular, focuses on exploiting similarities in software. The concept of similarities is not new 
-to software engineering: Gabel and Su~\cite{Gabel2010:uniqueness} and Hindle et al.\cite{Hindle:2012} showed 
-that source code is in general repetitive and predictable in nature. There are also different software that serve
- same purpose.  
+Modern software are developed using smaller building blocks, \eg  packages, libraries, APIs, methods, etc. 
+Many of these building blocks often serve similar purpose. For example, OpenSSL, GnuTLS etc are 
+different SSL libraries that implement Secure Socket Layer protocol. Even, software with different functionality 
+may show syntactic resemblance. Gabel and Su~\cite{Gabel2010:uniqueness} and Hindle et al.\cite{Hindle:2012} 
+showed that source code is in general repetitive and predictable in nature. My research primarily focuses on 
+detecting and analyzing such structural and semantic similarities in evolving software. I also describe potential 
+applications of leveraging software similarity and implement multiple applications, spanning from change 
+recommendation system to bug detection tools. 
 
+%\subsection*{Background}
+
+\subsection*{\small Repetitiveness in Evolving Software.} Software is built through many incremental changes over a period of time
+and come in many forms. Some changes are frequent, idiomatic, or repetitive (e.g. adding checks for nulls 
+or logging important values) while others are unique. I hypothesize that unique changes are different from the more common similar 
+changes in important ways;  unique changes may require more expertise or represent code that is more complex or prone to mistakes. 
+To test this hypothesis, I  develop a tool, {\em Repertoire}, for identifying repetitive changes in a software project history. Based on the 
+results of applying {\em Repertoire} to Linux kernel and two large projects at Microsoft, I find that on average 18\% to 25\% of the 
+changes are repetitive in a project and they are introduced periodically, \ie developers introduce a change, then use it repeatedly for 
+some period and then stop using it with an average lifetime of 65 days. I also notice that developers have their own set of change
+patterns and developers use them increasingly as they become more prolific.  
+
+Knowing which changes are unique and which changes are repetitive has several possible applications in software engineering: 
+\begin{itemize}
+\item \textbf{Risk analysis:} One would expect that changes that are
+unique are more error prone than changes that developers repeatedly make. I
+provide significant empirical evidence to support this statement. 
+
+\item \textbf{Recommendation systems:} Repetitive changes can be used as input for 
+recommendation systems: for example, recommend how a line would typically be changed 
+({\em change recommendation}, or after some change has been made, recommend other repetitive changes 
+that are typically made with the initial change based on past co-occurrence ({\em change completion}).
+My prototype implementation of such recommendation system can recommend changes up to 60\% precision and 
+67\% recall.
+
+\item \textbf{Automated program repair:} 
+Repetitive changes can also be leveraged for automated program repair operations. Nguyen et al.~\cite{nguyen2013study} 
+provided initial empirical evidence for this hypothesis. They found that repetitive bug fixes are 
+usually smaller changes and therefore automated patching tools could start with small changes and 
+gradually compose them.
+
+\end{itemize}
+
+
+
+
+
+
+
+%
+%There exists a rich body of previous work on code duplication~\cite{Kamiya2002,tairas,Cordy2011:largecloning}. However, detecting similar changes is not equivalent to detect 
+%duplicate code clone, since not all code clones evolve in the same fashion, and similar changes are not restricted 
+%to only cloned code. I showed that software is not only similar in structure they also change similarly.
+%For this analysis, we develop a tool called {\em Repertoire} that compares the content and edit operations of program patches 
+%to identify ported edits. Repertoire takes diff-based program patches at the release granularity as in- put
+%
+%Repertoireisanautomatedcross-systemportinganal- ysis tool, which finds ported edits with 94% precision and 84% recall. This tool can serve as a basis for as- sessing the extent and characteristics of cross-system porting among forked projects.
+%
+
+
+\subsection*{A Case Study of Cross-System Porting in Forked Projects}
+
+\subsection*{An Empirical Study of API Stability and Adoption in the Android Ecosystem}
+
+\subsection*{An Empirical Study of Supplementary Bug Fixes}
+
+\subsection*{Detecting and Characterizing Semantic Inconsistencies in Ported Code}
+
+\subsection*{Using Frankencerts for Automated Adversarial Testing of Certificate Validation in SSL/TLS Implementations}
 
 \vspace{0.5cm}
 
