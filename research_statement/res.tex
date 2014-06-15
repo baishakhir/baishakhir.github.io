@@ -1,4 +1,4 @@
-\documentclass[a4paper, 10pt]{article}
+\documentclass[a4paper, 11pt]{article}
 \usepackage{fancyhdr}
 \usepackage{pagecounting}
 \usepackage[margin=1in]{geometry}
@@ -41,81 +41,206 @@
 \end{center}
 
 
-I am primarily interested in software engineering with a strong focus on empirical software engineering.
-In particular, I analyze large scale software repositories for both open source and proprietary software to 
-understand current software engineering practices. Based on this understanding, I develop novel program 
-analysis techniques to make software more reliable and secure.
+I am primarily interested in software engineering, in particular, I analyze large scale software repositories 
+for both open source and proprietary software to understand current software engineering practices. 
+Based on this understanding, I develop novel program analysis techniques to make software more reliable and
+ secure.
 
 Modern software are developed using smaller building blocks, \eg  packages, libraries, APIs, methods, etc. 
-Many of these building blocks often serve similar purpose. For example, OpenSSL, GnuTLS etc are 
-different SSL libraries that implement Secure Socket Layer protocol. Even, software with different functionality 
-may show syntactic resemblance. Gabel and Su~\cite{Gabel2010:uniqueness} and Hindle et al.\cite{Hindle:2012} 
-showed that source code is in general repetitive and predictable in nature. My research primarily focuses on 
-detecting and analyzing such structural and semantic similarities in evolving software. I also describe potential 
-applications of leveraging software similarity and implement multiple applications, spanning from change 
-recommendation system to bug detection tools. 
+Many of these building blocks often serve similar purpose. For example, OpenSSL, GnuTLS etc.~are 
+different SSL libraries that implement Secure Socket Layer protocol~\cite{rfc5280} and serve as
+the basis of HTTPS. Even, software with different functionality may show syntactic resemblance. 
+Gabel and Su~\cite{Gabel2010:uniqueness} and Hindle et al.\cite{Hindle:2012} showed that source code 
+is in general repetitive and predictable in nature. My research primarily focuses on detecting and analyzing 
+such structural and semantic similarities in evolving software. Leveraging such similarity in software, I implement 
+multiple applications, spanning from change recommendation system to adversarial testing framework.
 
-%\subsection*{Background}
+\section*{\small Current Work}
 
-\subsection*{\small Repetitiveness in Evolving Software.} Software is built through many incremental changes over a period of time
-and come in many forms. Some changes are frequent, idiomatic, or repetitive (e.g. adding checks for nulls 
-or logging important values) while others are unique. I hypothesize that unique changes are different from the more common similar 
+\subsection*{\small Repetitiveness in Evolving Software.} Software is built through many incremental changes 
+over a period of time and come in many forms. Some changes are frequent, idiomatic, or repetitive (e.g. adding checks for nulls 
+or logging important values) while others are unique. We hypothesize that unique changes are different from the more common similar 
 changes in important ways;  unique changes may require more expertise or represent code that is more complex or prone to mistakes. 
-To test this hypothesis, I  develop a tool, {\em Repertoire}, for identifying repetitive changes in a software project history. Based on the 
-results of applying {\em Repertoire} to Linux kernel and two large projects at Microsoft, I find that on average 18\% to 25\% of the 
-changes are repetitive in a project and they are introduced periodically, \ie developers introduce a change, then use it repeatedly for 
-some period and then stop using it with an average lifetime of 65 days. I also notice that developers have their own set of change
-patterns and developers use them increasingly as they become more prolific.  
+To test this hypothesis, we  develop a tool, {\em Repertoire}, for identifying repetitive changes in a software project history~\cite{Ray2012:RCP}. 
+Repertoire is the first automated tool for detecting repetitive edits with high accuracy of 94\% precision and 84\% recall.
 
-Knowing which changes are unique and which changes are repetitive has several possible applications in software engineering: 
+Based on the results of applying {\em Repertoire} to Linux kernel and two large projects at Microsoft~\cite{ray2014unique}, 
+we find that on average 18\% to 25\% of the changes are repetitive in a project and they are introduced periodically, \ie developers introduce a change, then use it repeatedly for some period and then stop using it with an average lifetime of 65 days. We also notice that developers have their own set of change patterns and developers use them increasingly as they become more prolific. Distinguishing unique changes from the 
+repetitive one has several possible applications in software engineering including code summarization, risk analysis,  automated program repair etc.
+As a proof of concept we implement two such applications:
+
 \begin{itemize}
-\item \textbf{Risk analysis:} One would expect that changes that are
-unique are more error prone than changes that developers repeatedly make. I
-provide significant empirical evidence to support this statement. 
+\item \textbf{Risk analysis:} We provide statistically significant empirical evidence that unique changes are 
+more error prone than the changes that developers repeatedly make. Thus, developers should be careful when introducing unique changes.
+Also, our risk analysis system estimate bug potential of a repetitive change pattern, based on its previous bug history. 
+If the bug potential of a repetitive pattern is beyond a threshold, developers should take special care. 
 
 \item \textbf{Recommendation systems:} Repetitive changes can be used as input for 
 recommendation systems: for example, recommend how a line would typically be changed 
-({\em change recommendation}, or after some change has been made, recommend other repetitive changes 
+({\em change recommendation}), or after some change has been made, recommend other changes 
 that are typically made with the initial change based on past co-occurrence ({\em change completion}).
-My prototype implementation of such recommendation system can recommend changes up to 60\% precision and 
-67\% recall.
-
-\item \textbf{Automated program repair:} 
-Repetitive changes can also be leveraged for automated program repair operations. Nguyen et al.~\cite{nguyen2013study} 
-provided initial empirical evidence for this hypothesis. They found that repetitive bug fixes are 
-usually smaller changes and therefore automated patching tools could start with small changes and 
-gradually compose them.
+Our prototype implementation of such recommendation system can recommend changes up to 60\% precision 
+and 67\% recall.
 
 \end{itemize}
 
+\subsection*{\small Cross-System Porting in Forked Projects.}
 
+Similar changes not-only take place within same project; similar products also implement significant repetitive code 
+either by {\it forking}\textemdash copying an existing product to create a slightly different product, or 
+{\it porting}\textemdash copying an existing feature implementation or bug fix to another member of the same product family. 
+Some well known product families are FreeBSD, OpenBSD, and NetBSD (evolved from the same codebase), 
+OpenSSH and SSH, LibreOffice and OpenOffice, etc. 
 
+Software forking is often considered an ad hoc, low-cost alternative to principled product line development~\cite{Raymond1999:CB}.
+As a first step to assess whether forking is a sustainable practice, we conducted an in-depth case study of 18 years of the BSD product family 
+history~\cite{Ray2012}. We comprehensively characterize cross-system porting in temporal, spatial, and developer dimensions and find that 
+maintaining forked projects involves significant effort of porting patches from other projects. Cross-system porting happens periodically 
+and the porting rate does not necessarily decrease over time. A significant portion of active developers participate in porting changes from peer projects. However, ported changes are less defect-prone than non-ported changes. This study shows that the upkeep effort of maintaining 
+variant products is significant and calls for new techniques to automate cross-system porting. 
 
+\subsection*{\small Detecting Inconsistencies in  Repetitive Changes}
 
+Adding similar features and bug fixes often requires porting program patches from reference implementations and adapting them to target
+implementations. Porting errors may result from faulty adaptations or inconsistent updates. 
+%We investigate (1) the types of porting errors found in practice, and (2) how to detect and characterize potential porting errors. 
+Analyzing version histories, we find four types of porting errors that developers often commit, including incorrect control- and
+data-flow, code redundancy, and inconsistent identifier renamings. Leveraging this categorization, we design a static control- and
+data-dependence analysis technique, {\spa}, to detect and characterize porting inconsistencies~\cite{ray2013detecting}. 
+We evaluate {\spa} on four open-source projects and find that {\spa} can detect porting inconsistencies with
+65\% to 73\% precision and 90\% recall, and identify inconsistency types with 58\% to 63\% precision and 92\% to 100\% recall. 
+In a comparison with two existing porting error detection tools, {\spa} improves precision by 14 to 17 percentage points.
 
+As part of our future work, we plan to integrate {\spa} with an integrated development environment so
+ that developers can detect porting inconsistencies on the fly. For example, {\spa} can be deployed as a plugin extension of Eclipse. The plugin will track developer's copy-paste activities similar to Kim et al.~\cite{Kim2004} and use {\spa} to display the potential porting errors. To further assist developers reason about how the detected inconsistencies change the behavior of the ported code, we plan to generate test cases illustrating the differential behavior as sketched in~\cite{rayThesis}.
 
+%\subsection*{\small An Empirical Study of API Stability and Adoption in the Android Ecosystem.}
 %
-%There exists a rich body of previous work on code duplication~\cite{Kamiya2002,tairas,Cordy2011:largecloning}. However, detecting similar changes is not equivalent to detect 
-%duplicate code clone, since not all code clones evolve in the same fashion, and similar changes are not restricted 
-%to only cloned code. I showed that software is not only similar in structure they also change similarly.
-%For this analysis, we develop a tool called {\em Repertoire} that compares the content and edit operations of program patches 
-%to identify ported edits. Repertoire takes diff-based program patches at the release granularity as in- put
+%When APIs evolve to accommodate new feature requests, to fix bugs, to meet new standards, and to provide higher performance, 
+%client applications often need to make corresponding changes to use new or updated APIs~\cite{Al-Ekram2005:byaccident}. 
+%Despite the benefits of new or improved APIs, developer adoption is often slow among client applications. 
+%For example, Google's Android Operating System is evolving fast, yet the consumer pool is fragmented by the Android 
+%version numbers and API adoption is slow. As a first step toward understanding the impact of API evolution on software ecosystems, 
+% an in-depth case study was conducted of the co-evolution behavior of Android API and dependent applications~\cite{mcdonnell2013empirical}. 
 %
-%Repertoireisanautomatedcross-systemportinganal- ysis tool, which finds ported edits with 94% precision and 84% recall. This tool can serve as a basis for as- sessing the extent and characteristics of cross-system porting among forked projects.
+%This study confirms that Android is evolving fast rate at a rate of 116 API updates per month on average; 
+%Client adoption, however, is not catching up with the pace of API evolution. About 28\% of API references in 
+%client apps are outdated with a median lagging time of 16 months.  22\% of outdated API usages eventually upgrade to 
+%use newer API versions, but the propagation time is much slower than the average interval of API release (3 months). 
+%Fast evolving APIs are used and adopted more by clients than slow evolving APIs. However, the average time taken to adopt 
+%new versions is longer for fast evolving APIs. Further, API usage adaptation code is more defect prone than the regular changes 
+%in client. 
 %
+%This study confirms that Android application developers avoid API instability. However, such slow adoption trend may pose various 
+%types of risks for client applications such as security vulnerability or poor performance. 
+%According to the American Civil Liberties Union (ACLU), ``the lag in software updates leaves smartphone users with out-of-date and dangerous systems"~\cite{ACLU}.  ACLU filed complaints on such spotty Android updates, stating they could potentially harm users by letting hackers 
+%steal user data by utilizing security holes. As a part of future work, we would like to investigate more to identify factors affecting API adoption, 
+%and its correlation with software reliability. The findings of this work is a crucial first step and inform future studies on how to promote 
+%API adoption and ultimately facilitate the growth of software ecosystems.
 
 
-\subsection*{A Case Study of Cross-System Porting in Forked Projects}
 
-\subsection*{An Empirical Study of API Stability and Adoption in the Android Ecosystem}
+\subsection*{\small Automated Adversarial Testing of SSL/TLS Certificate Validation.}
 
-\subsection*{An Empirical Study of Supplementary Bug Fixes}
+Some pieces of software are designed to serve identical purpose though they are part 
+of different software products or even implemented in completely isolated environments. 
+Such software parts may not have any structural similarities, however they should be
+semantically identical\textemdash given an input all of them should produce similar output.
+Based on this philosophy, we build an automated framework to test certificate validation implementations 
+of several popular SSL/TLS libraries including OpenSSL, GnuTLS, NSS, CyaSSL, GnuTLS,
+PolarSSL, MatrixSSL, etc.
+ 
 
-\subsection*{Detecting and Characterizing Semantic Inconsistencies in Ported Code}
+Modern network security rests on the Secure Sockets Layer (SSL) and
+Transport Layer Security (TLS) protocols.  Distributed systems, mobile
+and desktop applications, embedded devices, and all of secure Web rely
+on SSL/TLS for protection against network attacks.  This protection
+critically depends on whether SSL/TLS clients correctly validate X.509
+certificates presented by servers during the SSL/TLS handshake protocol.
 
-\subsection*{Using Frankencerts for Automated Adversarial Testing of Certificate Validation in SSL/TLS Implementations}
+We design, implement, and apply the first methodology for large-scale
+testing of certificate validation logic in SSL/TLS implementations~\cite{brubaker2014using}.
+Our first ingredient is ``frankencerts,'' synthetic certificates that are
+randomly mutated from parts of real certificates and thus include unusual
+combinations of extensions and constraints.  Our second ingredient is
+differential testing: if one SSL/TLS implementation accepts a certificate
+while another rejects the same certificate, we use the discrepancy as
+an oracle for finding flaws in individual implementations.
+
+
+Differential testing with frankencerts uncovered 208 discrepancies between
+popular SSL/TLS implementations. Many of them are caused by serious security
+vulnerabilities.  For example, any server with a valid X.509 version
+1 certificate can act as a rogue certificate authority and issue fake
+certificates for any domain, enabling man-in-the-middle attacks against
+MatrixSSL and GnuTLS.  Several implementations also accept certificate
+authorities created by unauthorized issuers, as well as certificates
+not intended for server authentication.
+
+We also found serious vulnerabilities in how users are warned about
+certificate validation errors.  When presented with an expired,
+self-signed certificate, NSS, Safari, and Chrome (on Linux) report
+that the certificate has expired\textemdash a low-risk, often ignored
+error\textemdash but not that the connection is insecure against a
+man-in-the-middle attack.
+
+These results demonstrate that automated adversarial testing with
+frankencerts is a powerful methodology for discovering security flaws
+in SSL/TLS implementations.
+
+\subsection*{\small Other research} I also work on other aspects of software and systems including 
+building an operating system abstractions for efficiently managing GPUs~\cite{rossbach2011ptask}, 
+developing a protocol for secure and reliable covert channel~\cite{ray2008protocol}, 
+implementing an ecosystem for Context-Aware Mobile Social Networks~\cite{beach2008whozthat, beach2009touch}, 
+analyzing API stability and adoption in Android Ecosystem~\cite{mcdonnell2013empirical}, and empirically analyzing 
+the bugs that are fixed multiple times in Mozilla and Eclipse software systems~\cite{park2012empirical}.
+
 
 \vspace{0.5cm}
+
+
+\section*{Future Research}
+
+I am enthusiastic to continue my work in software engineering, as well as to bridge security and software. 
+Some areas of future work include:
+
+\subsection*{\small Effect of programming languages on software quality.}
+A variety of debates ensue during discussions whether a given programming language is ``the
+right tool for the job". While some of these debates can sometimes appear to be tinged with
+almost religious fervor, most people would agree that a programming language has an effect not
+only on the coding process but also on the properties of the resulting artifact. The size of
+the effect can be significant and important overall, and can depend on the language
+properties. Advocates of strong static typing argue that type inference will catch software bugs early.
+Advocates of dynamic typing may argue that rather than spend a lot of time correcting annoying
+static type errors arising from sound, conservative static type checking algorithms in
+compilers, it's better to rely on strong dynamic typing to catch errors as and when they arise.
+These debates, however, have largely been of the armchair variety; usually the evidence offered
+in support of one position or the other tends to be anecdotal. 
+
+Using the vast amount of open source code available  in \gh, I am planning to shed some empirical light 
+on the effect of language features such as static \vs dynamic typing, strong \vs weak typing on software quality. 
+Empirical evidence for the associations,  if any,  that exist between programming language
+choice, their properties, usage domains, and code quality, can help developers make more
+educated choices. Also, such knowledge will also help language designer to architect future languages.
+
+
+\subsection*{\small Studying co-evolution of software ecosystem.}
+In a product family, when a related feature or bug fix is introduced in one project, it may need to be eventually ported to other projects.
+In my study of cross-system porting I find that average time to port an edit from one system to another is more than 2 years.
+ Sometimes it even takes up to 10 years for an edit to be propagated. It will be helpful to build a notification system 
+ for co-evolution to promote a fast and timely patch application. When a relevant edit is introduced in one project, all the related components of other projects may need to be notified. However, we cannot notify all the changes, as the forked projects usually evolve independently in different directions. Naively notifying all the changes will significantly increase the false positives. First, we have to find which components across the projects are closely related in terms of cross-system porting. Since ported edits are not confined within files having similar names or directory structures, establishing such relationships can be challenging. Prior porting history may be useful for identifying relevant components. 
+
+I would like to investigate whether similar bug reports in two forked projects are fixed similarly. Extending prior approaches to find duplicate bug reports~\cite{dupBugReport:Wang:ICSE2008,dupBugReport:Nguyen:ASE2012}, we can find similar bug reports across different forked projects and extract their corresponding fixed patches. Then, {\rep} can verify how similar these fixed patches are.
+This will help us to determine whether two similar bug reports in two related projects undergo similar fixes. If we confirm that a large number of fixes are actually similar, it would motivate building a patch recommendation system. When a new bug will be reported in a project, we will look for a similar bug report in the  sibling projects and suggest its fix. 
+
+\subsection*{\small Finding vulnerabilities in security sensitive software.} 
+I would like to continue my research of detecting security vulnerabilities using sophisticated software engineering tools. 
+One such project I am interested in is tracking the error code propagation in a software. As we have seen in SSL/TLS implementations, 
+clients often mask or ignore error code returned from APIs. I am interested to understand how these ignored error code affect security 
+properties of software. I further would like to implement a generic framework that can efficiently manage such security sensitive error code.
+
+In summary, I remain broadly interested in software engineering and would like to build tools to make future software better.
+
 
 
 \end{small}
