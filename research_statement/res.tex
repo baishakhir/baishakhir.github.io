@@ -46,27 +46,28 @@ for both open source and proprietary software to understand current software eng
 Based on this understanding, I develop novel program analysis techniques to make software more reliable and
  secure.
 
-Modern software are developed using smaller building blocks, \eg  packages, libraries, APIs, methods, etc. 
-Many of these building blocks often serve similar purpose. For example, OpenSSL, GnuTLS etc.~are 
+One of the key insights behind my approach is that modern software are developed using 
+smaller building blocks, \eg  packages, libraries, APIs, methods, etc. 
+Many of these building blocks often serve similar purposes. For example, OpenSSL, GnuTLS etc.~are 
 different SSL libraries that implement Secure Socket Layer protocol~\cite{rfc5280} and serve as
 the basis of HTTPS. Even, software with different functionality may show syntactic resemblance. 
 Gabel and Su~\cite{Gabel2010:uniqueness} and Hindle et al.\cite{Hindle:2012} showed that source code 
 is in general repetitive and predictable in nature. My research primarily focuses on detecting and analyzing 
-such structural and semantic similarities in evolving software. Leveraging such similarity in software, I implement 
-multiple applications, spanning from change recommendation system to adversarial testing framework.
+such structural and semantic similarities in evolving software. I leverage such similarity for 
+multiple purposes, spanning from change recommendation system to adversarial testing framework.
 
 \section*{\small Current Work}
 
 \subsection*{\small Repetitiveness in Evolving Software.} Software is built through many incremental changes 
-over a period of time and come in many forms. Some changes are frequent, idiomatic, or repetitive (e.g. adding checks for nulls 
+over a period of time. Some changes are frequent, idiomatic, or repetitive (e.g. adding checks for nulls 
 or logging important values) while others are unique. We hypothesize that unique changes are different from the more common similar 
 changes in important ways;  unique changes may require more expertise or represent code that is more complex or prone to mistakes. 
 To test this hypothesis, we  develop a tool, {\em Repertoire}, for identifying repetitive changes in a software project history~\cite{Ray2012:RCP}. 
-Repertoire is the first automated tool for detecting repetitive edits with high accuracy of 94\% precision and 84\% recall.
+{\em Repertoire} is the first automated tool for detecting repetitive edits with high accuracy of 94\% precision and 84\% recall.
 
 Based on the results of applying {\em Repertoire} to Linux kernel and two large projects at Microsoft~\cite{ray2014unique}, 
 we find that on average 18\% to 25\% of the changes are repetitive in a project and they are introduced periodically, \ie developers introduce a change, then use it repeatedly for some period and then stop using it with an average lifetime of 65 days. We also notice that developers have their own set of change patterns and developers use them increasingly as they become more prolific. Distinguishing unique changes from the 
-repetitive one has several possible applications in software engineering including code summarization, risk analysis,  automated program repair etc.
+repetitive ones has several possible applications in software engineering including code summarization, risk analysis,  automated program repair etc.
 As a proof of concept we implement two such applications:
 
 \begin{itemize}
@@ -79,25 +80,28 @@ If the bug potential of a repetitive pattern is beyond a threshold, developers s
 recommendation systems: for example, recommend how a line would typically be changed 
 ({\em change recommendation}), or after some change has been made, recommend other changes 
 that are typically made with the initial change based on past co-occurrence ({\em change completion}).
-Our prototype implementation of such recommendation system can recommend changes up to 60\% precision 
+Our prototype implementation of such recommendation system can recommend changes with up to 60\% precision 
 and 67\% recall.
 
 \end{itemize}
+
+Part of this work was published in FSE 2012~\cite{Ray2012:RCP, Ray2012} and rest is currently under review.
+
 
 \subsection*{\small Cross-System Porting in Forked Projects.}
 
 Similar changes not-only take place within same project; similar products also implement significant repetitive code 
 either by {\it forking}\textemdash copying an existing product to create a slightly different product, or 
 {\it porting}\textemdash copying an existing feature implementation or bug fix to another member of the same product family. 
-Some well known product families are FreeBSD, OpenBSD, and NetBSD (evolved from the same codebase), 
-OpenSSH and SSH, LibreOffice and OpenOffice, etc. 
+Some well known product families are FreeBSD, OpenBSD, and NetBSD (evolved from the same codebase);
+OpenSSH and SSH; LibreOffice and OpenOffice, etc. 
 
 Software forking is often considered an ad hoc, low-cost alternative to principled product line development~\cite{Raymond1999:CB}.
 As a first step to assess whether forking is a sustainable practice, we conducted an in-depth case study of 18 years of the BSD product family 
 history~\cite{Ray2012}. We comprehensively characterize cross-system porting in temporal, spatial, and developer dimensions and find that 
 maintaining forked projects involves significant effort of porting patches from other projects. Cross-system porting happens periodically 
 and the porting rate does not necessarily decrease over time. A significant portion of active developers participate in porting changes from peer projects. However, ported changes are less defect-prone than non-ported changes. This study shows that the upkeep effort of maintaining 
-variant products is significant and calls for new techniques to automate cross-system porting. 
+variant products is significant and calls for new techniques to automate cross-system porting. This work was published in FSE 2012~\cite{Ray2012}.
 
 \subsection*{\small Detecting Inconsistencies in  Repetitive Changes}
 
@@ -110,6 +114,7 @@ data-dependence analysis technique, {\spa}, to detect and characterize porting i
 We evaluate {\spa} on four open-source projects and find that {\spa} can detect porting inconsistencies with
 65\% to 73\% precision and 90\% recall, and identify inconsistency types with 58\% to 63\% precision and 92\% to 100\% recall. 
 In a comparison with two existing porting error detection tools, {\spa} improves precision by 14 to 17 percentage points.
+This work was published in ASE 2013 and nominated for distinguished paper award~\cite{ray2013detecting}.
 
 As part of our future work, we plan to integrate {\spa} with an integrated development environment so
  that developers can detect porting inconsistencies on the fly. For example, {\spa} can be deployed as a plugin extension of Eclipse. The plugin will track developer's copy-paste activities similar to Kim et al.~\cite{Kim2004} and use {\spa} to display the potential porting errors. To further assist developers reason about how the detected inconsistencies change the behavior of the ported code, we plan to generate test cases illustrating the differential behavior as sketched in~\cite{rayThesis}.
@@ -178,8 +183,7 @@ certificate validation errors.  When presented with an expired,
 self-signed certificate, NSS, Safari, and Chrome (on Linux) report
 that the certificate has expired\textemdash a low-risk, often ignored
 error\textemdash but not that the connection is insecure against a
-man-in-the-middle attack.
-
+man-in-the-middle attack. This work was published in IEEE S\&P 2014 and won best practical paper award~\cite{brubaker2014using}.
 %These results demonstrate that automated adversarial testing with
 %frankencerts is a powerful methodology for discovering security flaws
 %in SSL/TLS implementations.
@@ -187,7 +191,7 @@ man-in-the-middle attack.
 \subsection*{\small Other research} I also worked on other aspects of software engineering including 
 an empirical study of API stability and adoption in the Android ecosystem~\cite{mcdonnell2013empirical}, 
 and empirically analyzing the bugs that are fixed multiple times in Mozilla and Eclipse software~\cite{park2012empirical}.
-I further built several systems software, \eg an operating system abstractions for efficiently managing GPUs~\cite{rossbach2011ptask}, 
+I further built several systems software, \eg an operating system abstraction for efficiently managing GPUs~\cite{rossbach2011ptask}, 
  a protocol for secure and reliable covert channel~\cite{ray2008protocol}, and an ecosystem for Context-Aware Mobile Social Networks~\cite{beach2008whozthat, beach2009touch}, 
 
 
@@ -223,8 +227,8 @@ educated choices. Also, such knowledge will guide language designer to architect
 \subsection*{\small Studying evolution of software ecosystem.}
 
 In a software ecosystem, when a related feature or bug fix is introduced in one project, it may need to be eventually ported to other projects.
-However, such patch propagation does not take place efficiently. In our previous study of cross-system porting~\cite{Ray2012} we find that average time to port an edit from one system to another is more than 2 years. Sometimes it even takes up to 10 years for an edit to be propagated.
-I would like to build a notification system for co-evolution to promote a fast and timely patch application. When a relevant edit is introduced in one project, all the related components of other projects may need to be notified. However, one cannot notify all the changes, as the forked projects usually evolve independently in different directions. Naively notifying all the changes will significantly increase the false positives. First, we have to find which components across the projects are closely related in terms of cross-system porting. Since ported edits are not confined within files having similar names or directory structures, establishing such relationships can be challenging. Prior porting history may be useful for identifying relevant components. 
+However, such patch propagation process is currently not very efficient. In our previous study of cross-system porting~\cite{Ray2012} we find that average time to port an edit from one system to another is more than 2 years. Sometimes it even takes up to 10 years for an edit to be propagated.
+I would like to build a notification system to promote fast and timely patching of applications. When a relevant edit is introduced in one project, all the related components of other projects may need to be notified. However, one cannot notify all the changes, as the forked projects usually evolve independently in different directions. Naively notifying all the changes will significantly increase the false positives. First, we have to find which components across the projects are closely related in terms of cross-system porting. Since ported edits are not confined within files having similar names or directory structures, establishing such relationships can be challenging. Prior porting history may be useful for identifying relevant components. 
 
 I would further like to investigate whether similar bug reports in two peer projects are fixed similarly. 
 Extending prior approaches to find duplicate bug reports~\cite{dupBugReport:Wang:ICSE2008,dupBugReport:Nguyen:ASE2012}, 
@@ -232,7 +236,7 @@ we can find similar bug reports across different peer projects and extract their
 Then, {\rep} can measure similarity between the fixed patches. This will help us to determine whether two similar bug reports in two related projects undergo similar fixes. If we confirm that a large number of fixes are actually similar, it would motivate building a patch recommendation system. When a new bug will be reported in a project, we will look for a similar bug report in the  sibling projects and suggest its fix. 
 
 \subsection*{\small Finding vulnerabilities in security sensitive software.} 
-I would like to continue my research of detecting security vulnerabilities using sophisticated software engineering tools. 
+I would like to continue my research on detecting security vulnerabilities using sophisticated software engineering tools. 
 One such project I am interested in is tracking the error code propagation in a software. As we have seen in SSL/TLS implementations, 
 clients often mask or ignore error code returned from APIs. I am interested to understand how these ignored error code affect security 
 properties of software. I further would like to implement a generic framework that can efficiently manage such security sensitive error code.
