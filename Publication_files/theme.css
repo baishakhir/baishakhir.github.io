@@ -408,3 +408,11 @@ vertical-align: middle;
 	font: Verdana, Geneva, sans-serif;
 	color: #7f003f;
 }
+
+.bibtex {
+    border: 2px solid #a1a1a1;
+    padding: 10px 40px; 
+    background-color:#E0E0E0;
+    width: 300px;
+    border-radius: 25px;
+}

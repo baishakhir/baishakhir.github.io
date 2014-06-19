@@ -34,6 +34,7 @@ body { margin:0; padding:0; }
     }
 //--> 
     window.onload = function() {
+      toggle_visibility("lang_bib");
       toggle_visibility("frankencert_bib");
     }
 </script>
@@ -103,6 +104,40 @@ body { margin:0; padding:0; }
 					<div class="sf_content"><div class="LayoutContainer" style="display:block;"><div><div style="display:block;overflow:hidden;"><br>
 <table cellpadding="1" cellspacing="3" border="0" style="width: 100%; text-align: left;">
     <tbody>
+        <tr>
+            <td style="text-align: center; vertical-align: middle;"><a href="http://fse22.gatech.edu/"><font face="Verdana, Geneva, sans-serif" color="#7f003f">FSE 2014</font></a><br>
+            </td>
+            <td><font face="Georgia, serif"><i>A Large Scale Study of Programming Languages and Code Quality in Github</i>, 10 pages,&nbsp;<br>
+            <b>Baishakhi Ray</b>, Daryl Posnett, Vladimir Filkov and Premkumar T Devanbu<br>
+            <a href="./uploads/lang_study.pdf" target="_blank">pdf</a>, &nbsp;
+            <!-- <a href="https://github.com/sumanj/frankencert" target="_blank">code</a>, &nbsp; 
+            <a href="./uploads/frankencert.pptx" target="_blank">slides</a>, &nbsp; -->
+            <!-- <a href="./uploads/frankencert.bib">bibtex</a> <br> 
+              <a onclick="toggle_visibility('foo');">Click </a>
+            <div id="foo">This is foo</div> -->
+            <a href="#"  onclick="toggle_visibility('lang_bib');">bibtex</a> <br>
+            <!--<div id="frankencert_bib" style="background-color:#E0E0E0;  -moz-border-radius:100px / 50px; -webkit-border-radius: 100px / 50px; border-radius: 100px / 50px;"> -->
+            <div id="lang_bib" style="background-color:#E0E0E0; font-family:'Courier'; font-size:11px">
+              
+              @inproceedings{ray2014lang, <br>
+              &nbsp;&nbsp;&nbsp;title={A Large Scale Study of Programming Languages and Code Quality in Github}, <br>
+              &nbsp;&nbsp;&nbsp;author={Ray, Baishakhi and Posnett, Daryl and Filkov, Vladimir and Devanbu, Premkumar}, <br>
+              &nbsp;&nbsp;&nbsp;booktitle={Proceedings of the ACM SIGSOFT 20th International Symposium on the Foundations of Software Engineering}, <br>
+              &nbsp;&nbsp;&nbsp;series = {FSE '14}, <br>
+              &nbsp;&nbsp;&nbsp;year={2014}, <br>
+              &nbsp;&nbsp;&nbsp;organization={ACM} <br>
+            }
+            
+            
+            </div> 
+            <br>
+            </span></span>
+            </td>
+          </tr>
+
+
+
+    <!-- -->
         <tr>
             <td style="text-align: center; vertical-align: middle;"><a href="http://www.ieee-security.org/TC/SP2014/"><font face="Verdana, Geneva, sans-serif" color="#7f003f">S&amp;P (Oakland) 2014</font></a><br>
             </td>
