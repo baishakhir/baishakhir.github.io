@@ -36,29 +36,39 @@
 %\vspace*{0.1cm}
 \begin{center}
 {\large \bf RESEARCH STATEMENT}\\
-\vspace*{0.1cm}
-{\normalsize Baishakhi Ray (bairay@ucdavis.edu)}
+\vspace*{0.4cm}
+{\normalsize Baishakhi Ray}% (bairay@ucdavis.edu)}
 \end{center}
 
+In last few decades, software industry has grown enormously. According to a recent survey,
+worldwide software industry has grown to \$407.3 Billion dollars~\cite{Gartner13} in 2013,
+4.8\% more since the previous year. For maintaining such growth, it is very important to ensure
+the quality of the software as well as the efficiency of the software development process. My
+research focuses on achieving these goals.  
 
-I am primarily interested in software engineering, in particular, I analyze large scale software repositories 
-for both open source and proprietary software to understand current software engineering practices. 
-Based on this understanding, I develop novel program analysis techniques to make software more reliable and
- secure.
+In particular, I work on empirical software engineering; by statistically analyzing large scale
+software projects, both open source and proprietary, I understand the current software
+engineering practices. Then, leveraging the data-driven knowledge, I develop novel program
+analysis algorithms and testing techniques to improve software quality as well as productivity
+of software development process. Especially, my research has been able to detect more than
+hundred bugs and security vulnerabilities in large scale software; my tools aid existing 
+software development process by recommending relevant code changes, implementing
+various bug prediction tools, and automatically detecting ported code across different 
+software projects.  
 
-One of the key insights behind my approach is that modern software are developed using 
-smaller building blocks, \eg  packages, libraries, APIs, methods, etc. 
-Many of these building blocks often serve similar purposes. For example, OpenSSL, GnuTLS etc.~are 
-different SSL libraries that implement Secure Socket Layer protocol~\cite{rfc5280} and serve as
-the basis of HTTPS. Even, software with different functionality may show syntactic resemblance. 
-Gabel and Su~\cite{Gabel2010:uniqueness} and Hindle et al.\cite{Hindle:2012} showed that source code 
-is in general repetitive and predictable in nature. My research primarily focuses on detecting and analyzing 
-such structural and semantic similarities in evolving software. I leverage such similarity for 
-multiple purposes, spanning from change recommendation system to adversarial testing framework.
+%One of the key insights behind my approach is that modern software are developed using 
+%smaller building blocks, \eg  packages, libraries, APIs, methods, etc. 
+%Many of these building blocks often serve similar purposes. For example, OpenSSL, GnuTLS etc.~are 
+%different SSL libraries that implement Secure Socket Layer protocol~\cite{rfc5280} and serve as
+%the basis of HTTPS. Even, software with different functionality may show syntactic resemblance. 
+%Gabel and Su~\cite{Gabel2010:uniqueness} and Hindle et al.\cite{Hindle:2012} showed that source code 
+%is in general repetitive and predictable in nature. My research primarily focuses on detecting and analyzing 
+%such structural and semantic similarities in evolving software. I leverage such similarity for 
+%multiple purposes, spanning from change recommendation system to adversarial testing framework.
 
-\section*{\small Current Work}
+%\section*{\small Current Work}
 
-\subsection*{\small Repetitiveness in Evolving Software.} Software is built through many incremental changes 
+\section*{\small Repetitiveness in Evolving Software.} Software is built through many incremental changes 
 over a period of time. Some changes are frequent, idiomatic, or repetitive (e.g. adding checks for nulls 
 or logging important values) while others are unique. We hypothesize that unique changes are different from the more common similar 
 changes in important ways;  unique changes may require more expertise or represent code that is more complex or prone to mistakes. 
@@ -80,15 +90,14 @@ If the bug potential of a repetitive pattern is beyond a threshold, developers s
 recommendation systems: for example, recommend how a line would typically be changed 
 ({\em change recommendation}), or after some change has been made, recommend other changes 
 that are typically made with the initial change based on past co-occurrence ({\em change completion}).
-Our prototype implementation of such recommendation system can recommend changes with up to 60\% precision 
-and 67\% recall.
+Our prototype implementation of such recommendation system can recommend changes with up to 60\% precision and 67\% recall.
 
 \end{itemize}
 
 Part of this work was published in FSE 2012~\cite{Ray2012:RCP, Ray2012} and rest is currently under review.
 
 
-\subsection*{\small Cross-System Porting in Forked Projects.}
+\section*{\small Cross-System Porting in Forked Projects.}
 
 Similar changes not-only take place within same project; similar products also implement significant repetitive code 
 either by {\it forking}\textemdash copying an existing product to create a slightly different product, or 
@@ -103,7 +112,7 @@ maintaining forked projects involves significant effort of porting patches from 
 and the porting rate does not necessarily decrease over time. A significant portion of active developers participate in porting changes from peer projects. However, ported changes are less defect-prone than non-ported changes. This study shows that the upkeep effort of maintaining 
 variant products is significant and calls for new techniques to automate cross-system porting. This work was published in FSE 2012~\cite{Ray2012}.
 
-\subsection*{\small Detecting Inconsistencies in  Repetitive Changes}
+\section*{\small Detecting Inconsistencies in  Repetitive Changes}
 
 Adding similar features and bug fixes often requires porting program patches from reference implementations and adapting them to target
 implementations. Porting errors may result from faulty adaptations or inconsistent updates. 
@@ -119,33 +128,33 @@ This work was published in ASE 2013 and nominated for distinguished paper award~
 As part of our future work, we plan to integrate {\spa} with an integrated development environment so
  that developers can detect porting inconsistencies on the fly. For example, {\spa} can be deployed as a plugin extension of Eclipse. The plugin will track developer's copy-paste activities similar to Kim et al.~\cite{Kim2004} and use {\spa} to display the potential porting errors. To further assist developers reason about how the detected inconsistencies change the behavior of the ported code, we plan to generate test cases illustrating the differential behavior as sketched in~\cite{rayThesis}.
 
-%\subsection*{\small An Empirical Study of API Stability and Adoption in the Android Ecosystem.}
-%
-%When APIs evolve to accommodate new feature requests, to fix bugs, to meet new standards, and to provide higher performance, 
-%client applications often need to make corresponding changes to use new or updated APIs~\cite{Al-Ekram2005:byaccident}. 
-%Despite the benefits of new or improved APIs, developer adoption is often slow among client applications. 
-%For example, Google's Android Operating System is evolving fast, yet the consumer pool is fragmented by the Android 
-%version numbers and API adoption is slow. As a first step toward understanding the impact of API evolution on software ecosystems, 
-% an in-depth case study was conducted of the co-evolution behavior of Android API and dependent applications~\cite{mcdonnell2013empirical}. 
-%
-%This study confirms that Android is evolving fast rate at a rate of 116 API updates per month on average; 
-%Client adoption, however, is not catching up with the pace of API evolution. About 28\% of API references in 
-%client apps are outdated with a median lagging time of 16 months.  22\% of outdated API usages eventually upgrade to 
-%use newer API versions, but the propagation time is much slower than the average interval of API release (3 months). 
-%Fast evolving APIs are used and adopted more by clients than slow evolving APIs. However, the average time taken to adopt 
-%new versions is longer for fast evolving APIs. Further, API usage adaptation code is more defect prone than the regular changes 
-%in client. 
-%
-%This study confirms that Android application developers avoid API instability. However, such slow adoption trend may pose various 
-%types of risks for client applications such as security vulnerability or poor performance. 
-%According to the American Civil Liberties Union (ACLU), ``the lag in software updates leaves smartphone users with out-of-date and dangerous systems"~\cite{ACLU}.  ACLU filed complaints on such spotty Android updates, stating they could potentially harm users by letting hackers 
-%steal user data by utilizing security holes. As a part of future work, we would like to investigate more to identify factors affecting API adoption, 
-%and its correlation with software reliability. The findings of this work is a crucial first step and inform future studies on how to promote 
-%API adoption and ultimately facilitate the growth of software ecosystems.
+\section*{\small An Empirical Study of API Stability and Adoption in the Android Ecosystem.}
+
+When APIs evolve to accommodate new feature requests, to fix bugs, to meet new standards, and to provide higher performance, 
+client applications often need to make corresponding changes to use new or updated APIs~\cite{Al-Ekram2005:byaccident}. 
+Despite the benefits of new or improved APIs, developer adoption is often slow among client applications. 
+For example, Google's Android Operating System is evolving fast, yet the consumer pool is fragmented by the Android 
+version numbers and API adoption is slow. As a first step toward understanding the impact of API evolution on software ecosystems, 
+an in-depth case study was conducted of the co-evolution behavior of Android API and dependent applications~\cite{mcdonnell2013empirical}. 
+
+This study confirms that Android is evolving fast rate at a rate of 116 API updates per month on average; 
+Client adoption, however, is not catching up with the pace of API evolution. About 28\% of API references in 
+client apps are outdated with a median lagging time of 16 months.  22\% of outdated API usages eventually upgrade to 
+use newer API versions, but the propagation time is much slower than the average interval of API release (3 months). 
+Fast evolving APIs are used and adopted more by clients than slow evolving APIs. However, the average time taken to adopt 
+new versions is longer for fast evolving APIs. Further, API usage adaptation code is more defect prone than the regular changes 
+in client. 
+
+This study confirms that Android application developers avoid API instability. However, such slow adoption trend may pose various 
+types of risks for client applications such as security vulnerability or poor performance. 
+According to the American Civil Liberties Union (ACLU), ``the lag in software updates leaves smartphone users with out-of-date and dangerous systems"~\cite{ACLU}.  ACLU filed complaints on such spotty Android updates, stating they could potentially harm users by letting hackers 
+steal user data by utilizing security holes. As a part of future work, we would like to investigate more to identify factors affecting API adoption, 
+and its correlation with software reliability. The findings of this work is a crucial first step and inform future studies on how to promote 
+API adoption and ultimately facilitate the growth of software ecosystems.
 
 
 
-\subsection*{\small Automated Adversarial Testing of SSL/TLS Certificate Validation.}
+\section*{\small Automated Adversarial Testing of SSL/TLS Certificate Validation.}
 
 Some pieces of software are designed to serve an identical purpose though they are part 
 of different products and are implemented in completely isolated environments. Such software 
@@ -188,23 +197,8 @@ man-in-the-middle attack. This work was published in IEEE S\&P 2014 and won best
 %frankencerts is a powerful methodology for discovering security flaws
 %in SSL/TLS implementations.
 
-\subsection*{\small Other research} I also worked on other aspects of software engineering including 
-an empirical study of API stability and adoption in the Android ecosystem~\cite{mcdonnell2013empirical}, 
-and empirically analyzing the bugs that are fixed multiple times in Mozilla and Eclipse software~\cite{park2012empirical}.
-I further built several systems software, \eg an operating system abstraction for efficiently managing GPUs~\cite{rossbach2011ptask}, 
- a protocol for secure and reliable covert channel~\cite{ray2008protocol}, and an ecosystem for Context-Aware Mobile Social Networks~\cite{beach2008whozthat, beach2009touch}, 
 
-
-
-\vspace{0.5cm}
-
-
-\section*{Future Research}
-
-I am enthusiastic to continue my work in software engineering, as well as to bridge security and software. 
-Some areas of future work include:
-
-\subsection*{\small Effect of programming languages on software quality.}
+\section*{\small Effect of programming languages on software quality.}
 A variety of debates ensue during discussions whether a given programming language is ``the
 right tool for the job". While some of these debates can sometimes appear to be tinged with
 almost religious fervor, most people would agree that a programming language has an effect not
@@ -223,27 +217,41 @@ Empirical evidences for the associations,  if any,  that exist between programmi
 choice, their properties, usage domains, and code quality, can help developers make more
 educated choices. Also, such knowledge will guide language designer to architect language features.
 
+\subsection*{\small Other research} I also worked on other aspects of software engineering including 
+an empirical study of API stability and adoption in the Android ecosystem~\cite{mcdonnell2013empirical}, 
+and empirically analyzing the bugs that are fixed multiple times in Mozilla and Eclipse software~\cite{park2012empirical}.
+I further built several systems software, \eg an operating system abstraction for efficiently managing GPUs~\cite{rossbach2011ptask}, 
+ a protocol for secure and reliable covert channel~\cite{ray2008protocol}, and an ecosystem for Context-Aware Mobile Social Networks~\cite{beach2008whozthat, beach2009touch}, 
 
-\subsection*{\small Studying evolution of software ecosystem.}
+\vspace{0.5cm}
 
-In a software ecosystem, when a related feature or bug fix is introduced in one project, it may need to be eventually ported to other projects.
-However, such patch propagation process is currently not very efficient. In our previous study of cross-system porting~\cite{Ray2012} we find that average time to port an edit from one system to another is more than 2 years. Sometimes it even takes up to 10 years for an edit to be propagated.
-I would like to build a notification system to promote fast and timely patching of applications. When a relevant edit is introduced in one project, all the related components of other projects may need to be notified. However, one cannot notify all the changes, as the forked projects usually evolve independently in different directions. Naively notifying all the changes will significantly increase the false positives. First, we have to find which components across the projects are closely related in terms of cross-system porting. Since ported edits are not confined within files having similar names or directory structures, establishing such relationships can be challenging. Prior porting history may be useful for identifying relevant components. 
 
-I would further like to investigate whether similar bug reports in two peer projects are fixed similarly. 
-Extending prior approaches to find duplicate bug reports~\cite{dupBugReport:Wang:ICSE2008,dupBugReport:Nguyen:ASE2012}, 
-we can find similar bug reports across different peer projects and extract their corresponding fixed patches. 
-Then, {\rep} can measure similarity between the fixed patches. This will help us to determine whether two similar bug reports in two related projects undergo similar fixes. If we confirm that a large number of fixes are actually similar, it would motivate building a patch recommendation system. When a new bug will be reported in a project, we will look for a similar bug report in the  sibling projects and suggest its fix. 
+\section*{Future Research}
 
-\subsection*{\small Finding vulnerabilities in security sensitive software.} 
-I would like to continue my research on detecting security vulnerabilities using sophisticated software engineering tools. 
-One such project I am interested in is tracking the error code propagation in a software. As we have seen in SSL/TLS implementations, 
-clients often mask or ignore error code returned from APIs. I am interested to understand how these ignored error code affect security 
-properties of software. I further would like to implement a generic framework that can efficiently manage such security sensitive error code.
+% I am enthusiastic to continue my work in software engineering, as well as to bridge security and software. 
+% Some areas of future work include:
 
-\vspace*{1\baselineskip}
-\noindent
-In summary, I remain broadly interested in software engineering and would like to build tools to make future software better.
+
+% \subsection*{\small Studying evolution of software ecosystem.}
+
+% In a software ecosystem, when a related feature or bug fix is introduced in one project, it may need to be eventually ported to other projects.
+% However, such patch propagation process is currently not very efficient. In our previous study of cross-system porting~\cite{Ray2012} we find that average time to port an edit from one system to another is more than 2 years. Sometimes it even takes up to 10 years for an edit to be propagated.
+% I would like to build a notification system to promote fast and timely patching of applications. When a relevant edit is introduced in one project, all the related components of other projects may need to be notified. However, one cannot notify all the changes, as the forked projects usually evolve independently in different directions. Naively notifying all the changes will significantly increase the false positives. First, we have to find which components across the projects are closely related in terms of cross-system porting. Since ported edits are not confined within files having similar names or directory structures, establishing such relationships can be challenging. Prior porting history may be useful for identifying relevant components. 
+
+% I would further like to investigate whether similar bug reports in two peer projects are fixed similarly. 
+% Extending prior approaches to find duplicate bug reports~\cite{dupBugReport:Wang:ICSE2008,dupBugReport:Nguyen:ASE2012}, 
+% we can find similar bug reports across different peer projects and extract their corresponding fixed patches. 
+% Then, {\rep} can measure similarity between the fixed patches. This will help us to determine whether two similar bug reports in two related projects undergo similar fixes. If we confirm that a large number of fixes are actually similar, it would motivate building a patch recommendation system. When a new bug will be reported in a project, we will look for a similar bug report in the  sibling projects and suggest its fix. 
+
+% \subsection*{\small Finding vulnerabilities in security sensitive software.} 
+% I would like to continue my research on detecting security vulnerabilities using sophisticated software engineering tools. 
+% One such project I am interested in is tracking the error code propagation in a software. As we have seen in SSL/TLS implementations, 
+% clients often mask or ignore error code returned from APIs. I am interested to understand how these ignored error code affect security 
+% properties of software. I further would like to implement a generic framework that can efficiently manage such security sensitive error code.
+
+% \vspace*{1\baselineskip}
+% \noindent
+% In summary, I remain broadly interested in software engineering and would like to build tools to make future software better.
 
 
 
