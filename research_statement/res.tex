@@ -46,178 +46,271 @@ worldwide software industry has grown to \$407.3 Billion dollars~\cite{Gartner13
 the quality of the software as well as the efficiency of the software development process. My
 research focuses on achieving these goals.  
 
-In particular, I work on empirical software engineering; by statistically analyzing large scale
-software projects, both open source and proprietary, I understand the current software
-engineering practices. Then, leveraging the data-driven knowledge, I develop novel program
+In particular, I work on {empirical software engineering}; by statistically analyzing large
+scale software projects, both open source and proprietary, I understand the current software
+engineering process. Then, leveraging the data-driven knowledge, I develop novel program
 analysis algorithms and testing techniques to improve software quality as well as productivity
-of software development process. Especially, my research has been able to detect more than
-hundred bugs and security vulnerabilities in large scale software; my tools aid existing 
-software development process by recommending relevant code changes, implementing
-various bug prediction tools, and automatically detecting ported code across different 
-software projects.  
+of software development process. Especially, my research has been able to detect more than a
+hundred bugs and security issues in large scale software; my tools aid existing software
+development process by recommending relevant code changes, implementing various bug prediction
+tools, and automatically detecting ported code across different software projects.  
 
-%One of the key insights behind my approach is that modern software are developed using 
-%smaller building blocks, \eg  packages, libraries, APIs, methods, etc. 
-%Many of these building blocks often serve similar purposes. For example, OpenSSL, GnuTLS etc.~are 
-%different SSL libraries that implement Secure Socket Layer protocol~\cite{rfc5280} and serve as
-%the basis of HTTPS. Even, software with different functionality may show syntactic resemblance. 
-%Gabel and Su~\cite{Gabel2010:uniqueness} and Hindle et al.\cite{Hindle:2012} showed that source code 
-%is in general repetitive and predictable in nature. My research primarily focuses on detecting and analyzing 
-%such structural and semantic similarities in evolving software. I leverage such similarity for 
-%multiple purposes, spanning from change recommendation system to adversarial testing framework.
+~\todo{
+I am also interested in the use of rigorous empirical methods to evaluate questions about software 
+engineering processes. Over the last few years, researchers in our field have begun applying more advanced, 
+modern methods developed in fields such as bio-informatics, econometrics, and organizational behavior, e.g., 
+statistical network analysis, hazard rate models, and principal component regression. More notably, these research 
+trends are beginning to influence the practice of software development in industry. My research is at the heart 
+of these trends.
+}
 
-%\section*{\small Current Work}
+Following is a summary of my research contributions that address some of the fundamental
+problems of software engineering.
 
-\section*{\small Repetitiveness in Evolving Software.} Software is built through many incremental changes 
-over a period of time. Some changes are frequent, idiomatic, or repetitive (e.g. adding checks for nulls 
-or logging important values) while others are unique. We hypothesize that unique changes are different from the more common similar 
-changes in important ways;  unique changes may require more expertise or represent code that is more complex or prone to mistakes. 
-To test this hypothesis, we  develop a tool, {\em Repertoire}, for identifying repetitive changes in a software project history~\cite{Ray2012:RCP}. 
-{\em Repertoire} is the first automated tool for detecting repetitive edits with high accuracy of 94\% precision and 84\% recall.
+\section*{Analyzing Cross-system Porting}
 
-Based on the results of applying {\em Repertoire} to Linux kernel and two large projects at Microsoft~\cite{ray2014unique}, 
-we find that on average 18\% to 25\% of the changes are repetitive in a project and they are introduced periodically, \ie developers introduce a change, then use it repeatedly for some period and then stop using it with an average lifetime of 65 days. We also notice that developers have their own set of change patterns and developers use them increasingly as they become more prolific. Distinguishing unique changes from the 
-repetitive ones has several possible applications in software engineering including code summarization, risk analysis,  automated program repair etc.
-As a proof of concept we implement two such applications:
+During my stint as a professional software engineer, I noticed that companies often have to
+create product variant to satisfy conflicting customer requirements. A popular way to create
+such product variant is {\em forking}\textemdash copying an existing product to create a
+slightly different variant. Once forked, the variant projects started evolving independently.
+For example, FreeBSD, OpenBSD, and NetBSD were all evolved from the same codebase, OpenSSH was
+forked from SSH,  LibreOffice from OpenOffice, etc.  In fact, due to increased availability of
+forking support in software forges like GitHub, forking has become truly pervasive\textemdash
+Linux kernel has $6,930$ forks in GitHub as of this article. 
+
+Although popular, forking is often considered to be counter-productive~\cite{Raymond1999:CB}.
+As multiple forked projects evolve in parallel, developers often need to port similar features
+or bug fixes from one project to another, incurring duplicate maintenance effort. As a first
+step to assess whether forking is a sustainable practice, I measure the extent and
+characteristics of duplicate effort required to maintain the forked projects. I conducted an
+in-depth case study of 18 years of parallel development history of FreeBSD, NetBSD, and
+OpenBSD, and confirmed that the overhead of porting across these forked projects
+is indeed significant. In each BSD release, on average, more than twelve thousand lines are
+ported,  and more than 25\% active developers participate in that.  Furthermore, once a feature
+is introduced in one BSD, it suffers significant delay, on average three releases, to propagate
+to other BSDs.  
+%This study shows that the upkeep effort of maintaining variant products is significant 
+%and calls for new techniques to automate porting.
+This work was published in ACM SIGSOFT International Symposium on the Foundations
+of Software Engineering (FSE 2012)~\cite{Ray2012}. 
+
+During porting developers copy code from a reference implementation to a target implementation. 
+The code in the reference often serves as a template, and then later adapted~\cite{Kim2004}.
+In the prior study I have noticed that the process of adapting a change to fit another context can 
+be error-prone, often resulting in {\em porting errors}. In fact, such errors can take place
+while porting both within or across systems. In order to automatically detect such porting
+errors, I investigate (1) the types of porting errors found in practice, and (2) how to detect and 
+characterize potential porting errors. Analyzing version histories, I found five categories of 
+porting errors, including incorrect control- and data-flow, code redundancy, inconsistent identifier 
+renamings, etc.  Leveraging this categorization, I design a static control- and data-dependence 
+analysis technique, {\sc \bf SPA}, to detect and characterize porting inconsistencies. Our evaluation 
+on code from four open-source projects shows that	 {\sc \bf SPA} can detect porting inconsistencies with
+  65\% to 73\% precision and 90\% recall, and identify inconsistency types with 58\% to 63\%
+  precision and 92\% to 100\% recall.  In a comparison with two existing error detection tools,
+  {\sc \bf SPA} improves precision by 14 to 17 percentage points.
+
+
+
+
+
+
+\begin{comment}
+
+
+\section*{\large Analyzing \& improving software quality}
 
 \begin{itemize}
-\item \textbf{Risk analysis:} We provide statistically significant empirical evidence that unique changes are 
-more error prone than the changes that developers repeatedly make. Thus, developers should be careful when introducing unique changes.
-Also, our risk analysis system estimate bug potential of a repetitive change pattern, based on its previous bug history. 
-If the bug potential of a repetitive pattern is beyond a threshold, developers should take special care. 
 
-\item \textbf{Recommendation systems:} Repetitive changes can be used as input for 
-recommendation systems: for example, recommend how a line would typically be changed 
-({\em change recommendation}), or after some change has been made, recommend other changes 
-that are typically made with the initial change based on past co-occurrence ({\em change completion}).
-Our prototype implementation of such recommendation system can recommend changes with up to 60\% precision and 67\% recall.
-
-\end{itemize}
-
-Part of this work was published in FSE 2012~\cite{Ray2012:RCP, Ray2012} and rest is currently under review.
-
-
-\section*{\small Cross-System Porting in Forked Projects.}
-
-Similar changes not-only take place within same project; similar products also implement significant repetitive code 
-either by {\it forking}\textemdash copying an existing product to create a slightly different product, or 
-{\it porting}\textemdash copying an existing feature implementation or bug fix to another member of the same product family. 
-Some well known product families are FreeBSD, OpenBSD, and NetBSD (evolved from the same codebase);
-OpenSSH and SSH; LibreOffice and OpenOffice, etc. 
-
-Software forking is often considered an ad hoc, low-cost alternative to principled product line development~\cite{Raymond1999:CB}.
-As a first step to assess whether forking is a sustainable practice, we conducted an in-depth case study of 18 years of the BSD product family 
-history~\cite{Ray2012}. We comprehensively characterize cross-system porting in temporal, spatial, and developer dimensions and find that 
-maintaining forked projects involves significant effort of porting patches from other projects. Cross-system porting happens periodically 
-and the porting rate does not necessarily decrease over time. A significant portion of active developers participate in porting changes from peer projects. However, ported changes are less defect-prone than non-ported changes. This study shows that the upkeep effort of maintaining 
-variant products is significant and calls for new techniques to automate cross-system porting. This work was published in FSE 2012~\cite{Ray2012}.
-
-\section*{\small Detecting Inconsistencies in  Repetitive Changes}
-
-Adding similar features and bug fixes often requires porting program patches from reference implementations and adapting them to target
-implementations. Porting errors may result from faulty adaptations or inconsistent updates. 
-%We investigate (1) the types of porting errors found in practice, and (2) how to detect and characterize potential porting errors. 
-Analyzing version histories, we find four types of porting errors that developers often commit, including incorrect control- and
-data-flow, code redundancy, and inconsistent identifier renamings. Leveraging this categorization, we design a static control- and
-data-dependence analysis technique, {\spa}, to detect and characterize porting inconsistencies~\cite{ray2013detecting}. 
-We evaluate {\spa} on four open-source projects and find that {\spa} can detect porting inconsistencies with
-65\% to 73\% precision and 90\% recall, and identify inconsistency types with 58\% to 63\% precision and 92\% to 100\% recall. 
-In a comparison with two existing porting error detection tools, {\spa} improves precision by 14 to 17 percentage points.
-This work was published in ASE 2013 and nominated for distinguished paper award~\cite{ray2013detecting}.
-
-As part of our future work, we plan to integrate {\spa} with an integrated development environment so
- that developers can detect porting inconsistencies on the fly. For example, {\spa} can be deployed as a plugin extension of Eclipse. The plugin will track developer's copy-paste activities similar to Kim et al.~\cite{Kim2004} and use {\spa} to display the potential porting errors. To further assist developers reason about how the detected inconsistencies change the behavior of the ported code, we plan to generate test cases illustrating the differential behavior as sketched in~\cite{rayThesis}.
-
-\section*{\small An Empirical Study of API Stability and Adoption in the Android Ecosystem.}
-
-When APIs evolve to accommodate new feature requests, to fix bugs, to meet new standards, and to provide higher performance, 
-client applications often need to make corresponding changes to use new or updated APIs~\cite{Al-Ekram2005:byaccident}. 
-Despite the benefits of new or improved APIs, developer adoption is often slow among client applications. 
-For example, Google's Android Operating System is evolving fast, yet the consumer pool is fragmented by the Android 
-version numbers and API adoption is slow. As a first step toward understanding the impact of API evolution on software ecosystems, 
-an in-depth case study was conducted of the co-evolution behavior of Android API and dependent applications~\cite{mcdonnell2013empirical}. 
-
-This study confirms that Android is evolving fast rate at a rate of 116 API updates per month on average; 
-Client adoption, however, is not catching up with the pace of API evolution. About 28\% of API references in 
-client apps are outdated with a median lagging time of 16 months.  22\% of outdated API usages eventually upgrade to 
-use newer API versions, but the propagation time is much slower than the average interval of API release (3 months). 
-Fast evolving APIs are used and adopted more by clients than slow evolving APIs. However, the average time taken to adopt 
-new versions is longer for fast evolving APIs. Further, API usage adaptation code is more defect prone than the regular changes 
-in client. 
-
-This study confirms that Android application developers avoid API instability. However, such slow adoption trend may pose various 
-types of risks for client applications such as security vulnerability or poor performance. 
-According to the American Civil Liberties Union (ACLU), ``the lag in software updates leaves smartphone users with out-of-date and dangerous systems"~\cite{ACLU}.  ACLU filed complaints on such spotty Android updates, stating they could potentially harm users by letting hackers 
-steal user data by utilizing security holes. As a part of future work, we would like to investigate more to identify factors affecting API adoption, 
-and its correlation with software reliability. The findings of this work is a crucial first step and inform future studies on how to promote 
-API adoption and ultimately facilitate the growth of software ecosystems.
-
-
-
-\section*{\small Automated Adversarial Testing of SSL/TLS Certificate Validation.}
-
-Some pieces of software are designed to serve an identical purpose though they are part 
-of different products and are implemented in completely isolated environments. Such software 
-components may not share structural resemblance; however, they should be semantically 
-identical\textemdash given an input all of the similar components should produce similar output. 
-Based on this philosophy, we build a differential testing framework~\cite{KeemanDifferentialTesting1998} 
-to test certificate validation implementations of several popular SSL/TLS libraries including OpenSSL, 
-GnuTLS, NSS, CyaSSL, GnuTLS, PolarSSL, MatrixSSL, etc.
-
-Modern network security rests on the Secure Sockets Layer (SSL) and
-Transport Layer Security (TLS) protocols.  Distributed systems, mobile
-and desktop applications, embedded devices, and all of secure Web rely
-on SSL/TLS for protection against network attacks.  This protection
-critically depends on whether SSL/TLS clients correctly validate X.509
-certificates presented by servers during the SSL/TLS handshake protocol.
-We design, implement, and apply the first methodology for large-scale
-testing of certificate validation logic in SSL/TLS implementations~\cite{brubaker2014using}.
-Our first ingredient is {\em Frankencerts}, synthetic certificates that are
-randomly mutated from parts of real certificates and thus include unusual
-combinations of extensions and constraints.  Our second ingredient is
-differential testing: if one SSL/TLS implementation accepts a certificate
-while another rejects the same certificate, we use the discrepancy as
-an oracle for finding flaws in individual implementations.
-
-
-Differential testing with frankencerts uncovered 208 discrepancies between
-popular SSL/TLS implementations. Many of them are caused by serious security
-vulnerabilities.  For example, any server with a valid X.509 version
-1 certificate can act as a rogue certificate authority and issue fake
-certificates for any domain, enabling man-in-the-middle attacks against
-MatrixSSL and GnuTLS.  Several implementations also accept certificate
-authorities created by unauthorized issuers, as well as certificates
-not intended for server authentication. We also found serious vulnerabilities in how users are warned about
-certificate validation errors.  When presented with an expired,
-self-signed certificate, NSS, Safari, and Chrome (on Linux) report
-that the certificate has expired\textemdash a low-risk, often ignored
-error\textemdash but not that the connection is insecure against a
-man-in-the-middle attack. This work was published in IEEE S\&P 2014 and won best practical paper award~\cite{brubaker2014using}.
-%These results demonstrate that automated adversarial testing with
-%frankencerts is a powerful methodology for discovering security flaws
-%in SSL/TLS implementations.
-
-
-\section*{\small Effect of programming languages on software quality.}
+  \item{\textbf{Effect of programming languages on software quality.}}
 A variety of debates ensue during discussions whether a given programming language is ``the
 right tool for the job". While some of these debates can sometimes appear to be tinged with
 almost religious fervor, most people would agree that a programming language has an effect not
 only on the coding process but also on the properties of the resulting artifact. The size of
-the effect can be significant and important overall, and can depend on the language
-properties. Advocates of strong static typing argue that type inference will catch software bugs early.
+the effect can be significant and important overall, and can depend on the language properties.
+Advocates of strong static typing argue that type inference will catch software bugs early.
 Advocates of dynamic typing may argue that rather than spend a lot of time correcting annoying
 static type errors arising from sound, conservative static type checking algorithms in
 compilers, it's better to rely on strong dynamic typing to catch errors as and when they arise.
 These debates, however, have largely been of the armchair variety; usually the evidence offered
 in support of one position or the other tends to be anecdotal. 
 
-Using the vast amount of open source code available  in \gh, I am planning to shed some empirical light 
-on the effect of language features such as static \vs dynamic typing, strong \vs weak typing on software quality. 
-Empirical evidences for the associations,  if any,  that exist between programming language
-choice, their properties, usage domains, and code quality, can help developers make more
-educated choices. Also, such knowledge will guide language designer to architect language features.
+Using the vast amount of open source code available  in \gh, I am planning to shed some
+empirical light on the effect of language features such as static \vs dynamic typing, strong
+\vs weak typing on software quality.  Empirical evidences for the associations,  if any,  that
+exist between programming language choice, their properties, usage domains, and code quality,
+can help developers make more educated choices. Also, such knowledge will guide language
+designer to architect language features.
+ 
+\item{\textbf{Detecting and Characterizing Semantic Inconsistencies in Ported Code.}}
+  Adding similar features and bug fixes often requires porting program patches from reference
+  implementations and adapting them to target implementations. Porting errors may result from
+  faulty adaptations or inconsistent updates. This paper investigates (1) the types of porting
+  errors found in practice, and (2) how to detect and characterize potential porting errors.
+  Analyzing version histories, we define five categories of porting errors, including incorrect
+  control- and data-flow, code redundancy, inconsistent identifier renamings, etc.  Leveraging
+  this categorization, we design a static control- and data-dependence analysis technique, {\sc
+  \bf SPA}, to detect and characterize porting inconsistencies. Our evaluation on code from
+  four open-source projects shows that	 {\sc \bf SPA} can detect porting inconsistencies with
+  65\% to 73\% precision and 90\% recall, and identify inconsistency types with 58\% to 63\%
+  precision and 92\% to 100\% recall.  In a comparison with two existing error detection tools,
+  {\sc \bf SPA} improves precision by 14 to 17 percentage points.
 
-\subsection*{\small Other research} I also worked on other aspects of software engineering including 
+\item{\textbf{Automated Adversarial Testing of SSL/TLS Certificate Validation.}}
+Some pieces of software are designed to serve an identical purpose though they are part of
+different products and are implemented in completely isolated environments. Such software
+components may not share structural resemblance; however, they should be semantically
+identical\textemdash given an input all of the similar components should produce similar
+output.  Based on this philosophy, we build a differential testing
+framework~\cite{KeemanDifferentialTesting1998} to test certificate validation implementations
+of several popular SSL/TLS libraries including OpenSSL, GnuTLS, NSS, CyaSSL, GnuTLS, PolarSSL,
+MatrixSSL, etc.
+
+Modern network security rests on the Secure Sockets Layer (SSL) and Transport Layer Security
+(TLS) protocols.  Distributed systems, mobile and desktop applications, embedded devices, and
+all of secure Web rely on SSL/TLS for protection against network attacks.  This protection
+critically depends on whether SSL/TLS clients correctly validate X.509 certificates presented
+by servers during the SSL/TLS handshake protocol.  We design, implement, and apply the first
+methodology for large-scale testing of certificate validation logic in SSL/TLS
+implementations~\cite{brubaker2014using}.  Our first ingredient is {\em Frankencerts},
+synthetic certificates that are randomly mutated from parts of real certificates and thus
+include unusual combinations of extensions and constraints.  Our second ingredient is
+differential testing: if one SSL/TLS implementation accepts a certificate while another rejects
+the same certificate, we use the discrepancy as an oracle for finding flaws in individual
+implementations.
+
+
+Differential testing with frankencerts uncovered 208 discrepancies between popular SSL/TLS
+implementations. Many of them are caused by serious security vulnerabilities.  For example, any
+server with a valid X.509 version 1 certificate can act as a rogue certificate authority and
+issue fake certificates for any domain, enabling man-in-the-middle attacks against MatrixSSL
+and GnuTLS.  Several implementations also accept certificate authorities created by
+unauthorized issuers, as well as certificates not intended for server authentication. We also
+found serious vulnerabilities in how users are warned about certificate validation errors.
+When presented with an expired, self-signed certificate, NSS, Safari, and Chrome (on Linux)
+report that the certificate has expired\textemdash a low-risk, often ignored error\textemdash
+but not that the connection is insecure against a man-in-the-middle attack. This work was
+published in IEEE S\&P 2014 and won best practical paper award~\cite{brubaker2014using}.
+
+\item{\textbf{Assert Use in GitHub Projects.}}
+  \emph{Asserts} have long been a strongly recommended (if non-functional) adjunct to programs.
+They certainly don't add any user-evident feature value;  and  it can take quite some skill \&
+effort to devise and add useful asserts. However, they are believed to add considerable value
+to the developer.  Certainly, they can help with automated verification; but even in the
+absence of that, claimed advantages include improved understandability, maintainability, easier
+fault localization and diagnosis, all eventually leading to better software quality.  We focus
+on this latter claim, and use a large dataset of asserts in C and C++ programs to explore the
+connection between asserts and defect occurrence. Our data suggests a connection: methods with
+asserts do have significantly fewer defects. This indicates that asserts do play an important
+role in software quality; we therefore explored further the factors that play a role in
+assertion placement: specifically, \emph{process factors} (such as developer experience and
+ownership) and \emph{product factors}, particularly inter-procedural factors, exploring how the
+placement of assertions in methods are influenced by local \& global network properties of the
+callgraph. Finally, we also conduct a differential analysis of assertion use across different
+application domains. 
+\end{itemize}
+
+
+\section*{\large Understanding evolution of software eco-system.}
+
+\begin{itemize}
+
+\item{\textbf{Cross-System Porting in Forked Projects.}}
+Similar changes not-only take place within same project; similar products also implement
+significant repetitive code either by {\it forking}\textemdash copying an existing product to
+create a slightly different product, or {\it porting}\textemdash copying an existing feature
+implementation or bug fix to another member of the same product family.  Some well known
+product families are FreeBSD, OpenBSD, and NetBSD (evolved from the same codebase); OpenSSH and
+SSH; LibreOffice and OpenOffice, etc. 
+
+Software forking is often considered an ad hoc, low-cost alternative to principled product line
+development~\cite{Raymond1999:CB}.  As a first step to assess whether forking is a sustainable
+practice, we conducted an in-depth case study of 18 years of the BSD product family
+history~\cite{Ray2012}. We comprehensively characterize cross-system porting in temporal,
+spatial, and developer dimensions and find that maintaining forked projects involves
+significant effort of porting patches from other projects. Cross-system porting happens
+periodically and the porting rate does not necessarily decrease over time. A significant
+portion of active developers participate in porting changes from peer projects. However, ported
+changes are less defect-prone than non-ported changes. This study shows that the upkeep effort
+of maintaining variant products is significant and calls for new techniques to automate
+cross-system porting. This work was published in FSE 2012~\cite{Ray2012}.
+
+
+\item{\textbf{An Empirical Study of API Stability and Adoption in the Android Ecosystem.}}
+When APIs evolve to accommodate new feature requests, to fix bugs, to meet new standards, and
+to provide higher performance, client applications often need to make corresponding changes to
+use new or updated APIs~\cite{Al-Ekram2005:byaccident}.  Despite the benefits of new or
+improved APIs, developer adoption is often slow among client applications.  For example,
+Google's Android Operating System is evolving fast, yet the consumer pool is fragmented by the
+Android version numbers and API adoption is slow. As a first step toward understanding the
+impact of API evolution on software ecosystems, an in-depth case study was conducted of the
+co-evolution behavior of Android API and dependent applications~\cite{mcdonnell2013empirical}. 
+
+This study confirms that Android is evolving fast rate at a rate of 116 API updates per month
+on average; Client adoption, however, is not catching up with the pace of API evolution. About
+28\% of API references in client apps are outdated with a median lagging time of 16 months.
+22\% of outdated API usages eventually upgrade to use newer API versions, but the propagation
+time is much slower than the average interval of API release (3 months).  Fast evolving APIs
+are used and adopted more by clients than slow evolving APIs. However, the average time taken
+to adopt new versions is longer for fast evolving APIs. Further, API usage adaptation code is
+more defect prone than the regular changes in client. 
+
+This study confirms that Android application developers avoid API instability. However, such
+slow adoption trend may pose various types of risks for client applications such as security
+vulnerability or poor performance.  According to the American Civil Liberties Union (ACLU),
+``the lag in software updates leaves smartphone users with out-of-date and dangerous
+systems"~\cite{ACLU}.  ACLU filed complaints on such spotty Android updates, stating they could
+potentially harm users by letting hackers steal user data by utilizing security holes. As a
+part of future work, we would like to investigate more to identify factors affecting API
+adoption, and its correlation with software reliability. The findings of this work is a crucial
+first step and inform future studies on how to promote API adoption and ultimately facilitate
+the growth of software ecosystems.
+
+\end{itemize}
+
+
+\section*{\large Improving productivity of software development process.}
+
+\begin{itemize}
+
+\item{\textbf{Automatic Change Recommendation System.}}  
+%To create a new variant of an existing project, developers often copy an existing codebase and modify it. This process is called software forking. After forking software, developers often port new features or bug fixes from peer projects. Repertoire analyzes repeated work of cross-system porting among forked projects. It takes the version histories as in- put and identifies ported edits by comparing the content of individual patches. It also shows users the extent of ported edits, where and when the ported edits occurred, which de- velopers ported code from peer projects, and how long it takes for patches to be ported.
+Software is built through many incremental changes 
+over a period of time. Some changes are frequent, idiomatic, or repetitive (e.g. adding checks for nulls 
+or logging important values) while others are unique. We hypothesize that unique changes are different from the more common similar 
+changes in important ways;  unique changes may require more expertise or represent code that is more complex or prone to mistakes. 
+To test this hypothesis, we  develop a tool, {\em Repertoire}, for identifying repetitive changes in a software project history~\cite{Ray2012:RCP}. 
+{\em Repertoire} is the first automated tool for detecting repetitive edits with high accuracy of 94\% precision and 84\% recall. 
+Based on the results of applying {\em Repertoire} to Linux kernel and two large projects at Microsoft~\cite{ray2014unique}, 
+we find that on average 18\% to 25\% of the changes are repetitive in a project and they are introduced periodically, \ie developers introduce a change, then use it repeatedly for some period and then stop using it with an average lifetime of 65 days. We also notice that developers have their own set of change patterns and developers use them increasingly as they become more prolific. Distinguishing unique changes from the 
+repetitive ones has several possible applications in software engineering including code summarization, risk analysis,  automated program repair etc.
+As a proof of concept we implement two such applications.
+
+Repetitive changes can be used as input for 
+recommendation systems: for example, recommend how a line would typically be changed 
+({\em change recommendation}), or after some change has been made, recommend other changes 
+that are typically made with the initial change based on past co-occurrence ({\em change completion}).
+Our prototype implementation of such recommendation system can recommend changes with up to 60\% precision and 67\% recall.
+
+
+
+\item{\textbf{Risk analysis:}} We provide statistically significant empirical evidence that unique changes are 
+more error prone than the changes that developers repeatedly make. Thus, developers should be careful when introducing unique changes.
+Also, our risk analysis system estimate bug potential of a repetitive change pattern, based on its previous bug history. 
+If the bug potential of a repetitive pattern is beyond a threshold, developers should take special care. 
+
+\item{\textbf{Recommendation systems:}} 
+\end{itemize}
+
+Part of this work was published in FSE 2012~\cite{Ray2012:RCP, Ray2012} and rest is currently under review.
+
+
+
+
+
+
+
+\section*{\large Other research} 
+I also worked on other aspects of software engineering including 
 an empirical study of API stability and adoption in the Android ecosystem~\cite{mcdonnell2013empirical}, 
 and empirically analyzing the bugs that are fixed multiple times in Mozilla and Eclipse software~\cite{park2012empirical}.
 I further built several systems software, \eg an operating system abstraction for efficiently managing GPUs~\cite{rossbach2011ptask}, 
@@ -226,7 +319,29 @@ I further built several systems software, \eg an operating system abstraction fo
 \vspace{0.5cm}
 
 
-\section*{Future Research}
+\section*{\large Ongoing  \& Future Research}
+
+It has been observed that real
+software, the kind programmers produce by the kLOC to solve
+real-world problems, tends to  be ``natural", like speech or natural language; it  
+tends to be highly repetitive, predictable,  and amenable to large-sample statistical methods. 
+Recent work has exploited this \emph{naturalness of software}, to build
+suggestion engines, porting tools, coding standards checkers, and idiom miners.  This 
+phenomenon also inherently suggests that code that is surprising, or unpredictable is
+suspicious; indeed, syntax errors have been found to be \emph{un}natural when using 
+standard entropy measures. 
+In this paper,
+focus specifically on the language statistics of a large corpus of \emph{bug fix commits}, about
+38,000, drawn from 10 different  projects, and evaluate the naturalness of buggy code, and whether
+the fixing of these bugs increases the naturalness. We find that buggy code a) is more entropic (unnatural) 
+b) this entropy reduces with fixing code and c) focusing on highly entropic lines is similar in cost-effectiveness 
+to some well-known static bug finders (PMD, FindBugs). This work has two important implications: 
+1) entropy may be a reasonable (language-independent, simpler) alternative way
+to draw programmers' attention to problematic code to PMD or FindBugs;  2) search-based bug-fixing
+methods may benefit from using entropy both for fault-localization and searching for
+fixes. 
+
+
 
 % I am enthusiastic to continue my work in software engineering, as well as to bridge security and software. 
 % Some areas of future work include:
@@ -253,6 +368,7 @@ I further built several systems software, \eg an operating system abstraction fo
 % \noindent
 % In summary, I remain broadly interested in software engineering and would like to build tools to make future software better.
 
+\end{comment}
 
 
 \end{small}
