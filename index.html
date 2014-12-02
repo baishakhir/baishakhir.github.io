@@ -26,6 +26,27 @@ body { margin:0; padding:0; }
 </script>
 
 
+<script type="text/javascript">
+<!--
+    function toggle_visibility(id) {
+ 
+
+       var e = document.getElementById(id);
+       if(e.style.display != 'none')
+          e.style.display = 'none';
+          
+       else {
+          e.style.display = 'block';
+       }
+    }
+//--> 
+    window.onload = function() {
+      toggle_visibility("lang_bib");
+      toggle_visibility("frankencert_bib");
+      toggle_visibility("spa_bib");
+    }
+</script>
+
 
 <link rel="stylesheet" type="text/css" id="layoutcontainer.css" href="./Home_files/layoutcontainer.css">
 <link rel="stylesheet" type="text/css" id="theme.css" href="./Home_files/theme.css">
@@ -104,19 +125,22 @@ body { margin:0; padding:0; }
 <!-- <span style="vertical-align: baseline; white-space: pre-wrap; background-color: #ffffff;"> -->
 I am on the job market this year. Here is my application material:
  <ul><li><a href="http://rayb.info/uploads/baishakhi_ray_academic.pdf" target="_blank">CV</a></li>
-     <li><a href="http://rayb.info/uploads/baishakhi_ray_academic.pdf" target="_blank">Research Statement</a></li>
+     <!--<li><a href="http://rayb.info/uploads/baishakhi_ray_academic.pdf" target="_blank">Research Statement</a></li>
      <li><a href="http://rayb.info/uploads/baishakhi_ray_academic.pdf" target="_blank">Teaching Statement</a></li>
-
+	-->
+	<li><font color=black>More coming soon </font></li>
 </ul>
-		
-		<div class="sf_extra7"><span></span></div>
-		<div class="sf_region9">
-			<div class="sf_footer"><div style="display:block;"></div></div>
-		</div>
-		<div class="sf_extra8"><span></span></div>
-<!-- </span> -->
-</font> 
- </div> 
+</font>
+</div> 
+
+<!-- Horizontal Line Starts -->	
+<div class="sf_extra7"><span></span></div>
+<div class="sf_region9">
+<div class="sf_footer"><div style="display:block;"></div></div>
+</div>
+<div class="sf_extra8"><span></span></div>
+<!-- Horizontal Line Ends -->
+
 
  <div style="text-align: justify;">
 	<font face="Verdana, Geneva, sans-serif">
@@ -145,6 +169,13 @@ I am on the job market this year. Here is my application material:
  	 </font>
 </div> 
  	
+<!-- Horizontal Line Starts -->	
+<div class="sf_extra7"><span></span></div>
+<div class="sf_region9">
+<div class="sf_footer"><div style="display:block;"></div></div>
+</div>
+<div class="sf_extra8"><span></span></div>
+<!-- Horizontal Line Ends -->
 
 <!--
  	<div style="text-align: justify;">
@@ -168,9 +199,66 @@ verdana, geneva, sans-serif; line-height: 1.5; text-align: left; background-colo
 </br>
 -->
 
-	
 
+<div style="font-family: georgia, &#39;nimbus roman no9 l&#39;, serif; text-align: justify;">
+<div style="display:block;overflow:hidden;">
+<span style="font-family: georgia, &#39;nimbus roman no9 l&#39;, serif; line-height: 1.7142857142857142;">
+<h3>Selected Publications</h3>
+</span>
+<font face="Verdana, Geneva, sans-serif">
+<font style="font-size: 15px;">
+<ul>
+<li><strong>B. Ray</strong> , D. Posnett, V. Filkov, P. T. Devanbu. 
+<a href="./uploads/fse2014-lang_study.pdf" target="_blank">A Large Scale Study of Programming Languages and Code Quality in Github</a>. FSE 2014 </li>
+<ul>
+	<li> Media Coverage: <a href="http://developers-beta.slashdot.org/story/14/11/05/0530228/the-effect-of-programming-language-on-software-quality" target="_blank">SlashDot</a>, 
+		<a href="http://www.theregister.co.uk/Print/2014/11/06/languages_dont_breed_bugs_people_breed_bugs/" target="_blank">The Register</a>,
+		<a href="http://www.reddit.com/r/programming/comments/2lbsfb/a_large_scale_study_of_programming_languages_and" target="_blank">Reddit</a>,
+		<a href="http://www.infoworld.com/article/2844268/application-development/functional-languages-rack-up-best-scores-software-quality.html" target="_blank">InfoWorld</a>,
+		<a href="https://news.ycombinator.com/item?id=8558740" target="_blank">Hacker News</a>.
+	</li>
+</ul>
 
+<li> C. Brubaker, S. Jana, <strong>B. Ray</strong>, S. Khurshid, V. Shmatikov. 
+<a href="./uploads/frankencert.pdf" target="_blank">Using Frankencerts for Automated Adversarial Testing of Certificate Validation in SSL/TLS Implementations</a>. S&amp;P (Oakland) 2014. <font color=red> Best Student Paper Award.</font> </li>
+<ul>
+	<li> Media Coverage: 
+		<a href="http://www.reddit.com/r/netsec/comments/22748s/using_frankencerts_for_automated_adversarial" target="_blank">Reddit</a>, 
+		<a href="http://www.golem.de/news/tls-bibliotheken-fehler-finden-mit-fehlerhaften-zertifikaten-1404-105621.html" target="_blank">Golem</a>, 
+		<a href="http://www.heise.de/security/artikel/SSL-Fuzzing-mit-Frankencerts-2166135.html" target="_blank">Heise</a>. 
+	</li>
+
+</ul>
+
+<li> <strong>B. Ray</strong>, M. Kim, S. Person, N. Rungta.
+<a href="./uploads/ase2013-spa.pdf" target="_blank">Detecting and Characterizing Semantic Inconsistencies in Ported Code</a>. ASE 2013. <font color=red> Invited for journal special issue.</font> </li>
+
+<li> T. McDonnell, <strong>B. Ray</strong>, M. Kim.
+<a href="./uploads/icsm2013-apiecosystem.pdf" target="_blank">An Empirical Study of API Stability and Adoption in the Android Ecosystem</a>. ICSM 2013 </li>
+
+<li> <strong>B. Ray</strong>, M. Kim.
+<a href="./uploads/fse2012-bsd.pdf" target="_blank">A Case Study of Cross-System Porting in Forked Projects</a>. FSE 2012 </li>
+
+<li>  J. Park, M. Kim, <strong>B. Ray</strong>, D. Bae.
+<a href="./uploads/msr2012-supplementarypatch.pdf" target="_blank">An Empirical Study of Supplementary Bug Fixes</a>. MSR 2012.<font color=red> Invited for journal special issue.</font></li>
+
+<li>  CJ. Rossbach, J. Currey, M. Silberstein, <strong>B. Ray</strong>, E. Witchel.
+<a href="./uploads/sosp11rossbach-ptask.pdf" target="_blank">PTask: Operating System Abstractions To Manage GPUs as Compute Devices</a>. SOSP 2011 </li>
+</ul>
+
+A complete list is <a href="Publication.html">here.</a>
+</font>
+</font>
+</div>
+</div>
+
+<!-- Horizontal Line Starts -->	
+<div class="sf_extra7"><span></span></div>
+<div class="sf_region9">
+<div class="sf_footer"><div style="display:block;"></div></div>
+</div>
+<div class="sf_extra8"><span></span></div>
+<!-- Horizontal Line Ends -->
 
 <div style="font-family: georgia, &#39;nimbus roman no9 l&#39;, serif; text-align: justify;">
 </div></div></div><div><div style="display:block;overflow:hidden;"><span style="font-family: georgia, &#39;nimbus roman no9 l&#39;, serif; line-height: 1.7142857142857142;">
