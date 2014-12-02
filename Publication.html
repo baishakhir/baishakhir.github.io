@@ -37,6 +37,7 @@ body { margin:0; padding:0; }
       toggle_visibility("lang_bib");
       toggle_visibility("frankencert_bib");
       toggle_visibility("spa_bib");
+      toggle_visibility("anevo_bib");
     }
 </script>
 
@@ -45,10 +46,6 @@ body { margin:0; padding:0; }
 		MM_preloadImages('images/8549f6e4e2644f0742f07b183909c06b_1lv1_d1dh.png');
 
 </script>
-
-
-
-
 
 
 <link rel="stylesheet" type="text/css" id="layoutcontainer.css" href="./Publication_files/layoutcontainer.css">
@@ -103,21 +100,20 @@ body { margin:0; padding:0; }
 			<div class="sf_main">
 				<div class="sf_region6">
 					<div class="sf_content"><div class="LayoutContainer" style="display:block;"><div><div style="display:block;overflow:hidden;"><br>
+
+
 <table cellpadding="1" cellspacing="3" border="0" style="width: 100%; text-align: left;">
     <tbody>
         <tr>
             <td style="text-align: center; vertical-align: middle;"><a href="http://fse22.gatech.edu/"><font face="Verdana, Geneva, sans-serif" color="#7f003f">FSE 2014</font></a><br>
             </td>
-            <td><font face="Georgia, serif"><i>A Large Scale Study of Programming Languages and Code Quality in Github</i>, 10 pages, (accepted for publication)&nbsp;<br>
-            <b>Baishakhi Ray</b>, Daryl Posnett, Vladimir Filkov and Premkumar T Devanbu<br>
+            <td><font face="Georgia, serif"><i>A Large Scale Study of Programming Languages and Code Quality in Github</i>
+                <br>10 pages, acceptance rate: 20%<br>
+            <b>Baishakhi Ray</b>, Daryl Posnett, Vladimir Filkov and Premkumar T. Devanbu<br>
             <a href="./uploads/fse2014-lang_study.pdf" target="_blank">pdf</a>, &nbsp;
-            <!-- <a href="https://github.com/sumanj/frankencert" target="_blank">code</a>, &nbsp; 
-            <a href="./uploads/frankencert.pptx" target="_blank">slides</a>, &nbsp; -->
-            <!-- <a href="./uploads/frankencert.bib">bibtex</a> <br> 
-              <a onclick="toggle_visibility('foo');">Click </a>
-            <div id="foo">This is foo</div> -->
+            <a href="./uploads/lang_study_presentation.pdf" target="_blank">slides</a>, &nbsp;            
             <a href="#"  onclick="toggle_visibility('lang_bib');">bibtex</a> <br>
-            <!--<div id="frankencert_bib" style="background-color:#E0E0E0;  -moz-border-radius:100px / 50px; -webkit-border-radius: 100px / 50px; border-radius: 100px / 50px;"> -->
+            
             <div id="lang_bib" style="background-color:#E0E0E0; font-family:'Courier'; font-size:11px">
               
               @inproceedings{ray2014lang, <br>
@@ -136,22 +132,17 @@ body { margin:0; padding:0; }
             </td>
           </tr>
 
-
-
     <!-- -->
         <tr>
             <td style="text-align: center; vertical-align: middle;"><a href="http://www.ieee-security.org/TC/SP2014/"><font face="Verdana, Geneva, sans-serif" color="#7f003f">S&amp;P (Oakland) 2014</font></a><br>
             </td>
-            <td><font face="Georgia, serif"><i>Using Frankencerts for Automated Adversarial Testing of Certificate Validation in SSL/TLS Implementations</i>, 16 pages,&nbsp;<font style="font-size: 14px; line-height: 17.5px; background-color: #ffffff;" color="#bf0000"><b>S&amp;P 2014 Best Practical Paper Award</b></font><span style="color: #ff0000; font-size: 14px; line-height: 17.5px; background-color: #ffffff;">&nbsp;</span></font><br>
+            <td><font face="Georgia, serif"><i>Using Frankencerts for Automated Adversarial Testing of Certificate Validation in SSL/TLS Implementations.</i>&nbsp;<font style="font-size: 14px; line-height: 17.5px; background-color: #ffffff;" color="#bf0000"><b>S&amp;P 2014 Best Practical Paper Award</b></font><br>
+            16 pages,&nbsp; acceptance rate: 13%&nbsp;<span style="color: #ff0000; font-size: 14px; line-height: 17.5px; background-color: #ffffff;">&nbsp;</span></font><br>
             Chad Brubaker, Suman Jana, <b>Baishakhi Ray</b>, Sarfraz Khurshid, and Vitaly Shmatikov<br>
             <a href="./uploads/frankencert.pdf" target="_blank">pdf</a>, &nbsp;
 			      <a href="https://github.com/sumanj/frankencert" target="_blank">code</a>, &nbsp;
-            <a href="./uploads/frankencert.pptx" target="_blank">slides</a>, &nbsp;
-            <!-- <a href="./uploads/frankencert.bib">bibtex</a> <br> 
-              <a onclick="toggle_visibility('foo');">Click </a>
-            <div id="foo">This is foo</div> -->
+            <a href="./uploads/frankencert_presentation.pdf" target="_blank">slides</a>, &nbsp;
             <a href="#"  onclick="toggle_visibility('frankencert_bib');">bibtex</a> <br>
-            <!--<div id="frankencert_bib" style="background-color:#E0E0E0;  -moz-border-radius:100px / 50px; -webkit-border-radius: 100px / 50px; border-radius: 100px / 50px;"> -->
             <div id="frankencert_bib" style="background-color:#E0E0E0; font-family:'Courier'; font-size:11px">
               
               @inproceedings{brubaker2014using, <br>
@@ -166,30 +157,62 @@ body { margin:0; padding:0; }
             <br>
             </span></span>
             </td>
-          </tr>
-		
+        </tr>
+		    <!-- -->
         <tr>
             <td style="text-align: center; vertical-align: middle;"><a href="http://ase2013.org/"><font face="Verdana, Geneva, sans-serif" color="#7f003f">ASE 2013</font></a><br>
             </td>
-            <td><span class="gmw_"><font style="background-color: #ffffff;" face="Georgia, serif"><i>Detecting and Characterizing Semantic Inconsistencies in Ported Code</i></font><font face="Verdana, Geneva, sans-serif">, </font><font face="Georgia, serif">10 pages</font><br>
-            &nbsp;<b>Baishakhi Ray</b>, Miryung <span class="gmw_">Kim, Suzette Person, Neha Rungta<br>
+            <td><span class="gmw_"><font style="background-color: #ffffff;" face="Georgia, serif"><i>Detecting and Characterizing Semantic Inconsistencies in Ported Code</i><br>
+            10 pages, acceptance rate: 23%<br>
+            <b>Baishakhi Ray</b>, Miryung Kim, Suzette Person, Neha Rungta<br>
             <a href="./uploads/ase2013-spa.pdf">pdf</a>, &nbsp;
-            <a href="http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=6693095&url=http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6693095" target="_blank">DOI</a>, &nbsp;
-            <a href="./uploads/ase-presentation.pptx" target="_blank">slides</a> &nbsp;
+            <a href="./uploads/ase-presentation.pptx" target="_blank">slides</a>, &nbsp;
+            <a href="#"  onclick="toggle_visibility('spa_bib');">bibtex</a> 
             <br>
-            </span></span>
+            <div id="spa_bib" style="background-color:#E0E0E0; font-family:'Courier'; font-size:11px">
+              
+              @inproceedings{ray2013detecting, <br>
+              &nbsp;&nbsp;&nbsp;title={Detecting and characterizing semantic inconsistencies in ported code}, <br>
+              &nbsp;&nbsp;&nbsp;author={Ray, Baishakhi and Kim, Miryung and Person, Suzette and Rungta, Neha}, <br>
+              &nbsp;&nbsp;&nbsp;booktitle={Automated Software Engineering (ASE), 2013 IEEE/ACM 28th International Conference on}, <br>
+              &nbsp;&nbsp;&nbsp;pages={367--377}, <br>
+              &nbsp;&nbsp;&nbsp;year={2013}, <br>
+              &nbsp;&nbsp;&nbsp;organization={IEEE} <br>
+            }
+            
+            </div>
+            <br>
+            </span>
             </td>
         </tr>
+            <!-- -->
+
         <tr>
             <td style="text-align: center; vertical-align: middle;"><a href="http://icsm2013.tue.nl/"><font face="Verdana, Geneva, sans-serif" color="#7f003f">ICSM 2013</font></a><br>
             </td>
 
-            <td><span class="gmw_"><i> An Empirical Study of API Stability and Adoption in the Android Ecosystem</i>,&nbsp;10 pages<br>
+            <td><span class="gmw_"><i>An Empirical Study of API Stability and Adoption in the Android Ecosystem</i>,&nbsp;10 pages<br>
             Tyler McDonnell, <b>Baishakhi Ray</b>, Miryung Kim &nbsp;<br>
-            <a href="./uploads/icsm2013-apiecosystem.pdf" target="_blank">pdf</a>&nbsp;, <span><a href="http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6676878">DOI</a></span><br>
+            <a href="./uploads/icsm2013-apiecosystem.pdf" target="_blank">pdf</a>,&nbsp;
+            <a href="./uploads/icsm2013-apiecosystem-slides.pdf" target="_blank">slides</a>,&nbsp;
+            <a href="#"  onclick="toggle_visibility('anevo_bib');">bibtex</a> 
+            <br>
+            <div id="anevo_bib" style="background-color:#E0E0E0; font-family:'Courier'; font-size:11px">
+              
+              @inproceedings{mcdonnell2013empirical, <br>
+              &nbsp;&nbsp;&nbsp;title={An empirical study of API stability and adoption in the Android ecosystem}, <br>
+              &nbsp;&nbsp;&nbsp;author={McDonnell, Tyler and Ray, Baishakhi and Kim, Miryung}, <br>
+              &nbsp;&nbsp;&nbsp;booktitle={Software Maintenance (ICSM), 2013 29th IEEE International Conference on}, <br>
+              &nbsp;&nbsp;&nbsp;pages={70--79}, <br>
+              &nbsp;&nbsp;&nbsp;year={2013}, <br>
+              &nbsp;&nbsp;&nbsp;organization={IEEE} <br>
+            }
+            
+            </div>
             <br>
             </span></td>
         </tr>
+              <!-- -->
         <tr>
             <td style="text-align: center; vertical-align: middle;"><a href="https://repositories.lib.utexas.edu/bitstream/handle/2152/22103/RAY-DISSERTATION-2013.pdf?sequence=1"><font face="Verdana, Geneva, sans-serif" color="#7f003f">PhD Thesis</font></a><br>
             </td>
