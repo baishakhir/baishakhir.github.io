@@ -19,20 +19,25 @@
 body { margin:0; padding:0; }
 </style>
 
-<script type="text/javascript">
 <!--
+<script type="text/javascript">
+
     function toggle_visibility(id) {
  
 
        var e = document.getElementById(id);
-       if(e.style.display != 'none')
+       var text = document.getElementById("displayText");
+
+       if(e.style.display != 'none') {
           e.style.display = 'none';
-          
+          text.innerHTML = "hide";
+       }
        else {
           e.style.display = 'block';
+          text.innerHTML = "show";
        }
     }
-//--> 
+
     window.onload = function() {
       toggle_visibility("lang_bib");
       toggle_visibility("frankencert_bib");
@@ -40,6 +45,20 @@ body { margin:0; padding:0; }
       toggle_visibility("anevo_bib");
     }
 </script>
+-->
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("pl1").hide();
+  $("pl2").hide();
+  $("#lang_bib").click(function(){$("pl1"). slideToggle(1000);});
+  $("#lang_bib_abs").click(function(){$("pl2").slideToggle(1000);});
+  
+});
+</script>
+
 
 
 <script type="text/javascript" src="./Publication_files/imageSwap.js"></script><script type="text/javascript">		MM_preloadImages('images/5d7b192ff3269474992b14aa8114c0a4.png');
@@ -101,6 +120,9 @@ body { margin:0; padding:0; }
 				<div class="sf_region6">
 					<div class="sf_content"><div class="LayoutContainer" style="display:block;"><div><div style="display:block;overflow:hidden;"><br>
 
+<!-- <p>If you click on the "Hide" button, I will disappear.</p>
+
+<div id="show">Bibtex</div> -->
 
 <table cellpadding="1" cellspacing="3" border="0" style="width: 100%; text-align: left;">
     <tbody>
@@ -111,19 +133,30 @@ body { margin:0; padding:0; }
                 <br>10 pages, acceptance rate: 20%<br>
             <b>Baishakhi Ray</b>, Daryl Posnett, Vladimir Filkov and Premkumar T. Devanbu<br>
             <a href="./uploads/fse2014-lang_study.pdf" target="_blank">pdf</a>, &nbsp;
-            <a href="./uploads/lang_study_presentation.pdf" target="_blank">slides</a>, &nbsp;            
-            <a href="#"  onclick="toggle_visibility('lang_bib');">bibtex</a> <br>
+            <a href="./uploads/lang_study_presentation.pdf" target="_blank">slides</a> <br>            
+            <!--<a href="#"  onclick="toggle_visibility('lang_bib');">bibtex</a> <br> -->
             
-            <div id="lang_bib" style="background-color:#E0E0E0; font-family:'Courier'; font-size:11px">
-              
-              @inproceedings{ray2014lang, <br>
-              &nbsp;&nbsp;&nbsp;title={A Large Scale Study of Programming Languages and Code Quality in Github}, <br>
-              &nbsp;&nbsp;&nbsp;author={Ray, Baishakhi and Posnett, Daryl and Filkov, Vladimir and Devanbu, Premkumar}, <br>
-              &nbsp;&nbsp;&nbsp;booktitle={Proceedings of the ACM SIGSOFT 20th International Symposium on the Foundations of Software Engineering}, <br>
-              &nbsp;&nbsp;&nbsp;series = {FSE '14}, <br>
-              &nbsp;&nbsp;&nbsp;year={2014}, <br>
-              &nbsp;&nbsp;&nbsp;organization={ACM} <br>
-            }
+            <button id="lang_bib">BibTex</button> &nbsp; <button id="lang_bib_abs">Abstract</button> <br>
+            <div id="show" style="background-color:#E0E0E0; font-family:'Arial'; font-size:11px">
+
+            <pl1>    
+            @inproceedings{ray2014lang, <br>
+              &nbsp;&nbsp;title={A Large Scale Study of Programming Languages and Code Quality in Github}, <br>
+              &nbsp;&nbsp;author={Ray, Baishakhi and Posnett, Daryl and Filkov, Vladimir and Devanbu, Premkumar}, <br>
+              &nbsp;&nbsp;booktitle={Proceedings of the ACM SIGSOFT 20th International Symposium on the Foundations of Software Engineering}, <br>
+              &nbsp;&nbsp;series = {FSE '14}, <br>
+              &nbsp;&nbsp;year={2014}, <br>
+              &nbsp;&nbsp;organization={ACM} <br>
+            }   
+            </pl1> 
+            
+            <pl2>
+               What is the effect of programming languages on software qual- ity? This question has been a topic of much debate for a very long time. In this study, we gather a very large data set from GitHub (728 projects, 63 Million SLOC, 29,000 authors, 1.5 million com- mits, in 17 languages) in an attempt to shed some empirical light on this question. This reasonably large sample size allows us to use a mixed-methods approach, combining multiple regression model- ing with visualization and text analytics, to study the effect of language features such as static v.s. dynamic typing, strong v.s. weak typing on software quality. By triangulating findings from differ- ent methods, and controlling for confounding effects such as team size, project size, and project history, we report that language design does have a significant, but modest effect on software quality. Most notably, it does appear that strong typing is modestly better than weak typing, and among functional languages, static typing is also somewhat better than dynamic typing. We also find that func- tional languages are somewhat better than procedural languages. It is worth noting that these modest effects arising from language de- sign are overwhelmingly dominated by the process factors such as project size, team size, and commit size. However, we hasten to caution the reader that even these modest effects might quite possibly be due to other, intangible process factors, e.g., the preference of certain personality types for functional, static and strongly typed languages.
+            </pl2>
+           
+            
+           
+            
             
             
             </div> 
