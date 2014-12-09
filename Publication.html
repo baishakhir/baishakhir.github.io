@@ -19,6 +19,32 @@
 body { margin:0; padding:0; }
 </style>
 
+<style type="text/css">
+.layer1 {
+margin: 0px;
+padding: 0;
+color: #bfbfbf;
+font-family: Georgia, "Times New Roman", Times, serif;
+font-size: 1em;
+line-height: 1.2em;
+/* [disabled]text-align: justify; */
+}
+
+.heading {
+cursor: pointer;
+text-align: left;
+}
+
+.content {
+
+padding: 0px;
+margin: 0px;
+clear: both;
+text-align: left;
+
+} 
+</style>
+
 <!--
 <script type="text/javascript">
 
@@ -55,9 +81,11 @@ $(document).ready(function(){
   $("pl2").hide();
   $("#lang_bib").click(function(){$("pl1"). slideToggle(1000);});
   $("#lang_bib_abs").click(function(){$("pl2").slideToggle(1000);});
+
   
 });
 </script>
+
 
 
 
@@ -129,17 +157,15 @@ $(document).ready(function(){
         <tr>
             <td style="text-align: center; vertical-align: middle;"><a href="http://fse22.gatech.edu/"><font face="Verdana, Geneva, sans-serif" color="#7f003f">FSE 2014</font></a><br>
             </td>
-            <td><font face="Georgia, serif"><i>A Large Scale Study of Programming Languages and Code Quality in Github</i>
+            <td><font face="Georgia, serif"><a href="./uploads/fse2014-lang_study.pdf" target="_blank"><i>A Large Scale Study of Programming Languages and Code Quality in Github</i></a>
                 <br>10 pages, acceptance rate: 20%<br>
-            <b>Baishakhi Ray</b>, Daryl Posnett, Vladimir Filkov and Premkumar T. Devanbu<br>
-            <a href="./uploads/fse2014-lang_study.pdf" target="_blank">pdf</a>, &nbsp;
-            <a href="./uploads/lang_study_presentation.pdf" target="_blank">slides</a> <br>            
-            <!--<a href="#"  onclick="toggle_visibility('lang_bib');">bibtex</a> <br> -->
-            
-            <button id="lang_bib">BibTex</button> &nbsp; <button id="lang_bib_abs">Abstract</button> <br>
-            <div id="show" style="background-color:#E0E0E0; font-family:'Arial'; font-size:11px">
+            <b>Baishakhi Ray</b>, Daryl Posnett, Vladimir Filkov and Premkumar T. Devanbu<br> 
+            <button onclick="window.open('./uploads/lang_study_presentation.pdf','_blank');">Slides</button> &nbsp;                      
+            <button id="lang_bib">BibTex</button> &nbsp; <button id="lang_bib_abs">Summary</button> <br>
+            <!-- <div style="background-color:#E0E0E0; font-family:'Arial'; font-size:12px"> -->
+            <div class="layer1">
 
-            <pl1>    
+            <pl1 tyle="text-align: left; vertical-align: middle;">    
             @inproceedings{ray2014lang, <br>
               &nbsp;&nbsp;title={A Large Scale Study of Programming Languages and Code Quality in Github}, <br>
               &nbsp;&nbsp;author={Ray, Baishakhi and Posnett, Daryl and Filkov, Vladimir and Devanbu, Premkumar}, <br>
@@ -148,12 +174,18 @@ $(document).ready(function(){
               &nbsp;&nbsp;year={2014}, <br>
               &nbsp;&nbsp;organization={ACM} <br>
             }   
-            </pl1> 
+            </pl1>  
+            </div>
+
+             <div class="layer1">
+                     
+            <pl2 tyle="text-align: left; vertical-align: middle;">    
+                <br>
+                My primary research interest is Software Engineering with a focus on empirical studies.<br>
+                program analysis, and software evolution. Using techniques from diverse domains including <br>
             
-            <pl2>
-               What is the effect of programming languages on software qual- ity? This question has been a topic of much debate for a very long time. In this study, we gather a very large data set from GitHub (728 projects, 63 Million SLOC, 29,000 authors, 1.5 million com- mits, in 17 languages) in an attempt to shed some empirical light on this question. This reasonably large sample size allows us to use a mixed-methods approach, combining multiple regression model- ing with visualization and text analytics, to study the effect of language features such as static v.s. dynamic typing, strong v.s. weak typing on software quality. By triangulating findings from differ- ent methods, and controlling for confounding effects such as team size, project size, and project history, we report that language design does have a significant, but modest effect on software quality. Most notably, it does appear that strong typing is modestly better than weak typing, and among functional languages, static typing is also somewhat better than dynamic typing. We also find that func- tional languages are somewhat better than procedural languages. It is worth noting that these modest effects arising from language de- sign are overwhelmingly dominated by the process factors such as project size, team size, and commit size. However, we hasten to caution the reader that even these modest effects might quite possibly be due to other, intangible process factors, e.g., the preference of certain personality types for functional, static and strongly typed languages.
-            </pl2>
-           
+            </pl2>   
+               </div>
             
            
             
