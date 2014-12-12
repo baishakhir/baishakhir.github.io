@@ -23,11 +23,21 @@ body { margin:0; padding:0; }
 .layer1 {
 margin: 0px;
 padding: 0;
-color: #bfbfbf;
+font-family: "Courier New", Courier, monospace;
+font-size: .8em;
+line-height: 1.2em;
+text-align: justify;
+background-color: #E0E0E0;
+}
+
+.layer2 {
+margin: 0px;
+padding: 0;
 font-family: Georgia, "Times New Roman", Times, serif;
 font-size: 1em;
 line-height: 1.2em;
-/* [disabled]text-align: justify; */
+text-align: justify; 
+background-color: #E0E0E0;
 }
 
 .heading {
@@ -165,11 +175,12 @@ $(document).ready(function(){
             <!-- <div style="background-color:#E0E0E0; font-family:'Arial'; font-size:12px"> -->
             <div class="layer1">
 
-            <pl1 tyle="text-align: left; vertical-align: middle;">    
+            <pl1 style="vertical-align: middle;">    
             @inproceedings{ray2014lang, <br>
               &nbsp;&nbsp;title={A Large Scale Study of Programming Languages and Code Quality in Github}, <br>
               &nbsp;&nbsp;author={Ray, Baishakhi and Posnett, Daryl and Filkov, Vladimir and Devanbu, Premkumar}, <br>
-              &nbsp;&nbsp;booktitle={Proceedings of the ACM SIGSOFT 20th International Symposium on the Foundations of Software Engineering}, <br>
+              &nbsp;&nbsp;booktitle={Proceedings of the ACM SIGSOFT 20th International Symposium on the <br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Foundations of Software Engineering}, <br>
               &nbsp;&nbsp;series = {FSE '14}, <br>
               &nbsp;&nbsp;year={2014}, <br>
               &nbsp;&nbsp;organization={ACM} <br>
@@ -179,18 +190,19 @@ $(document).ready(function(){
 
              <div class="layer1">
                      
-            <pl2 tyle="text-align: left; vertical-align: middle;">    
+            <pl2 style="vertical-align: middle;">    
                 <br>
-                My primary research interest is Software Engineering with a focus on empirical studies.<br>
-                program analysis, and software evolution. Using techniques from diverse domains including <br>
+                To investigate whether a programming language is the right tool for the job, I gathered a<br> 
+                very large data set from GitHub (728 projects, 63M lines of code, 29K authors, 1.5M commits, <br>
+                in 17 languages). Using a mixed-methods approach, combining multiple regression modeling with <br>
+                visualization and text analytics, I studied the effect of language features such as static v.s.<br>
+                dynamic typing, strong v.s. weak typing on software quality. By triangulating findings from <br>
+                different methods, and controlling for confounding effects such as code size, project age, and <br> 
+                contributors, I observed that a language design choice does have a significant, but modest <br>
+                effect on software quality. <br>
             
             </pl2>   
                </div>
-            
-           
-            
-            
-            
             </div> 
             <br>
             </span></span>
@@ -201,7 +213,7 @@ $(document).ready(function(){
         <tr>
             <td style="text-align: center; vertical-align: middle;"><a href="http://www.ieee-security.org/TC/SP2014/"><font face="Verdana, Geneva, sans-serif" color="#7f003f">S&amp;P (Oakland) 2014</font></a><br>
             </td>
-            <td><font face="Georgia, serif"><i>Using Frankencerts for Automated Adversarial Testing of Certificate Validation in SSL/TLS Implementations.</i>&nbsp;<font style="font-size: 14px; line-height: 17.5px; background-color: #ffffff;" color="#bf0000"><b>S&amp;P 2014 Best Practical Paper Award</b></font><br>
+            <td><font face="Georgia, serif"><a href="./uploads/frankencert.pdf" target="_blank"><i>Using Frankencerts for Automated Adversarial Testing of Certificate Validation in SSL/TLS Implementations</i></a>.&nbsp;<font style="font-size: 14px; line-height: 17.5px; background-color: #ffffff;" color="#bf0000"><b>S&amp;P 2014 Best Practical Paper Award</b></font><br>
             16 pages,&nbsp; acceptance rate: 13%&nbsp;<span style="color: #ff0000; font-size: 14px; line-height: 17.5px; background-color: #ffffff;">&nbsp;</span></font><br>
             Chad Brubaker, Suman Jana, <b>Baishakhi Ray</b>, Sarfraz Khurshid, and Vitaly Shmatikov<br>
             <a href="./uploads/frankencert.pdf" target="_blank">pdf</a>, &nbsp;
