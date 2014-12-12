@@ -88,6 +88,11 @@ $(document).ready(function(){
   $("#bsd_bib").click(function(){$("pl10"). slideToggle(1000);});
   $("#bsd_sum").click(function(){$("pl11").slideToggle(1000);});
   
+  $("pl12").hide();
+  $("pl13").hide();
+  $("#rep_bib").click(function(){$("pl12"). slideToggle(1000);});
+  $("#rep_sum").click(function(){$("pl13").slideToggle(1000);});
+  
 });
 </script>
 
@@ -460,12 +465,48 @@ $(document).ready(function(){
         <tr>
             <td style="text-align: center; vertical-align: middle;"><a href="http://www.sigsoft.org/fse20/"><font face="Verdana, Geneva, sans-serif" color="#7f003f">FSE 2012</font></a><br>
             </td>
-            <td><i>Repertoire: A Cross-System Porting Analysis Tool for Forked Software Projects </i><br>
-            Formal Research Tool Demonstration, 4 pages<br>
-            <b>
-            Baishakhi Ray</b>, Christopher Wiley, Miryung Kim &nbsp;<br>
-            <a href="./uploads/fse2012-repertoire.pdf">pdf</a>&nbsp;, <a href="./uploads/fse2012repertoire-slides.pdf">slides</a>&nbsp;, <a href="http://dl.acm.org/citation.cfm?id=2393603">DOI</a><br>
-            <br>
+            <td>
+              <font face="Georgia, serif">
+              <a href="./uploads/fse2012-repertoire.pdf" target="_blank">
+              <i>Repertoire: A Cross-System Porting Analysis Tool for Forked Software Projects</i></a>. 
+              &nbsp; 4 pages<br>
+              <b>Baishakhi Ray</b>, Christopher Wiley, Miryung Kim &nbsp;<br>
+                        
+              <button onclick="window.open('./uploads/fse2012repertoire-slides.pdf','_blank');">Slides</button> &nbsp;                  
+              <button id="rep_bib">BibTex</button> &nbsp; <button id="rep_sum">Summary</button> <br>
+              
+              <div class="layer1">
+                <pl12 style="vertical-align: middle;">   
+                    <br>
+                    @inproceedings{ray2012repertoire, <br>
+                    &nbsp;&nbsp;&nbsp;title={Repertoire: A cross-system porting analysis tool for forked software projects}, <br>
+                    &nbsp;&nbsp;&nbsp;author={Ray, Baishakhi and Wiley, Christopher and Kim, Miryung}, <br>
+                    &nbsp;&nbsp;&nbsp;booktitle={Proceedings of the ACM SIGSOFT 20th International Symposium on the Foundations of Software Engineering}, <br>
+                    &nbsp;&nbsp;&nbsp;series = {FSE 2012}, <br>
+                    &nbsp;&nbsp;&nbsp;articleno = {8}, <br>
+                    &nbsp;&nbsp;&nbsp;pages = {8:1--8:4}, <br>
+                    } <br>
+ <br>
+
+                </pl12>  
+                </div>
+                        
+                <div class="layer2">
+                  <pl13 style="vertical-align: middle;">    
+                     <br>
+                     To create a new variant of an existing project, developers often copy an existing <br>
+                     codebase and modify it. This process is called software forking. After forking software, <br>
+                     developers often port new features or bug fixes from peer projects.  Repertoire analyzes <br>
+                     repeated work of cross-system porting among forked projects. It takes the version <br>
+                     histories as input and identifies ported edits by comparing the content of individual <br>
+                     patches. It also shows users the extent of ported edits, where and when the ported edits <br>
+                     occurred, which developers ported code from peer projects, and how long it takes for <br>
+                     patches to be ported. <br>
+                      <br>
+                  </pl13>   
+                  </div> 
+                  <br>
+                  </span></span>
             </td>
         </tr>
         <tr>
