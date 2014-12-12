@@ -27,17 +27,18 @@ font-family: "Courier New", Courier, monospace;
 font-size: .8em;
 line-height: 1.2em;
 text-align: justify;
-background-color: #E0E0E0;
+/* background-color: #E0E0E0; */
+color: #808080; 
 }
 
 .layer2 {
 margin: 0px;
 padding: 0;
 font-family: Georgia, "Times New Roman", Times, serif;
-font-size: 1em;
+font-size: .9em;
 line-height: 1.2em;
 text-align: justify; 
-background-color: #E0E0E0;
+color: #808080; 
 }
 
 .heading {
@@ -55,34 +56,6 @@ text-align: left;
 } 
 </style>
 
-<!--
-<script type="text/javascript">
-
-    function toggle_visibility(id) {
- 
-
-       var e = document.getElementById(id);
-       var text = document.getElementById("displayText");
-
-       if(e.style.display != 'none') {
-          e.style.display = 'none';
-          text.innerHTML = "hide";
-       }
-       else {
-          e.style.display = 'block';
-          text.innerHTML = "show";
-       }
-    }
-
-    window.onload = function() {
-      toggle_visibility("lang_bib");
-      toggle_visibility("frankencert_bib");
-      toggle_visibility("spa_bib");
-      toggle_visibility("anevo_bib");
-    }
-</script>
--->
-
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script>
@@ -91,6 +64,11 @@ $(document).ready(function(){
   $("pl2").hide();
   $("#lang_bib").click(function(){$("pl1"). slideToggle(1000);});
   $("#lang_bib_abs").click(function(){$("pl2").slideToggle(1000);});
+  
+  $("pl3").hide();
+  $("pl4").hide();
+  $("#frank_bib").click(function(){$("pl3"). slideToggle(1000);});
+  $("#frank_bib_abs").click(function(){$("pl4").slideToggle(1000);});
 
   
 });
@@ -158,9 +136,7 @@ $(document).ready(function(){
 				<div class="sf_region6">
 					<div class="sf_content"><div class="LayoutContainer" style="display:block;"><div><div style="display:block;overflow:hidden;"><br>
 
-<!-- <p>If you click on the "Hide" button, I will disappear.</p>
 
-<div id="show">Bibtex</div> -->
 
 <table cellpadding="1" cellspacing="3" border="0" style="width: 100%; text-align: left;">
     <tbody>
@@ -169,13 +145,13 @@ $(document).ready(function(){
             </td>
             <td><font face="Georgia, serif"><a href="./uploads/fse2014-lang_study.pdf" target="_blank"><i>A Large Scale Study of Programming Languages and Code Quality in Github</i></a>
                 <br>10 pages, acceptance rate: 20%<br>
-            <b>Baishakhi Ray</b>, Daryl Posnett, Vladimir Filkov and Premkumar T. Devanbu<br> 
+            <b>Baishakhi Ray</b>, Daryl Posnett, Vladimir Filkov, Premkumar T. Devanbu<br> 
             <button onclick="window.open('./uploads/lang_study_presentation.pdf','_blank');">Slides</button> &nbsp;                      
             <button id="lang_bib">BibTex</button> &nbsp; <button id="lang_bib_abs">Summary</button> <br>
-            <!-- <div style="background-color:#E0E0E0; font-family:'Arial'; font-size:12px"> -->
             <div class="layer1">
 
-            <pl1 style="vertical-align: middle;">    
+            <pl1 style="vertical-align: middle;">   
+            <br>
             @inproceedings{ray2014lang, <br>
               &nbsp;&nbsp;title={A Large Scale Study of Programming Languages and Code Quality in Github}, <br>
               &nbsp;&nbsp;author={Ray, Baishakhi and Posnett, Daryl and Filkov, Vladimir and Devanbu, Premkumar}, <br>
@@ -188,7 +164,7 @@ $(document).ready(function(){
             </pl1>  
             </div>
 
-             <div class="layer1">
+             <div class="layer2">
                      
             <pl2 style="vertical-align: middle;">    
                 <br>
@@ -200,7 +176,7 @@ $(document).ready(function(){
                 different methods, and controlling for confounding effects such as code size, project age, and <br> 
                 contributors, I observed that a language design choice does have a significant, but modest <br>
                 effect on software quality. <br>
-            
+                <br>
             </pl2>   
                </div>
             </div> 
@@ -215,27 +191,59 @@ $(document).ready(function(){
             </td>
             <td><font face="Georgia, serif"><a href="./uploads/frankencert.pdf" target="_blank"><i>Using Frankencerts for Automated Adversarial Testing of Certificate Validation in SSL/TLS Implementations</i></a>.&nbsp;<font style="font-size: 14px; line-height: 17.5px; background-color: #ffffff;" color="#bf0000"><b>S&amp;P 2014 Best Practical Paper Award</b></font><br>
             16 pages,&nbsp; acceptance rate: 13%&nbsp;<span style="color: #ff0000; font-size: 14px; line-height: 17.5px; background-color: #ffffff;">&nbsp;</span></font><br>
-            Chad Brubaker, Suman Jana, <b>Baishakhi Ray</b>, Sarfraz Khurshid, and Vitaly Shmatikov<br>
-            <a href="./uploads/frankencert.pdf" target="_blank">pdf</a>, &nbsp;
-			      <a href="https://github.com/sumanj/frankencert" target="_blank">code</a>, &nbsp;
-            <a href="./uploads/frankencert_presentation.pdf" target="_blank">slides</a>, &nbsp;
-            <a href="#"  onclick="toggle_visibility('frankencert_bib');">bibtex</a> <br>
-            <div id="frankencert_bib" style="background-color:#E0E0E0; font-family:'Courier'; font-size:11px">
-              
-              @inproceedings{brubaker2014using, <br>
-              &nbsp;&nbsp;&nbsp;title={Using Frankencerts for Automated Adversarial Testing of Certificate Validation in SSL/TLS Implementations}, <br>
-              &nbsp;&nbsp;&nbsp;author={Brubaker, Chad and Jana, Suman and Ray, Baishakhi and Khurshid, Sarfraz and Shmatikov, Vitaly}, <br>
-              &nbsp;&nbsp;&nbsp;booktitle={IEEE Symposium on Security and Privacy 2014}, <br>
-              &nbsp;&nbsp;&nbsp;year={2014}, <br>
-              &nbsp;&nbsp;&nbsp;organization={IEEE} <br>
-            }
+            Chad Brubaker, Suman Jana, <b>Baishakhi Ray</b>, Sarfraz Khurshid, Vitaly Shmatikov<br>
+            <button onclick="window.open('https://github.com/sumanj/frankencert','_blank');">Code</button> &nbsp;                     <button onclick="window.open('./uploads/frankencert_presentation.pdf','_blank');">Slides</button> &nbsp;
+            <button id="frank_bib">BibTex</button> &nbsp; 
+            <button id="frank_bib_abs">Summary</button> <br>
             
+            <div class="layer1">
+
+            <pl3 style="vertical-align: middle;">    
+            <br>
+              @inproceedings{brubaker2014using, <br>
+              &nbsp;&nbsp;&nbsp;title={Using Frankencerts for Automated Adversarial Testing of Certificate Validation<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in SSL/TLS Implementations}, <br>
+              &nbsp;&nbsp;&nbsp;author={Brubaker, Chad and Jana, Suman and Ray, Baishakhi and <br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Khurshid, Sarfraz and Shmatikov, Vitaly}, <br>
+                &nbsp;&nbsp;&nbsp;booktitle={IEEE Symposium on Security and Privacy 2014}, <br>
+                &nbsp;&nbsp;&nbsp;year={2014}, <br>
+                &nbsp;&nbsp;&nbsp;organization={IEEE} <br>
+            }
+            </pl3>  
+            </div>
+
+             <div class="layer2">
+                     
+            <pl4 style="vertical-align: middle;">    
+                <br>
+                Nowadays in open software market, multiple software are available to users that provide <br>
+                similar functionality. For example, there exists a pool of popular SSL/TLS libraries (e.g., <br>
+                OpenSSL, GnuTLS, NSS, CyaSSL, GnuTLS, PolarSSL, MatrixSSL, etc.) for securing network <br>
+                connections from man-in-the-middle attacks. Certificate validation is a crucial part of <br>
+                SSL/TLS connection setup.  Though implemented differently, the certificate validation logic of <br>
+                these different libraries should serve the same purpose, following the SSL/TLS protocol, i.e. <br>
+                for a given certificate, all of the libraries should either accept or reject it. In <br>
+                collaboration with security researchers at the University of Texas at Austin, we designed the <br>
+                first large-scale framework for testing certificate validation logic in SSL/TLS <br>
+                implementations. First, we generated millions of synthetic certificates by randomly mutating <br>
+                parts of real certificates and thus induced unusual combinations of exten- sions and <br>
+                constraints. A valid SSL implementation should be able to detect and reject the unusual <br>
+                mutants. Next, using a differential testing framework, we checked whether one SSL/TLS <br>
+                implementation accepts a certificate while another rejects the same certificate. We used such <br>
+                discrepancies as an oracle for finding flaws in individual implementations. We uncovered 208 <br>
+                discrepancies between popular SSL/TLS implementations, many of them are caused by serious <br>
+                security vulnerabilities.  <br>
+                <br>
+            </pl4>   
+               </div>
             </div> 
             <br>
             </span></span>
             </td>
         </tr>
-		    <!-- -->
+		  
+        
+        <!-- -->
         <tr>
             <td style="text-align: center; vertical-align: middle;"><a href="http://ase2013.org/"><font face="Verdana, Geneva, sans-serif" color="#7f003f">ASE 2013</font></a><br>
             </td>
