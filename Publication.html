@@ -63,12 +63,17 @@ $(document).ready(function(){
   $("pl1").hide();
   $("pl2").hide();
   $("#lang_bib").click(function(){$("pl1"). slideToggle(1000);});
-  $("#lang_bib_abs").click(function(){$("pl2").slideToggle(1000);});
+  $("#lang_sum").click(function(){$("pl2").slideToggle(1000);});
   
   $("pl3").hide();
   $("pl4").hide();
   $("#frank_bib").click(function(){$("pl3"). slideToggle(1000);});
-  $("#frank_bib_abs").click(function(){$("pl4").slideToggle(1000);});
+  $("#frank_sum").click(function(){$("pl4").slideToggle(1000);});
+  
+  $("pl5").hide();
+  $("pl6").hide();
+  $("#spa_bib").click(function(){$("pl5"). slideToggle(1000);});
+  $("#spa_sum").click(function(){$("pl6").slideToggle(1000);});
 
   
 });
@@ -143,16 +148,15 @@ $(document).ready(function(){
         <tr>
             <td style="text-align: center; vertical-align: middle;"><a href="http://fse22.gatech.edu/"><font face="Verdana, Geneva, sans-serif" color="#7f003f">FSE 2014</font></a><br>
             </td>
-            <td><font face="Georgia, serif"><a href="./uploads/fse2014-lang_study.pdf" target="_blank"><i>A Large Scale Study of Programming Languages and Code Quality in Github</i></a>
-                <br>10 pages, acceptance rate: 20%<br>
+            <td><font face="Georgia, serif"><a href="./uploads/fse2014-lang_study.pdf" target="_blank"><i>A Large Scale Study of Programming Languages and Code Quality in Github</i></a>, 10 pages, acceptance rate: 20%<br>
             <b>Baishakhi Ray</b>, Daryl Posnett, Vladimir Filkov, Premkumar T. Devanbu<br> 
             Media Coverage: <a href="http://developers-beta.slashdot.org/story/14/11/05/0530228/the-effect-of-programming-language-on-software-quality" target="_blank">SlashDot</a>, 
 		<a href="http://www.theregister.co.uk/Print/2014/11/06/languages_dont_breed_bugs_people_breed_bugs/" target="_blank">The Register</a>,
 		<a href="http://www.reddit.com/r/programming/comments/2lbsfb/a_large_scale_study_of_programming_languages_and" target="_blank">Reddit</a>,
 		<a href="http://www.infoworld.com/article/2844268/application-development/functional-languages-rack-up-best-scores-software-quality.html" target="_blank">InfoWorld</a>,
     <a href="https://news.ycombinator.com/item?id=8558740" target="_blank">Hacker News</a>. <br>
-            <button onclick="window.open('./uploads/lang_study_presentation.pdf','_blank');">Slides</button> &nbsp;                      
-            <button id="lang_bib">BibTex</button> &nbsp; <button id="lang_bib_abs">Summary</button> <br>
+            <button onclick="window.open('./uploads/lang_study_presentation.pdf','_blank');">Slides</button> &nbsp;                   
+            <button id="lang_bib">BibTex</button> &nbsp; <button id="lang_sum">Summary</button> <br>
             <div class="layer1">
 
             <pl1 style="vertical-align: middle;">   
@@ -194,8 +198,7 @@ $(document).ready(function(){
         <tr>
             <td style="text-align: center; vertical-align: middle;"><a href="http://www.ieee-security.org/TC/SP2014/"><font face="Verdana, Geneva, sans-serif" color="#7f003f">S&amp;P (Oakland) 2014</font></a><br>
             </td>
-            <td><font face="Georgia, serif"><a href="./uploads/frankencert.pdf" target="_blank"><i>Using Frankencerts for Automated Adversarial Testing of Certificate Validation in SSL/TLS Implementations</i></a>.&nbsp;<font style="font-size: 14px; line-height: 17.5px; background-color: #ffffff;" color="#bf0000"><b>S&amp;P 2014 Best Practical Paper Award</b></font><br>
-            16 pages,&nbsp; acceptance rate: 13%&nbsp;<span style="color: #ff0000; font-size: 14px; line-height: 17.5px; background-color: #ffffff;">&nbsp;</span></font><br>
+            <td><font face="Georgia, serif"><a href="./uploads/frankencert.pdf" target="_blank"><i>Using Frankencerts for Automated Adversarial Testing of Certificate Validation in SSL/TLS Implementations</i></a> &nbsp;<font style="font-size: 14px; line-height: 17.5px; background-color: #ffffff;" color="#bf0000"><b>S&amp;P 2014 Best Practical Paper Award</b></font>, 16 pages,&nbsp; acceptance rate: 13%&nbsp;<span style="color: #ff0000; font-size: 14px; line-height: 17.5px; background-color: #ffffff;">&nbsp;</span></font><br>
             Chad Brubaker, Suman Jana, <b>Baishakhi Ray</b>, Sarfraz Khurshid, Vitaly Shmatikov<br>
             Media Coverage: 
 		<a href="http://www.reddit.com/r/netsec/comments/22748s/using_frankencerts_for_automated_adversarial" target="_blank">Reddit</a>, 
@@ -203,7 +206,7 @@ $(document).ready(function(){
 		<a href="http://www.heise.de/security/artikel/SSL-Fuzzing-mit-Frankencerts-2166135.html" target="_blank">Heise</a> <br>
             <button onclick="window.open('https://github.com/sumanj/frankencert','_blank');">Code</button> &nbsp;                     <button onclick="window.open('./uploads/frankencert_presentation.pdf','_blank');">Slides</button> &nbsp;
             <button id="frank_bib">BibTex</button> &nbsp; 
-            <button id="frank_bib_abs">Summary</button> <br>
+            <button id="frank_sum">Summary</button> <br>
             
             <div class="layer1">
 
@@ -244,7 +247,7 @@ $(document).ready(function(){
                 security vulnerabilities.  <br>
                 <br>
             </pl4>   
-               </div>
+            </div>
             </div> 
             <br>
             </span></span>
@@ -256,27 +259,48 @@ $(document).ready(function(){
         <tr>
             <td style="text-align: center; vertical-align: middle;"><a href="http://ase2013.org/"><font face="Verdana, Geneva, sans-serif" color="#7f003f">ASE 2013</font></a><br>
             </td>
-            <td><span class="gmw_"><font style="background-color: #ffffff;" face="Georgia, serif"><i>Detecting and Characterizing Semantic Inconsistencies in Ported Code</i><br>
-            10 pages, acceptance rate: 23%<br>
+            <td><font face="Georgia, serif"><a href="./uploads/ase2013-spa.pdf" target="_blank"><i>Detecting and Characterizing Semantic Inconsistencies in Ported Code</i></a>.&nbsp;<font style="font-size: 14px; line-height: 17.5px; background-color: #ffffff;" color="#bf0000"><b>Nominated for distinguished paper award, Invited for journal special issue</b></font>,             10 pages, acceptance rate: 23%<br>
             <b>Baishakhi Ray</b>, Miryung Kim, Suzette Person, Neha Rungta<br>
-            <a href="./uploads/ase2013-spa.pdf">pdf</a>, &nbsp;
-            <a href="./uploads/ase-presentation.pptx" target="_blank">slides</a>, &nbsp;
-            <a href="#"  onclick="toggle_visibility('spa_bib');">bibtex</a> 
-            <br>
-            <div id="spa_bib" style="background-color:#E0E0E0; font-family:'Courier'; font-size:11px">
-              
-              @inproceedings{ray2013detecting, <br>
-              &nbsp;&nbsp;&nbsp;title={Detecting and characterizing semantic inconsistencies in ported code}, <br>
-              &nbsp;&nbsp;&nbsp;author={Ray, Baishakhi and Kim, Miryung and Person, Suzette and Rungta, Neha}, <br>
-              &nbsp;&nbsp;&nbsp;booktitle={Automated Software Engineering (ASE), 2013 IEEE/ACM 28th International Conference on}, <br>
-              &nbsp;&nbsp;&nbsp;pages={367--377}, <br>
-              &nbsp;&nbsp;&nbsp;year={2013}, <br>
-              &nbsp;&nbsp;&nbsp;organization={IEEE} <br>
-            }
             
-            </div>
-            <br>
-            </span>
+            <button onclick="window.open('./uploads/ase2013_presentation.pdf','_blank');">Slides</button> &nbsp;                      
+            <button id="spa_bib">BibTex</button> &nbsp; <button id="spa_sum">Summary</button> <br>
+            <div class="layer1">
+            
+              <pl5 style="vertical-align: middle;">   
+              <br>
+              @inproceedings{ray2013detecting, <br>
+                &nbsp;&nbsp;&nbsp;title={Detecting and characterizing semantic inconsistencies in ported code}, <br>
+                &nbsp;&nbsp;&nbsp;author={Ray, Baishakhi and Kim, Miryung and Person, Suzette and Rungta, Neha}, <br>
+                &nbsp;&nbsp;&nbsp;booktitle={Automated Software Engineering (ASE), 2013 IEEE/ACM 28th International Conference on}, <br>
+                &nbsp;&nbsp;&nbsp;pages={367--377}, <br>
+                &nbsp;&nbsp;&nbsp;year={2013}, <br>
+                &nbsp;&nbsp;&nbsp;organization={IEEE} <br>
+              }
+              </div>
+            
+            <div class="layer2">
+               <pl6 style="vertical-align: middle;">    
+                <br>
+                In order to automatically detect copy-paste errors, I investigated: (1) What are the common <br>
+                types of copy-paste errors? (2) How can they be automatically detected? By analyzing <br>
+                the version histories of FreeBSD and Linux, I found five common types of copy-paste errors and <br>
+                then leveraging this categorization I designed a two-stage analysis technique to detect and <br>
+                characterize copy-paste errors. The first stage of the analysis, SPA, detects and categorizes <br>
+                inconsistencies in repetitive changes based on a static control and data dependence analysis. <br>
+                SPA successfully identifies copy-paste errors with 65% to 73% precision, an improvement by 14 <br>
+                to 17 percentage points with respect to previous tools. The second stage of the analysis, <br>
+                SPA++, uses the inconsistencies computed by SPA to direct symbolic execution in order to <br>
+                generate program behaviors that are impacted by the inconsistencies. SPA++ further compares <br>
+                these program behaviors leveraging logical equivalence checking (implemented with z3 theorem <br>
+                prover) and generates test inputs that exercise program paths containing the reported <br>
+                inconsistencies. A case study shows that SPA++ can refine the results reported by SPA and help <br>
+                developers analyze copy-paste inconsistencies. I collaborated with researchers from NASA for <br>
+                this work. <br>
+                
+                <br>
+                </pl2>   
+               </div>
+              </span>
             </td>
         </tr>
             <!-- -->
