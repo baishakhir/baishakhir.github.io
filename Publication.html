@@ -83,6 +83,10 @@ $(document).ready(function(){
   $("pl9").hide();
   $("#thesis_bib").click(function(){$("pl9"). slideToggle(1000);});
 
+  $("pl10").hide();
+  $("pl11").hide();
+  $("#bsd_bib").click(function(){$("pl10"). slideToggle(1000);});
+  $("#bsd_sum").click(function(){$("pl11").slideToggle(1000);});
   
 });
 </script>
@@ -367,7 +371,7 @@ $(document).ready(function(){
               
         <!-- -->
         <tr>
-            <td style="text-align: center; vertical-align: middle;"><a href="https://repositories.lib.utexas.edu/bitstream/handle/2152/22103/RAY-DISSERTATION-2013.pdf?sequence=1"><font face="Verdana, Geneva, sans-serif" color="#7f003f">PhD Thesis</font></a><br>
+            <td style="text-align: center; vertical-align: middle;"><a href="https://repositories.lib.utexas.edu/bitstream/handle/2152/22103/RAY-DISSERTATION-2013.pdf?sequence=1"><font face="Verdana, Geneva, sans-serif" color="#7f003f">PhD Thesis</font></a>
             </td>
             <td>
               <font face="Georgia, serif">
@@ -375,7 +379,7 @@ $(document).ready(function(){
                   <i>Analysis of Cross-System Porting and Porting Errors in Software Projects</i>
                 </a>
                 <br>
-
+                <b>Baishakhi Ray</b>, &nbsp; Advisor: Miryung Kim <br>
                  <button onclick="window.open('./uploads/thesis-defense-slides.pdf','_blank');">Slides</button> &nbsp; 
                  <button id="thesis_bib">BibTex</button> &nbsp;<br>
 
@@ -385,7 +389,6 @@ $(document).ready(function(){
                     @phdthesis{ray2013phd, <br>
                       &nbsp;&nbsp;&nbsp;title={Analysis of cross-system porting and porting errors in software projects}, <br>
                       &nbsp;&nbsp;&nbsp;author={Ray, Baishakhi}, <br>
-                      &nbsp;&nbsp;&nbsp;shorthand = {PhDThesis}, <br>
                       &nbsp;&nbsp;&nbsp;school = {The University of Texas at Austin}, <br>
                       &nbsp;&nbsp;&nbsp;year={2013}, <br>
                     } <br>
@@ -393,7 +396,6 @@ $(document).ready(function(){
                   </div>
                   <br>
               </span></span>
-              <br>
             </td>
           </tr>
         
@@ -402,14 +404,59 @@ $(document).ready(function(){
         <tr>
             <td style="text-align: center; vertical-align: middle;"><a href="http://www.sigsoft.org/fse20/"><font face="Verdana, Geneva, sans-serif" color="#7f003f">FSE 2012</font></a><br>
             </td>
-            </td>
-            <td><i>A Case Study of Cross-System Porting in Forked Software Projects</i>, 11 pages<br>
-            <b>
-            Baishakhi Ray</b>,&nbsp;Miryung&nbsp;Kim &nbsp;<br>
-            <a href="./uploads/fse2012-bsd.pdf">pdf</a>&nbsp;, <a href="./uploads/fse2012-porting-slides.pdf">slides</a>&nbsp;, <a href="http://dl.acm.org/citation.cfm?id=2393659">DOI</a><br>
-            <br>
+            <td>
+              <font face="Georgia, serif">
+              <a href="./uploads/fse2012-bsd.pdf" target="_blank">
+              <i>A Case Study of Cross-System Porting in Forked Software Projects</i></a>. 
+              &nbsp; 11 pages, acceptance rate: 17%<br>
+              <b>Baishakhi Ray</b>, Miryung Kim<br>
+              <button onclick="window.open('./uploads/fse2012-porting-slides.pdf','_blank');">Slides</button> &nbsp;                    
+              <button id="bsd_bib">BibTex</button> &nbsp; <button id="bsd_sum">Summary</button> <br>
+              
+              <div class="layer1">
+                <pl10 style="vertical-align: middle;">   
+                    <br>
+                    @inproceedings{Ray2012,<br>
+                    &nbsp;&nbsp;&nbsp;title = {A Case Study of Cross-system Porting in Forked Projects},<br>
+                    &nbsp;&nbsp;&nbsp;author = {Ray, Baishakhi and Kim, Miryung},<br>
+                    &nbsp;&nbsp;&nbsp;booktitle = {Proceedings of the ACM SIGSOFT 20th International Symposium on the Foundations of Software Engineering},<br>
+                    &nbsp;&nbsp;&nbsp;series = {FSE 2012},<br>
+                    &nbsp;&nbsp;&nbsp;articleno = {53},<br>
+                    &nbsp;&nbsp;&nbsp;pages = {53:1--53:11}<br>
+                    } <br>
+                </pl10>  
+                </div>
+                        
+                <div class="layer2">
+                  <pl11 style="vertical-align: middle;">    
+                    <br>
+                    This paper empirically demonstrates that developers spend a significant amount of time and <br>
+                    effort in introducing similar features and bug-fixes in and across different projects. <br>
+                    This involves a significant amount of repeated work. To automatically identify the <br>
+                    repetitive changes, I designed Repertoire, an source code change analysis tool that <br>
+                    compares the edit contents and the corresponding operations of program patches to identify <br>
+                    similar changes, with 94% precision and 84% recall. Using Repertoire, I showed that <br>
+                    developers often introduce a significant amount of repeated changes within and across <br>
+                    projects. Most notably, repetitive changes among forked projects (different variants of an <br>
+                    existing project, e.g., FreeBSD, NetBSD and OpenBSD) incur significant duplicate work. In <br>
+                    each BSD release, on average, more than twelve thousand lines are ported from peer <br>
+                    projects, and more than 25% of active developers participate in cross-system porting in <br>
+                    each release.             
+
+                    <br>
+                  </pl11>   
+                  </div> 
+                  <br>
+                  </span></span>
+
+                  
             </td>
         </tr>
+
+
+        <!-- -->
+        <!-- -->
+
         <tr>
             <td style="text-align: center; vertical-align: middle;"><a href="http://www.sigsoft.org/fse20/"><font face="Verdana, Geneva, sans-serif" color="#7f003f">FSE 2012</font></a><br>
             </td>
