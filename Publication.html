@@ -74,6 +74,14 @@ $(document).ready(function(){
   $("pl6").hide();
   $("#spa_bib").click(function(){$("pl5"). slideToggle(1000);});
   $("#spa_sum").click(function(){$("pl6").slideToggle(1000);});
+  
+  $("pl7").hide();
+  $("pl8").hide();
+  $("#api_bib").click(function(){$("pl7"). slideToggle(1000);});
+  $("#api_sum").click(function(){$("pl8").slideToggle(1000);});
+  
+  $("pl9").hide();
+  $("#thesis_bib").click(function(){$("pl9"). slideToggle(1000);});
 
   
 });
@@ -300,8 +308,9 @@ $(document).ready(function(){
                 
                 <br>
                 </pl6>   
-               </div>
-              </span>
+                </div> 
+                <br>
+                </span></span>
             </td>
         </tr>
             <!-- -->
@@ -310,36 +319,86 @@ $(document).ready(function(){
             <td style="text-align: center; vertical-align: middle;"><a href="http://icsm2013.tue.nl/"><font face="Verdana, Geneva, sans-serif" color="#7f003f">ICSM 2013</font></a><br>
             </td>
 
-            <td><span class="gmw_"><i>An Empirical Study of API Stability and Adoption in the Android Ecosystem</i>,&nbsp;10 pages<br>
-            Tyler McDonnell, <b>Baishakhi Ray</b>, Miryung Kim &nbsp;<br>
-            <a href="./uploads/icsm2013-apiecosystem.pdf" target="_blank">pdf</a>,&nbsp;
-            <a href="./uploads/icsm2013-apiecosystem-slides.pdf" target="_blank">slides</a>,&nbsp;
-            <a href="#"  onclick="toggle_visibility('anevo_bib');">bibtex</a> 
-            <br>
-            <div id="anevo_bib" style="background-color:#E0E0E0; font-family:'Courier'; font-size:11px">
-              
-              @inproceedings{mcdonnell2013empirical, <br>
-              &nbsp;&nbsp;&nbsp;title={An empirical study of API stability and adoption in the Android ecosystem}, <br>
-              &nbsp;&nbsp;&nbsp;author={McDonnell, Tyler and Ray, Baishakhi and Kim, Miryung}, <br>
-              &nbsp;&nbsp;&nbsp;booktitle={Software Maintenance (ICSM), 2013 29th IEEE International Conference on}, <br>
-              &nbsp;&nbsp;&nbsp;pages={70--79}, <br>
-              &nbsp;&nbsp;&nbsp;year={2013}, <br>
-              &nbsp;&nbsp;&nbsp;organization={IEEE} <br>
-            }
-            
-            </div>
-            <br>
-            </span></td>
+              <td><font face="Georgia, serif">
+                  <a href="./uploads/icsm2013-apiecosystem.pdf" target="_blank">
+                    <i>An Empirical Study of API Stability and Adoption in the Android Ecosystem</i></a>. 
+                  &nbsp; 10 pages, acceptance rate: 22%<br>
+                  Tyler McDonnell, <b>Baishakhi Ray</b>, Miryung Kim &nbsp;<br>
+                  
+                  <button onclick="window.open('./uploads/icsm2013-apiecosystem-slides.pdf','_blank');">Slides</button> &nbsp;
+                  <button id="api_bib">BibTex</button> &nbsp; <button id="api_sum">Summary</button> <br>
+                  <div class="layer1"> 
+                    <pl7 style="vertical-align: middle;">  
+                    <br>
+                      @inproceedings{mcdonnell2013empirical, <br>
+                      &nbsp;&nbsp;&nbsp;title={An empirical study of API stability and adoption in the Android ecosystem}, <br>
+                      &nbsp;&nbsp;&nbsp;author={McDonnell, Tyler and Ray, Baishakhi and Kim, Miryung}, <br>
+                      &nbsp;&nbsp;&nbsp;booktitle={Software Maintenance (ICSM), 2013 29th IEEE International Conference on}, <br>
+                      &nbsp;&nbsp;&nbsp;pages={70--79}, <br>
+                      &nbsp;&nbsp;&nbsp;year={2013}, <br>
+                      &nbsp;&nbsp;&nbsp;organization={IEEE} <br>
+                    }
+                    </pl7> 
+                  </div>
+                  
+                  <div class="layer2">
+                    <pl8 style="vertical-align: middle;">    
+                    <br>
+                    In today’s software ecosystem, which is primarily governed by web, cloud, and mobile <br>
+                    technologies, APIs perform a key role to connect disparate software. Big players like <br>
+                    Google, FaceBook, Microsoft aggressively publish new APIs to accommodate new feature <br>
+                    requests, bugs fixes, and performance improvements. We investigated how such fast paced <br>
+                    API evolution affects the overall software ecosystem? Our study on Android API evolution <br>
+                    showed that the developers are hesitant to adopt fast evolving, unstable APIs. For <br>
+                    instance, while Android updates 115 APIs per month on average, clients adopt the new APIs <br>
+                    rather slowly, with a median lagging period of 16 months. Furthermore, client code with <br>
+                    new APIs is typically more defect prone than the ones without API adaptation. To the best <br>
+                    of my knowledge, this is the first work studying API adoption in a large software <br>
+                    ecosystem, and the study suggests how to promote API adoption and how to facilitate growth <br>
+                    of the overall ecosystems. <br>
+                    <br>
+                    </pl8>   
+                  </div> 
+                  
+                <br>
+            </span></span>
+          </td>
         </tr>
-              <!-- -->
+              
+        <!-- -->
         <tr>
             <td style="text-align: center; vertical-align: middle;"><a href="https://repositories.lib.utexas.edu/bitstream/handle/2152/22103/RAY-DISSERTATION-2013.pdf?sequence=1"><font face="Verdana, Geneva, sans-serif" color="#7f003f">PhD Thesis</font></a><br>
             </td>
-            <td><i>Analysis of Cross-System Porting and Porting Errors in Software Projects</i><br>
-            <a href="./uploads/bray_thesis.pdf">pdf</a>&nbsp;, <a href="./uploads/thesis-defense-slides.pdf">slides</a><br>
-            <br>
+            <td>
+              <font face="Georgia, serif">
+                <a href="./uploads/bray_thesis.pdf" target="_blank">
+                  <i>Analysis of Cross-System Porting and Porting Errors in Software Projects</i>
+                </a>
+                <br>
+
+                 <button onclick="window.open('./uploads/thesis-defense-slides.pdf','_blank');">Slides</button> &nbsp; 
+                 <button id="thesis_bib">BibTex</button> &nbsp;<br>
+
+                  <div class="layer1">
+                    <pl9 style="vertical-align: middle;">   
+                    <br>
+                    @phdthesis{ray2013phd, <br>
+                      &nbsp;&nbsp;&nbsp;title={Analysis of cross-system porting and porting errors in software projects}, <br>
+                      &nbsp;&nbsp;&nbsp;author={Ray, Baishakhi}, <br>
+                      &nbsp;&nbsp;&nbsp;shorthand = {PhDThesis}, <br>
+                      &nbsp;&nbsp;&nbsp;school = {The University of Texas at Austin}, <br>
+                      &nbsp;&nbsp;&nbsp;year={2013}, <br>
+                    } <br>
+                    </pl9> 
+                  </div>
+                  <br>
+              </span></span>
+              <br>
             </td>
-        </tr>
+          </tr>
+        
+        
+        <!-- -->
         <tr>
             <td style="text-align: center; vertical-align: middle;"><a href="http://www.sigsoft.org/fse20/"><font face="Verdana, Geneva, sans-serif" color="#7f003f">FSE 2012</font></a><br>
             </td>
