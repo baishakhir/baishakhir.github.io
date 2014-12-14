@@ -163,18 +163,64 @@ Thanks to the large number of diverse open source projects available in software
 
 <a name="rep"></a>
 <h21>Cross-System Porting Analysis</h21>
-<p>
-To automatically identify the repetitive changes, I designed Repertoire, an source code change
-analysis tool that compares the edit contents and the corresponding operations of program
-patches to identify similar changes, with 94% precision and 84% recall [FSE-Demo’12]. Using
-Repertoire, I showed that developers often introduce a significant amount of repeated changes
-within and across projects. Most notably, repetitive changes among forked projects (different
-variants of an existing project, e.g., FreeBSD, NetBSD and OpenBSD) incur significant duplicate
-work. In each BSD re- lease, on average, more than twelve thousand lines are ported from peer
-projects, and more than 25% of active developers participate in cross-system porting in each
-release [FSE’12].
-See our Repertoire tool <a href="Repertoire.html" target="_blank">here<a>
-    </p>
+
+    <table style="height: 321px;" border="0">
+      <tbody>
+      <tr>
+          <td>
+            <p>
+            To maintain forked projects like FreeBSD, NetBSD and OpenBSD, developers often port
+            similar features or bug-fixes from one system to another.  This requires lot of
+            <i>repeated work</i>, which is often tedious and error-prone.  To automatically
+            identify the repeated work, we designed <a href="Repertoire.html"
+            target="_blank">Repertoire</a>, an source code change analysis tool that compares
+          the edit contents and the corresponding operations of program patches to identify
+            similar changes. Repertoire identifies repetitive changes with 94% precision and
+              84% recall (<a href="Publication.html#paper-rep">see our FSE'12 tool-demo paper</a>). 
+            <br>
+            Using Repertoire, we showed that a significant amount duplicate work takes place
+            across the BSD product family.  In each BSD release, on average, more than twelve
+              thousand lines are ported from peer projects, and more than 25% of active
+                developers participate in cross-system porting in each release (<a
+                  href="Publication.html#paper-bsd">see our FSE'12 paper</a>). 
+          </p>
+          </td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td style="background-color: #eeeeee; width: 225px;"><code><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Patch1</strong><br>
+              **** Old ****<br>
+              L1&nbsp; for(i=0;i&lt;MAX;i++){ <br>
+              L2 <font color="red">! x = array[i]+x; </font><br>
+              L3 <font color="red">! y = foo(x); </font><br>
+              L4 - x = x-y; <br>
+              L5 } <br>
+              <br>
+              **** New **** <br>
+              L6&nbsp; for(i=0;i&lt;MAX;i++) { <br>
+              L7 +&nbsp; y = x+y; <br>
+              L8 <font color="green">!&nbsp; x = array[i]+x; </font> <br>
+              L9 <font color="green">!&nbsp; y = foo(x,y); </font><br>
+              L10 }</code><code><font color="green"></font></code></td>
+          <td style="background-color: #eeeeee; width: 225px;"><code><strong align="center">&nbsp;
+                </strong><strong style="text-decoration: underline;" align="center"></strong></code><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <strong>Patch2</strong><br>
+              **** Old ****<br>
+              L1 for(j=0;j&lt;MAX;j++) { <br>
+              L2 &nbsp; q = p + q;<br>
+              L3 <font color="red">! q = array[j]+p; </font> <br>
+              L4 <font color="red">! p = foo1(q); </font><br>
+              L5 }<br>
+              <br>
+              **** New ****<br>
+              L6 for(j=0;j&lt;MAX;j++) { <br>
+              L7 &nbsp; q = p + q;<br>
+              L8 <font color="green">! q = array[j] + q;</font><br>
+              L9 <font color="green">! p = foo1(p,q);</font><br>
+              L10 }</code><code> </code></td>
+
+        </tr>
+      </tbody>
+    </table>
 
 <!-- Horizontal Line Starts -->	
 <div class="sf_extra7"><span></span></div>
