@@ -164,31 +164,34 @@ Thanks to the large number of diverse open source projects available in software
 <a name="rep"></a>
 <h21>Cross-System Porting Analysis</h21>
 
-    <table style="height: 321px;" border="0">
+    <table border="0">
       <tbody>
       <tr>
           <td>
             <p>
-            To maintain forked projects like FreeBSD, NetBSD and OpenBSD, developers often port
-            similar features or bug-fixes from one system to another.  This requires lot of
-            <i>repeated work</i>, which is often tedious and error-prone.  To automatically
-            identify the repeated work, we designed <a href="Repertoire.html"
-            target="_blank">Repertoire</a>, an source code change analysis tool that compares
-          the edit contents and the corresponding operations of program patches to identify
-            similar changes. Repertoire identifies repetitive changes with 94% precision and
-              84% recall (<a href="Publication.html#paper-rep">see our FSE'12 tool-demo paper</a>). 
+            To maintain different variants of the same projects, developers often port similar
+            features or bug-fixes from one system to another.  This requires lot of repeated
+              work, which is often tedious and error-prone.  To automatically identify the
+              repeated work, we designed <a href="Repertoire.html"
+                target="_blank">Repertoire</a>, an source code change analysis tool that
+              compares the edit contents and the corresponding operations of program patches to
+              identify similar changes. Repertoire identifies repetitive changes with 94%
+              precision and 84% recall (<a href="Publication.html#paper-rep">see our FSE'12
+              tool-demo paper</a>). 
             <br>
             Using Repertoire, we showed that a significant amount duplicate work takes place
             across the BSD product family.  In each BSD release, on average, more than twelve
               thousand lines are ported from peer projects, and more than 25% of active
                 developers participate in cross-system porting in each release (<a
-                  href="Publication.html#paper-bsd">see our FSE'12 paper</a>). 
+                  href="Publication.html#paper-bsd">see our FSE'12 paper</a>).
+            
           </p>
           </td>
           <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-          <td style="background-color: #eeeeee; width: 225px;"><code><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <td style="background-color:white; width: 230px;"><code><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 Patch1</strong><br>
               **** Old ****<br>
+          <font size="3">
               L1&nbsp; for(i=0;i&lt;MAX;i++){ <br>
               L2 <font color="red">! x = array[i]+x; </font><br>
               L3 <font color="red">! y = foo(x); </font><br>
@@ -200,11 +203,17 @@ Thanks to the large number of diverse open source projects available in software
               L7 +&nbsp; y = x+y; <br>
               L8 <font color="green">!&nbsp; x = array[i]+x; </font> <br>
               L9 <font color="green">!&nbsp; y = foo(x,y); </font><br>
-              L10 }</code><code><font color="green"></font></code></td>
-          <td style="background-color: #eeeeee; width: 225px;"><code><strong align="center">&nbsp;
+              L10 }</code><code><font color="green"></font></code>
+          </font>
+          
+             </td>
+
+
+          <td style="background-color:white; width: 230px;"><code><strong align="center">&nbsp;
                 </strong><strong style="text-decoration: underline;" align="center"></strong></code><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <strong>Patch2</strong><br>
               **** Old ****<br>
+          <font size="3">
               L1 for(j=0;j&lt;MAX;j++) { <br>
               L2 &nbsp; q = p + q;<br>
               L3 <font color="red">! q = array[j]+p; </font> <br>
@@ -216,9 +225,18 @@ Thanks to the large number of diverse open source projects available in software
               L7 &nbsp; q = p + q;<br>
               L8 <font color="green">! q = array[j] + q;</font><br>
               L9 <font color="green">! p = foo1(p,q);</font><br>
-              L10 }</code><code> </code></td>
+              L10 }</code><code> </code>
+          </font>
+          
+          </td>
 
         </tr>
+      <tr>
+      <td>These results confirmed that the overhead of repetitive changes is non-trivial and 
+        suggests that automated tools would be helpful to facilitate the process.</td>
+      <th></th>
+      <th colspan="2"; align="center">Identifying Repetitive Changes</th>
+      </tr>
       </tbody>
     </table>
 
