@@ -122,7 +122,7 @@ Thanks to the large number of diverse open source projects available in software
   strong v.s. weak typing on software quality. By triangulating findings from different
   methods, and controlling for confounding effects such as code size, project age, and
   contributors, we observed that a language design choice does have a significant, but modest
-  effect on software quality.
+  effect on software quality (<a href="Publication.html#paper-lang">see our FSE'14 paper</a>).
   </li>
   <br>
   <li>
@@ -133,11 +133,12 @@ Thanks to the large number of diverse open source projects available in software
   performance improvements. We investigated how such fast paced API evolution affects the
   overall software ecosystem? Our study on Android API evolution showed that the developers are
   hesitant to adopt fast evolving, unstable APIs. For instance, while Android updates 115 APIs
-  per month on average [ICSM’13], clients adopt the new APIs rather slowly, with a median
+  per month on average, clients adopt the new APIs rather slowly, with a median
   lagging period of 16 months. Furthermore, client code with new APIs is typically more defect
   prone than the ones without API adaptation. To the best of my knowledge, this is the first
   work studying API adoption in a large software ecosystem, and the study suggests how to
-  promote API adoption and how to facilitate growth of the overall ecosystems.
+  promote API adoption and how to facilitate growth of the overall ecosystems 
+  (<a href="Publication.html#paper-android">see our ICSM'13 paper</a>).
    </li>
   <br>
    <li>
@@ -188,7 +189,7 @@ Thanks to the large number of diverse open source projects available in software
           </p>
           </td>
           <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-          <td style="background-color:white; width: 230px;"><code><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <td style="background-color:white; width: 180px;"><code><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 Patch1</strong><br>
               **** Old ****<br>
           <font size="3">
@@ -209,7 +210,7 @@ Thanks to the large number of diverse open source projects available in software
              </td>
 
 
-          <td style="background-color:white; width: 230px;"><code><strong align="center">&nbsp;
+          <td style="background-color:white; width: 180px;"><code><strong align="center">&nbsp;
                 </strong><strong style="text-decoration: underline;" align="center"></strong></code><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <strong>Patch2</strong><br>
               **** Old ****<br>
@@ -251,23 +252,48 @@ Thanks to the large number of diverse open source projects available in software
 <a name="spa"></a>
 <h21>SPA: Detecting Copy-Paste Error</h21>
 
-<p>
-In order to automatically detect copy-paste errors, We investigated: (1) What are the common
-types of copy-paste errors? (2) How can they be automatically detected [ASE’13]? By analyzing
-the version histories of FreeBSD and Linux, We found five common types of copy-paste errors and
-then leveraging this categorization We designed a two-stage analysis technique to detect and
-characterize copy-paste errors. The first stage of the analysis, SPA, detects and categorizes
-inconsistencies in repetitive changes based on a static control and data dependence analysis.
-SPA successfully identifies copy-paste errors with 65% to 73% precision, an improvement by 14
-to 17 percentage points with respect to previous tools. The second stage of the analysis,
-SPA++, uses the inconsistencies computed by SPA to direct symbolic execution in order to
-generate program behaviors that are impacted by the inconsistencies. SPA++ further compares
-these program behaviors leveraging logical equivalence checking (implemented with z3 theorem
-prover) and generates test inputs that exercise program paths containing the reported
-inconsistencies. A case study shows that SPA++ can refine the results reported by SPA and help
-developers analyze copy-paste inconsistencies. We collaborated with researchers from NASA for
-this work.
-</p>
+<br>
+
+<table style="width:100%">
+  <tr>
+    <td>
+    <p>
+    To implement repetitive changes, developers usually copy code from an existing
+    implementation and then paste and adapt it to fit the new context. An incorrect adaptation
+    often leads to a copy-paste error. Such errors are quite common in practice—in the last 3
+    years 182 copy-paste errors were reported in Linux. 
+    <br>
+    In order to automatically detect copy-paste errors, We investigated: (1) What are the
+    common types of copy-paste errors? (2) How can they be automatically detected?  By
+    analyzing the version histories of FreeBSD and Linux, We found five common types of
+    copy-paste errors and then leveraging this categorization We designed a two-stage analysis
+    technique to detect and characterize copy-paste errors. The first stage of the analysis,
+    SPA, detects and categorizes inconsistencies in repetitive changes based on a static
+    control and data dependence analysis.  SPA successfully identifies copy-paste errors with
+    65% to 73% precision, an improvement by 14 to 17 percentage points with respect to previous
+    tools (<a href="Publication.html#paper-spa">see our ASE'13 paper</a>). 
+    <br>
+    The second stage of the analysis, SPA++, uses the inconsistencies computed by SPA to direct
+    symbolic execution in order to generate program behaviors that are impacted by the
+    inconsistencies.  SPA++ further compares these program behaviors leveraging logical
+    equivalence checking (implemented with z3 theorem prover) and generates test inputs that
+    exercise program paths containing the reported inconsistencies. A case study shows that
+    SPA++ can refine the results reported by SPA and help developers analyze copy-paste
+    inconsistencies. We collaborated with researchers from NASA for this work.
+    <!-- (<a href="Publication.html#paper-spa++">see our  paper</a>). -->
+    </p>
+    </td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td style="width:15%">
+      <!--<img src="images/spa.jpg" align="middle"  width="200px"> -->
+    <img src="images/spa1.jpg" width="360px">
+    <br>
+    <br>
+    <img src="images/spa2.jpg" width="360px">
+    </td> 
+  </tr>
+</table>
+
 
 <!-- Horizontal Line Starts -->	
 <div class="sf_extra7"><span></span></div>
@@ -280,24 +306,43 @@ this work.
 <a name="frank"></a>
 <h21>Frankencert: Adversarial Testing Framework</h21>
 
-<p>
-Nowadays in open software market, multiple software are available to users that provide similar
-functionality. For ex- ample, there exists a pool of popular SSL/TLS libraries (e.g., OpenSSL,
-GnuTLS, NSS, CyaSSL, GnuTLS, PolarSSL, MatrixSSL, etc.) for securing network connections from
-man-in-the-middle attacks. Certificate validation is a crucial part of SSL/TLS connection
-setup. Though implemented differently, the certificate validation logic of these different
-libraries should serve the same purpose, following the SSL/TLS protocol, i.e. for a given
-certificate, all of the libraries should ei- ther accept or reject it. In collaboration with
-security researchers at the University of Texas at Austin, we designed the first large-scale
-framework for testing certificate validation logic in SSL/TLS implementations. First, we
-generated millions of synthetic certificates by randomly mutating parts of real certificates
-and thus induced unusual combinations of exten- sions and constraints. A valid SSL
-implementation should be able to detect and reject the unusual mutants. Next, using a
-differential testing framework, we checked whether one SSL/TLS implementation accepts a
-certificate while another rejects the same certificate. We used such discrepancies as an oracle
-for finding flaws in individual implementations. We uncovered 208 discrepancies between popular
-SSL/TLS implementations, many of them are caused by serious security vulnerabilities [S&P’14].
-</p>
+<table style="width:100%">
+  <tr>
+    <td>
+      <p>
+      Nowadays in open software market, multiple software are available to users that
+      provide similar functionality. For ex- ample, there exists a pool of popular SSL/TLS
+      libraries (e.g., OpenSSL, GnuTLS, NSS, CyaSSL, GnuTLS, PolarSSL, MatrixSSL, etc.) for
+      securing network connections from man-in-the-middle attacks. Certificate validation is a
+      crucial part of SSL/TLS connection setup. Though implemented differently, the certificate
+      validation logic of these different libraries should serve the same purpose, following
+      the SSL/TLS protocol, i.e. for a given certificate, all of the libraries should either
+      accept or reject it. In collaboration with security researchers at the University of
+      Texas at Austin, we designed the first large-scale framework for testing certificate
+      validation logic in SSL/TLS implementations. First, we generated millions of synthetic
+      certificates by randomly mutating parts of real certificates and thus induced unusual
+      combinations of extensions and constraints. A valid SSL implementation should be able to
+      detect and reject the unusual mutants. Next, using a differential testing framework, we
+      checked whether one SSL/TLS implementation accepts a certificate while another rejects
+      the same certificate. We used such discrepancies as an oracle for finding flaws in
+      individual implementations. We uncovered 208 discrepancies between popular SSL/TLS
+      implementations, many of them are caused by serious security vulnerabilities (<a
+      href="Publication.html#paper-frank">see our S&P'14 paper</a>).
+    </p>
+    </td>
+    </td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td style="width:15%">
+      <!--<img src="images/spa.jpg" align="middle"  width="200px"> -->
+    <img src="images/fran.png" width="360px">
+    <br>
+    <br>
+    <img src="images/fran2.png" width="360px">
+    </td> 
+  </tr>
+</table>
+
+
 
 </div>
 <!-- ======================================================================================= -->
