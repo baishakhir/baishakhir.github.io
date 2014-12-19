@@ -42,4 +42,14 @@ $(document).ready(function(){
   $("#gpu_bib").click(function(){$("pl16").slideToggle(1000);});
   $("#gpu_sum").click(function(){$("pl17").slideToggle(1000);});
 
+  $("pl18").hide();
+  $("pl19").hide();
+  $("#assert_bib").click(function(){$("pl18").slideToggle(1000);});
+  $("#assert_sum").click(function(){$("pl19").slideToggle(1000);});
+
+  $("pl20").hide();
+  $("pl21").hide();
+  $("#gender_bib").click(function(){$("pl20").slideToggle(1000);});
+  $("#gender_sum").click(function(){$("pl21").slideToggle(1000);});
+
 });
