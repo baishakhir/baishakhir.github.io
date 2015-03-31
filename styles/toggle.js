@@ -52,4 +52,9 @@ $(document).ready(function(){
   $("#gender_bib").click(function(){$("pl20").slideToggle(1000);});
   $("#gender_sum").click(function(){$("pl21").slideToggle(1000);});
 
+  $("pl22").hide();
+  $("pl23").hide();
+  $("#msr_bib").click(function(){$("pl22").slideToggle(1000);});
+  $("#msr_sum").click(function(){$("pl23").slideToggle(1000);});
+
 });
