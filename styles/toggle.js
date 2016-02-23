@@ -57,4 +57,8 @@ $(document).ready(function(){
   $("#msr_bib").click(function(){$("pl22").slideToggle(1000);});
   $("#msr_sum").click(function(){$("pl23").slideToggle(1000);});
 
+  $("pl24").hide();
+  $("pl25").hide();
+  $("#natural_bib").click(function(){$("pl24").slideToggle(1000);});
+  $("#natural_sum").click(function(){$("pl25").slideToggle(1000);});
 });
