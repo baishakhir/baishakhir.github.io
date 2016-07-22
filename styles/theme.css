@@ -265,6 +265,10 @@ h1:after,
 	height:0;
 }
 
+.sf_content h11 {
+	font-size:17px;
+}
+
 .sf_content h21 {
 	font-size:16px;
 	color:#990033;  
