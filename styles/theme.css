@@ -237,6 +237,12 @@ h1:after,
 	margin:0px;
 }
 
+.sf_pagetitle h12 {
+	font-size:22px;
+	font-weight:bold;
+	margin:0px;
+	text-transform:none;
+}
 
 /**
  * ------------------------------------------------------------------
