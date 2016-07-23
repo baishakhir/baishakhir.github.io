@@ -9,43 +9,31 @@
 <meta property="og:url" content="./Projects.html">
 <meta http-equiv="Content-Location" content="Projects.html">
     
-<script src="./jquery.min.js"></script>  
-<script> 
-    $(function(){
-      $("#includedContent").load("webHeader.html"); 
-    });
-    
-    $(function(){
-      $("#includedFooter").load("Footer.html"); 
-    });
-
-    $(function(){
-      $("#includedHeader").load("Header.html"); 
-    });
-</script>
-<div id="includedHeader"></div>
+<script type="text/javascript" src="./header.js"></script>
 </head>
 
 <!-- Body Starts Here -->
-<body id="page_aeaa5037-ef3f-4b08-bede-d6afc3d8cf91" gram_dict="true">
+<body id="page_projects" gram_dict="true" style="display:none;">
 <div class="sf_outer_wrapper"><div class="sf_wrapper">
   
-    <div id="includedContent"></div>
-		<div class="sf_region4">
-			<div class="sf_pagetitle"><div style="display:block;"><h1>Research Projects</h1></div></div>
+    <script type="text/javascript" src="./webHeader.js"></script>
+    <div class="sf_region4">
+			<div class="sf_pagetitle">
+                <div style="display:block;">
+			    <h1>Research Projects</h1> 
+			</div>
+            </div>
 		</div>
 		
-		<div class="sf_extra6"><span></span></div>
-		<div class="sf_extra11"><span></span></div>
 		<div class="sf_main_wrapper">
-			<div class="sf_main">
-				<div class="sf_region6">
-					<div class="sf_content"><div class="LayoutContainer" style="display:block;"><div><div style="display:block;overflow:hidden;"><br>
-
+        <div class="sf_main">
+        <div class="sf_region6">
+        <div class="sf_content">
+        <div class="LayoutContainer" style="display:block;">
+        <div style="display:block;overflow:hidden;">
 
 <!-- ======================================================================================= -->
-<div style="color: #000000; font-size: 16px; font-style: normal; font-weight: normal; line-height: 1.5; text-align: justify;">
-<a name="gh"></a>
+
 <h21>GitHub Analysis</h21>
 <p>
 Thanks to the large number of diverse open source projects available in software forges such as GitHub, it becomes possible to evaluate some long-standing questions about software engineering practices. Each of these project repositories hosts source code along with entire evolution history, description, mailing lists, bug database, etc. I implemented a number of code analysis and text analysis tools to gather different metrics from GitHub project repositories. Then applying a series of advanced data analysis methods from machine learning, random networks, visualization, and regression analysis techniques, I shed some light on how to improve software quality and developers’ productivity.
@@ -295,18 +283,21 @@ Thanks to the large number of diverse open source projects available in software
 
 
 
-</div>
+
 <!-- ======================================================================= -->
-              </div> <!-- style="display:block -->
+   </div> <!-- style="display:block -->
                </div> <!-- LayoutContainer -->
               </div> <!-- sf_content -->
            </div> <!-- sf_region6 -->
           </div> <!-- sf_main -->
      </div> <!-- sf_main_wrapper -->
    
-    <div id="includedFooter"></div>
+    <script type="text/javascript" src="./footer.js"></script>
+
   </div><!-- /sf_wrapper -->
 </div><!-- /sf_outer_wrapper -->
+    
 
-</body>
-</html>
+<script type="text/javascript">	
+  document.getElementById("page_projects").style.display = "block";
+</script>
