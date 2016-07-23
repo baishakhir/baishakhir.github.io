@@ -1,36 +1,32 @@
 <html> 
   <head> 
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>  
-   <script> 
-    $(function(){
-      $("#includedContent").load("webHeader.html"); 
-    });
-    
-    $(function(){
-      $("#includedFooter").load("Footer.html"); 
-    });
-
-    $(function(){
-      $("#includedHeader").load("Header.html"); 
-    });
-    </script>
-
-<div id="includedHeader"></div>
+      <!-- <div id="includedHeader"></div>  -->
+      <script type="text/javascript" src="./header.js"></script>
 
 </head> 
 
-<body id="page_95518316-9517-45a4-ac3a-b44ad696eb4b" gram_dict="true">
-  
-  <div class="sf_outer_wrapper">
-  <div class="sf_wrapper">
-  <div id="includedContent"></div>
+<body id="test" style="display:none;" >
+ 
+      
+
+ <div class="sf_outer_wrapper">
+ <div class="sf_wrapper">
+<!-- <div id="includedContent"></div> -->
+     <script type="text/javascript" src="./webHeader.js"></script>
   <div class="sf_region4">
-	 <div class="sf_pagetitle">Test<div style="display:block;"></div>
+	 <div class="sf_pagetitle">Test<div style="display:none;"></div>
   </div>
-   <div id="includedFooter"></div>
+            <p>Foo</p> 
+  <!-- <div id="includedFooter"></div> -->
+    <script type="text/javascript" src="./footer.js"></script>
+   <script type="text/javascript" src="./footer.js"></script> 
    </div> 
    </div>
   
+    
+<script type="text/javascript">	
+  document.getElementById("test").style.display = "block";
+</script>
 
 </body> 
 </html>
