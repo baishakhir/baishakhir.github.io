@@ -1,0 +1,458 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0059)http://dolphin.ece.utexas.edu/research/Site/Repertoire.html -->
+<html lang="english"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Repertoire</title>
+    <meta content="Baishakhi Ray" name="author">
+    <meta content="A tool for studying the extent and charecteristics of cross-system porting in forked projects" name="description">
+    <meta content="software evolution, forking, porting, repetitive changes, code clones" name="keywords">
+  <style type="text/css"></style></head>
+  <body style="                background-color: white; margin:50px 50px; padding:0px;
+	text-align:center;" gram_dict="true"><div id="_GPL_e6a00_parent_div" style="position: absolute; top: 0px; left: 0px; width: 1px; height: 1px; z-index: 2147483647;"><object type="application/x-shockwave-flash" id="_GPL_e6a00_swf" data="http://cdncache-a.akamaihd.net/items/e6a00/storage.swf?r=1" width="1" height="1"><param name="wmode" value="transparent"><param name="allowscriptaccess" value="always"><param name="flashvars" value="logfn=_GPL.items.e6a00.log&amp;onload=_GPL.items.e6a00.onload&amp;onerror=_GPL.items.e6a00.onerror&amp;LSOName=gpl"></object></div>
+    <h1 align="center"><font color="#cc5500">Repertoire</font></h1>
+    <h3 align="center">A tool for studying the extent and characteristics of
+      cross-system porting in forked projects</h3>
+    <center><img src="./Repertoire_files/music-repertoire.jpg" height="200px" width="500px"></center>
+    <!-- <img src="./suman.JPG" HEIGHT="200px" WIDTH="200px" ALT="Suman's picture"><p> -->
+    <br>
+    <div style="text-align: justify;"> Repertoire detects repetitive and similar
+      edits among a group of program patches and it is based on <a target="_blank" href="http://www.ccfinder.net/ccfinderx.html">CCFinderX</a>.
+      Thus it can identify ported code from the program patches. Repertoire can
+      be used to evaluate repetitive work in similar products.&nbsp; You can
+      download Repertoire from <a target="_blank" href="https://github.com/seallab/RepertoireTool">https://github.com/seallab/RepertoireTool</a><br>
+      <br>
+      <meta charset="utf-8">
+      View a demo of Repertoire analyzing Emacs and X-Emacs :&nbsp; <a href="http://dolphin.ece.utexas.edu/research/Site/Repertoire_files/video.ogv">http://dolphin.ece.utexas.edu/Repertoire_files/video.ogv</a><br>
+    </div>
+    <br>
+    <hr>
+    <div style="text-align: left;">
+      <h2>Contents:</h2>
+      <ol>
+        <li><a href="http://dolphin.ece.utexas.edu/research/Site/Repertoire.html#recipe">How does Repertoire work?</a></li>
+        <li><a href="http://dolphin.ece.utexas.edu/research/Site/Repertoire.html#study">A case study of cross-system porting in the BSD
+            product family</a></li>
+        <li><a href="http://dolphin.ece.utexas.edu/research/Site/Repertoire.html#download">Downloads</a><br>
+        </li>
+        <li><a href="http://dolphin.ece.utexas.edu/research/Site/Repertoire.html#contact">People</a></li>
+        <li><a href="http://dolphin.ece.utexas.edu/research/Site/Repertoire.html#support">Support</a><br>
+        </li>
+      </ol>
+    </div>
+    <hr> <a name="recipe"></a>
+    <h3 style="text-align: left;"><strong>How does Repertoire work?</strong><strong></strong><strong><span style="font-weight: normal;"></span></strong></h3>
+    <div style="text-align: left;"><strong><span style="font-weight: normal;">Repertoire
+          works in the following steps:</span></strong><strong><span style="font-weight: normal;"></span></strong><br>
+    </div>
+    <div style="text-align: left;"><strong><span style="font-weight: normal;"></span></strong></div>
+    <strong><span style="font-weight: normal;"> <br>
+      </span></strong>
+    <table style="width: 1196px; height: 509px;" border="0">
+      <tbody>
+        <tr>
+          <td colspan="3" rowspan="1">
+            <h4 style="text-align: center;"><strong>Step 1</strong>. <em>Identify
+                similar edit contents using CCFinderX</em></h4>
+          </td>
+        </tr>
+        <tr>
+          <td style="width: 55%;">i. Create patches (program diff) from selected
+            programs, say Patch1<sub></sub> &amp; Patch2<sub></sub>. <br>
+            <br>
+            ii. Repertoire pre-processes <em>diff</em>-based patches (Patch1
+            and Patch2) to convert them into a CCFinderX compatible format. <br>
+            <br>
+            <code>./split.py Patch1 &gt; Patch1.c<!-- : output Patch1_old.c and
+              Patch1_new.c --><br>
+            </code><code>./split.py Patch2 &gt; Patch2.c<!-- : output Patch2_old.c and
+              Patch2_new.c</code> --><br>
+              <code>&nbsp;</code><br>
+              It removes symbols representing edit operation types, such as +
+              for added lines, - for deleted lines, and ! form modified lines.
+              It also removes other diff specific meta information such as
+              modification date, revision number etc. The mapping relationship <br>
+              between the original patch and .c files are stored in local
+              directory in cvs format.<br>
+              <br>
+            </code></td>
+          <td style="background-color: #eeeeee; width: 225px;"><code><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Patch1</strong><br>
+              **** Old ****<br>
+              L1&nbsp; for(i=0;i&lt;MAX;i++){ <br>
+              L2 ! x = array[i]+x; <br>
+              L3 ! y = foo(x); <br>
+              L4 - x = x-y; <br>
+              L5 } <br>
+              <br>
+              **** New **** <br>
+              L6&nbsp; for(i=0;i&lt;MAX;i++) { <br>
+              L7 +&nbsp; y = x+y; <br>
+              L8 !&nbsp; x = array[i]+x; <br>
+              L9 !&nbsp; y = foo(x,y); <br>
+              L10 }</code></td>
+          <td style="background-color: #eeeeee; width: 225px;"><code>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Patch2</strong><br>
+              **** Old ****<br>
+              L1 for(j=0;j&lt;MAX;j++) { <br>
+              L2 &nbsp; q = p + q;<br>
+              L3 ! q = array[j]+p; <br>
+              L4 ! p = foo1(q); <br>
+              L5 }<br>
+              <br>
+              **** New ****<br>
+              L6 for(j=0;j&lt;MAX;j++) { <br>
+              L7 &nbsp; q = p + q;<br>
+              L8 ! q = array[j] + q;<br>
+              L9 ! p = foo1(p,q);<br>
+              L10</code></td>
+        </tr>
+        <tr valign="top">
+          <td>iii.&nbsp; Run CCFinder on Patch1.c and Patch2.c (with minimum
+            token threshold 40)<br>
+            &nbsp; .<code>/ccfx d cpp -dn&nbsp; Patch1.c -is -dn Patch2.c -w
+              f-w-g+ -b 40 -o clone.ccfxd<br>
+              &nbsp;./ccfx p clone.ccfxd &gt; clone.txt</code><br>
+            &nbsp; <br>
+            iv. CCFinder finds following clones:&nbsp; (Repertoire removes clone
+            pairs from old and new context)<br>
+            <code>&nbsp;&nbsp; 1. Patch1.L2-L3&nbsp; Patch2.L3-L4&nbsp;&nbsp; <font color="red">(marked
+                in red)</font> <br>
+              &nbsp;&nbsp;&nbsp;&nbsp; ==&gt; line L2 to L3 of Patch1.c is clone
+              with line L3 to L4 of Patch2.c<br>
+              &nbsp;&nbsp; 2. Patch1.L6-L10&nbsp; Patch2.L6-L10</code>
+            &nbsp;&nbsp;&nbsp; <code><font color="green">(marked in green)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp; </font></code><code><font color="black">==&gt;
+                line L6 to L10 of Patch1.c is clone with line L6 to L10 of
+                Patch2.c</font></code> </td>
+          <td style="background-color: #eeeeee; width: 225px;"><code><strong style="text-decoration: underline;" align="center"><br>
+              </strong><strong align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong><strong style="text-decoration: underline;" align="center">Patch1.c</strong></code><br>
+            <code>L1 for(i=0;i&lt;MAX;i++){ <br>
+              L2&nbsp;<font color="red"> x = array[i]+x;</font> <br>
+              L3&nbsp;<font color="red"> y = foo(x); </font> <br>
+              L4&nbsp; x = x-y;&nbsp; <br>
+              L5 }</code><code><br>
+            </code><code>L6&nbsp; <font color="green">for(i=0;i&lt;MAX;i++){ </font><br>
+            </code><code>L7 &nbsp;<font color="green"> y = x+y;</font> <br>
+              L8 <font color="green">&nbsp; x = array[i]+x;</font><br>
+              L9 <font color="green">&nbsp; y = foo(x,y); </font><br>
+              L10<font color="green">}</font></code></td>
+          <td style="background-color: #eeeeee; width: 225px;"><code><strong style="text-decoration: underline;" align="center"><br>
+              </strong><strong align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong><strong style="text-decoration: underline;" align="center">Patch2.c</strong></code><br>
+            <code> L1 for(j=0;j&lt;MAX;j++){ <br>
+              L2 &nbsp; q = p + q;<br>
+              L3 &nbsp; <font color="red">q = array[j]+p;</font> <br>
+              L4 &nbsp; <font color="red">p = foo1(q);</font> <br>
+              L5 }</code><br>
+            <code>L6&nbsp; <font color="green">for(j=0;j&lt;MAX;j++){ </font><br>
+              L7 <font color="green">&nbsp; q = p + q; </font><br>
+              L8 <font color="green">&nbsp; q = array[j] + q; </font><br>
+              L9 <font color="green">&nbsp; p = foo1(p,q);</font><br>
+              L10<font color="green">}</font></code><code><br>
+            </code> <strong><span style="font-weight: normal;"></span></strong></td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <br>
+    <!--
+    <table style="width: 1080px; height: 288px;" border="0">      <tbody>        <tr>          <td colspan="3" rowspan="1">            <h4 style="text-align: center;"><strong>Step 2</strong>. <em>Retrieve                edit operation sequences from the cloned region<br>              </em></h4>          </td>        </tr>        <tr>          <td style="width: 55%; height: 54px;">v.&nbsp; Repertoire maps the            CCFinder outputs back to the original patches' contexts from the            mapping information stored in the cvs files. Mapped outputs between            patch Px and Py are:<br>            <code>&nbsp;&nbsp; 1. &nbsp; Patch1.L2-L3&nbsp;              Patch2.L3-L4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="red">(marked                in red)</font><br>              &nbsp;&nbsp; 2. &nbsp; Patch1.L6-L10 Patch2.L6-L10</code>            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <code><font color="green">(marked                in green)</font></code><br>            <br>            vi. edit operation sequences between cloned regions: <code></code><br>            <code><br>              Clone 1. edit operations of&nbsp; Px.L2-L3 = (!!)<br>              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; edit operations              of&nbsp; </code><code>Py.L3-L4 = (!!)<br>              <br>              Clone 2. edit operations of&nbsp; </code><code>Px.L6-L10 =              (n+!!n)</code> ,&nbsp; <span style="font-family: monospace;"></span><code>n              = unchanged lines</code><br>            <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; edit              operations of&nbsp; </code><code>Py.L6-L10 = (nn!!n)&nbsp; </code><br>            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; <code><br>            </code></td>          <td style="background-color: #eeeeee; width: 225px;"><code><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                Patch1</strong><br>              **** Old ****<br>              L1&nbsp; for(i=0;i&lt;MAX;i++){ <br>              L2 <font color="red">! x = array[i]+x; </font><br>              L3 <font color="red">! y = foo(x); </font> <br>              L4 - x = x-y; <br>              L5 } <br>              <br>              **** New **** <br>              L6&nbsp; <font color="green"> for(i=0;i&lt;MAX;i++) { </font> <br>              L7 <font color="green">+&nbsp; y = x+y; </font><br>              L8 <font color="green">!&nbsp; x = array[i]+x; </font> <br>              L9 <font color="green">!&nbsp; y = foo(x,y); </font><br>              L10 <font color="green">}</font></code><code><font color="green"></font></code></td>          <td style="background-color: #eeeeee; width: 225px;"><code><strong align="center">&nbsp;                </strong><strong style="text-decoration: underline;" align="center"></strong></code><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;              <strong>Patch2</strong><br>              **** Old ****<br>              L1 for(j=0;j&lt;MAX;j++) { <br>              L2 &nbsp; q = p + q;<br>              L3 <font color="red">! q = array[j]+p; </font> <br>              L4 <font color="red">! p = foo1(q); </font><br>              L5 }<br>              <br>              **** New ****<br>              L6 <font color="green"> for(j=0;j&lt;MAX;j++) { </font> <br>              L7 <font color="green">&nbsp; q = p + q;</font><br>              L8 <font color="green">! q = array[j] + q;</font><br>              L9 <font color="green">! p = foo1(p,q);</font><br>              L10 <font color="green">}</font></code><code> </code></td>        </tr>      </tbody>    </table>-->
+    <br>
+    <br>
+    <table style="width: 1204px; height: 321px;" border="0">
+      <tbody>
+        <tr>
+          <td colspan="3" rowspan="1">
+            <h4 style="text-align: center;"><strong>Step 2</strong>. <em>Identify
+                similar edit operation sequences<br>
+              </em></h4>
+          </td>
+        </tr>
+        <tr>
+          <td style="width: 55%; height: 54px;">v. Repertoire identifies the
+            edit operation sequences for each cloned region.<br>
+            &nbsp;&nbsp;&nbsp; <code>Clone 1. edit operations sequences of line
+              L2 to L3 of Patch1 are <em>"!!"<br>
+              </em></code><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              edit operations sequences of line L3 to L4 of Patch2 are <em>"!!"</em></code><br>
+            <code><em></em> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code><br>
+              &nbsp; Clone 2. edit operations sequences of line </code><code>L6
+              to L10 of Patch1 are <em>"+!!" </em></code><code></code><br>
+            <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              edit operations sequences of line </code><code>L6 to L10 of
+              Patch2 are <em>"!!"</em></code><br>
+            <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><br>
+            vi.&nbsp; Repertoire now identifies similar edit sequences using
+            bi-gram matching of the edit operations from identified cloned
+            regions:<br>
+            <code>&nbsp;&nbsp; 1. Patch1.L2-L3&nbsp;
+              Patch2.L3-L4&nbsp;&nbsp;&nbsp; <font color="red">(marked in red)</font>
+              <br>
+            </code><code>&nbsp;&nbsp;&nbsp;&nbsp; ==&gt; line L2 to L3 of Patch1
+              changed similarly as line L3 to L4 of Patch2.</code><code><br>
+              &nbsp;&nbsp; 2. Patch1.L8-L9&nbsp; Patch2.L8-L9&nbsp;</code>
+            &nbsp;&nbsp;&nbsp;&nbsp; <code><font color="green">(marked in
+                green)</font></code><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <code>==&gt; line
+              L8 to L9 of Patch1 changed similarly as line L8 to L9 of Patch2.</code><code><br>
+            </code><br>
+            <br>
+            <!--
+            vi. Steps v and vi are executed by script:<br>            <code>-./compMetric.py version(old/new) clone.txt <br>              &nbsp;(0 for old version, 1 for new version) <br>              -./compMetric.py 0 clone.txt &gt; rep_old.txt<br>              -./compMetric.py 1 clone.txt &gt; rep_new.txt<br>              <br>            </code> <br> -->
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; <code><br>
+            </code></td>
+          <td style="background-color: #eeeeee; width: 225px;"><code><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Patch1</strong><br>
+              **** Old ****<br>
+              L1&nbsp; for(i=0;i&lt;MAX;i++){ <br>
+              L2 <font color="red">! x = array[i]+x; </font><br>
+              L3 <font color="red">! y = foo(x); </font> <br>
+              L4 - x = x-y; <br>
+              L5 } <br>
+              <br>
+              **** New **** <br>
+              L6&nbsp; for(i=0;i&lt;MAX;i++) { <br>
+              L7 +&nbsp; y = x+y; <br>
+              L8 <font color="green">!&nbsp; x = array[i]+x; </font> <br>
+              L9 <font color="green">!&nbsp; y = foo(x,y); </font><br>
+              L10 }</code><code><font color="green"></font></code></td>
+          <td style="background-color: #eeeeee; width: 225px;"><code><strong align="center">&nbsp;
+                </strong><strong style="text-decoration: underline;" align="center"></strong></code><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <strong>Patch2</strong><br>
+              **** Old ****<br>
+              L1 for(j=0;j&lt;MAX;j++) { <br>
+              L2 &nbsp; q = p + q;<br>
+              L3 <font color="red">! q = array[j]+p; </font> <br>
+              L4 <font color="red">! p = foo1(q); </font><br>
+              L5 }<br>
+              <br>
+              **** New ****<br>
+              L6 for(j=0;j&lt;MAX;j++) { <br>
+              L7 &nbsp; q = p + q;<br>
+              L8 <font color="green">! q = array[j] + q;</font><br>
+              L9 <font color="green">! p = foo1(p,q);</font><br>
+              L10 }</code><code> </code></td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <hr> <br>
+    <br>
+    <a name="study"></a> <strong><span style="font-weight: normal;">
+        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <br>
+      </span></strong>
+    <div style="text-align: left;">
+      <h3><a href="file:///Users/bray/Dropbox/repertoire.html#study"></a>A case
+        study of cross-system porting in BSD product family</h3>
+      <strong><span style="font-weight: normal;"></span></strong></div>
+    <strong><span style="font-weight: normal;"> </span></strong>
+    <p style="text-align: left;"> Using Repertoire, we investigated the
+      characteristics of ported changes in the BSD product family (FreeBSD,
+      NetBSD and OpenBSD) and assessed the overhead of maintaining these forked
+      products in parallel. </p>
+    <ul class="disc">
+      <li>
+        <div style="text-align: left;"> Inputs to Repertoire: </div>
+        <ul>
+          <li style="text-align: left;">FreeBSD <a href="http://dolphin.ece.utexas.edu/research/Site/rep/freebsd-diffs.tar.gz">patches</a>
+            from release 2.0.5 to 8.2</li>
+          <li style="text-align: left;">NetBSD <a href="http://dolphin.ece.utexas.edu/research/Site/rep/netbsd-diffs.tar.gz">patches</a>
+            from release 0.9 to 5.1</li>
+          <li style="text-align: left;">OpenBSD <a href="http://dolphin.ece.utexas.edu/research/Site/rep/openbsd-diffs.tar.gz">patches</a>
+            from release 2.0 to 5.0</li>
+        </ul>
+      </li>
+      <li style="text-align: left;"> The Repertoire outputs for token threshold
+        40 can be found <a href="http://dolphin.ece.utexas.edu/research/Site/rep/rep-output.tar.gz">here</a>.</li>
+    </ul>
+    <ol>
+      <table style="width: 710px; height: 481px;" border="1">
+        <caption>An example of cross-system porting found by Repertoire</caption>
+        <tbody>
+          <tr>
+            <td style="width: 50%;">A segment of FreeBSD patch<br>
+              Location: rsrc/sys/dev/mii/rgephy.c revision 1.20<br>
+              Change Log: Add RTL8211C(L) support. Disable advanced link-down
+              power saving in phy reset<br>
+              Date: 2008/07/02<br>
+            </td>
+            <td style="width: 50%;">A segment of NetBSD patch<br>
+              Location: src/sys/dev/mii/rgephy.c; revision 1.23<br>
+              Change Log: Support for RTL8211C(L) phy from FreeBSD<br>
+              Date: 2009/01/09<br>
+            </td>
+          </tr>
+          <tr valign="top">
+            <td style="background-color: #eeeeee; height: 200px; width: 400px;">
+              <p style="margin: 0px; text-indent: 0px;"><!--StartFragment--> </p>
+              <p style="margin: 0px; text-indent: 0px;"><!--StartFragment--><code>---
+                  531,548 ----</code></p>
+              <p style="margin: 0px; text-indent: 0px;"><code>rgephy_reset(struct
+mii_softc
+                  *sc)</code></p>
+              <p style="margin: 0px; text-indent: 0px;"><code>&nbsp;{</code></p>
+              <p style="margin: 0px; text-indent: 0px;"><code>+ struct
+                  rgephy_softc *rsc;</code></p>
+              <p style="margin: 0px; text-indent: 0px;"><code>+ uint16_t ssr;</code></p>
+              <p style="margin: 0px; text-indent: 0px;"><code>+</code></p>
+              <p style="margin: 0px; text-indent: 0px;"><code>+ rsc = (struct
+                  rgephy_softc *)sc;</code></p>
+              <font color="red">
+                <p style="margin: 0px; text-indent: 0px;"><code>+ if
+                    (rsc-&gt;mii_revision == 3) {</code></p>
+                <p style="margin: 0px; text-indent: 0px;"><code>+ /* RTL8211C(L)
+                    */]</code></p>
+                <p style="margin: 0px; text-indent: 0px;"><code>+ ssr =
+                    PHY_READ(sc, RGEPHY_MII_SSR);</code></p>
+                <p style="margin: 0px; text-indent: 0px;"><code>+ if ((ssr &amp;
+                    RGEPHY_SSR_ALDPS) != 0) {</code></p>
+                <p style="margin: 0px; text-indent: 0px;"><code>+ ssr &amp;=
+                    ~RGEPHY_SSR_ALDPS;</code></p>
+                <p style="margin: 0px; text-indent: 0px;"><code>+ PHY_WRITE(sc,
+                    RGEPHY_MII_SSR, ssr);</code></p>
+                <p style="margin: 0px; text-indent: 0px;"><code>+ }</code></p>
+              </font>
+              <p style="margin: 0px; text-indent: 0px;"><code>+ }</code></p>
+              <p style="margin: 0px; text-indent: 0px;"><code><br>
+                </code></p>
+              <p style="margin: 0px; text-indent: 0px;"><code>+
+                  mii_phy_reset(sc);</code></p>
+              <p style="margin: 0px; text-indent: 0px;"><code>+ DELAY(1000);</code></p>
+              <p style="margin: 0px; text-indent: 0px;"><code>}</code><br>
+                <!--EndFragment--></p>
+            </td>
+            <td style="background-color: #eeeeee; height: 200px; width: 400px;">
+              <p style="margin: 0px; text-indent: 0px;"> </p>
+              <p style="margin: 0px; text-indent: 0px;"><!--StartFragment--><code>---
+                  585,606 ----</code></p>
+              <p style="margin: 0px; text-indent: 0px;"><code>&nbsp;rgephy_reset(struct
+mii_softc
+                  *sc)</code></p>
+              <p style="margin: 0px; text-indent: 0px;"><code>&nbsp;{</code></p>
+              <p style="margin: 0px; text-indent: 0px;"><code>&nbsp;&nbsp;&nbsp;
+                  struct rgephy_softc *rsc;</code></p>
+              <p style="margin: 0px; text-indent: 0px;"><code>&nbsp;+ uint16_t
+                  ssr;</code></p>
+              <p style="margin: 0px; text-indent: 0px;"><code>&nbsp;&nbsp;
+                  mii_phy_reset(sc);</code></p>
+              <p style="margin: 0px; text-indent: 0px;"><code>&nbsp;&nbsp;
+                  DELAY(1000);</code></p>
+              <p style="margin: 0px; text-indent: 0px;"><code>&nbsp;&nbsp; rsc =
+                  (struct rgephy_softc *)sc;</code></p>
+              <p style="margin: 0px; text-indent: 0px;"><code><br>
+                </code></p>
+              <p style="margin: 0px; text-indent: 0px;"><code>! if
+                  (rsc-&gt;mii_revision &lt; 2) {</code></p>
+              <p style="margin: 0px; text-indent: 0px;"><code>&nbsp;&nbsp;&nbsp;
+                  rgephy_load_dspcode(sc);</code></p>
+              <font color="red">
+                <p style="margin: 0px; text-indent: 0px;"><code>! } else if
+                    (rsc-&gt;mii_revision == 3) {</code></p>
+                <p style="margin: 0px; text-indent: 0px;"><code>! /* RTL8211C(L)
+                    */</code></p>
+                <p style="margin: 0px; text-indent: 0px;"><code>! ssr =
+                    PHY_READ(sc, RGEPHY_MII_SSR);</code></p>
+                <p style="margin: 0px; text-indent: 0px;"><code>! if ((ssr &amp;
+                    RGEPHY_SSR_ALDPS) != 0) {</code></p>
+                <p style="margin: 0px; text-indent: 0px;"><code>! ssr &amp;=
+                    ~RGEPHY_SSR_ALDPS;</code></p>
+                <p style="margin: 0px; text-indent: 0px;"><code>! PHY_WRITE(sc,
+                    RGEPHY_MII_SSR, ssr);</code></p>
+                <p style="margin: 0px; text-indent: 0px;"><code>! }</code></p>
+              </font>
+              <p style="margin: 0px; text-indent: 0px;"><code>! } else {</code></p>
+              <p style="margin: 0px; text-indent: 0px;"><code><br>
+                </code> </p>
+              <p style="margin: 0px; text-indent: 0px;"><code>&nbsp;PHY_WRITE(sc,
+0x1F,
+                  0x0000);</code></p>
+              <p style="margin: 0px; text-indent: 0px;"><code>&nbsp;PHY_WRITE(sc,
+0x0e,
+                  0x0000);</code></p>
+              <p style="margin: 0px; text-indent: 0px;"><code>}</code></p>
+              <p style="margin: 0px; text-indent: 0px;"><br>
+                <!--EndFragment--></p>
+              <p style="margin: 0px; text-indent: 0px;"><!--EndFragment--></p>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" rowspan="1"><code>ported edits are colored in red.
+                Example shows similar edits in different contexts.</code><br>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </ol>
+    <strong> </strong>
+    <div style="text-align: left;"> <strong><br>
+        Extent of ported edits:<br>
+      </strong><span style="font-weight: bold;"></span>In BSD family evolution
+      porting contains a significant portion. Porting rates are around 14%, 16%,
+      and 11% in FreeBSD, NetBSD,&nbsp; and OpenBSD.<br>
+      Our porting rate analysis script and associated results on each BSD
+      release can be found at:<br>
+      <a href="http://dolphin.ece.utexas.edu/research/Site/rep/porting.tar.gz">http://dolphin.ece.utexas.edu/research/Site/rep/porting.tar.gz</a>.<br>
+      <br>
+      <strong>Number of developers involved in porting:<br>
+      </strong>A significant portion (26% in FreeBSD,&nbsp; 58.85% in NetBSD,
+      and 44.85% in OpenBSD) of active committers port changes from other
+      projects. <br>
+      The analysis scripts that we use to generate the statistics on developers
+      are available at:<br>
+      <a href="http://dolphin.ece.utexas.edu/research/Site/rep/developer.tar.gz"></a><a href="http://dolphin.ece.utexas.edu/research/Site/rep/developer.tar.gz">http://dolphin.ece.utexas.edu/research/Site/rep/developer.tar.gz</a>.
+      <strong></strong><strong><br>
+        <br>
+        Spatial distribution of ported edits:<br>
+      </strong>Porting is concentrated on specific parts of BSD family.<strong>
+      </strong>Scripts and detailed results are available at:<br>
+      &nbsp;<a href="http://dolphin.ece.utexas.edu/research/Site/rep/filedist.tar.gz">http://dolphin.ece.utexas.edu/research/Site/rep/filedist.tar.gz</a>.
+      <strong><br>
+        <br>
+        <br>
+      </strong> </div>
+    <hr> <a name="download"></a>
+    <h3 style="text-align: left;">Downloads:</h3>
+    <ol style="text-align: left;">
+      <li>The tool: <a target="_blank" href="https://github.com/seallab/RepertoireTool">https://github.com/seallab/RepertoireTool</a></li>
+      <li>BSD input patches: <a href="http://dolphin.ece.utexas.edu/research/Site/rep/bsd.tar.gz">http://dolphin.ece.utexas.edu/research/Site/rep/bsd.tar.gz</a></li>
+      <li>Repertoire output for BSD patches at token size 40: <a href="http://dolphin.ece.utexas.edu/research/Site/rep/rep-output.tar.gz">http://dolphin.ece.utexas.edu/research/Site/rep/rep-output.tar.gz</a></li>
+      <li>Porting rate analysis results: <a href="http://dolphin.ece.utexas.edu/research/Site/rep/porting.tar.gz">http://dolphin.ece.utexas.edu/research/Site/rep/porting.tar.gz</a></li>
+      <li>Developer's statistics: <a href="http://dolphin.ece.utexas.edu/research/Site/rep/developer.tar.gz">http://dolphin.ece.utexas.edu/research/Site/rep/developer.tar.gz</a></li>
+      <li>File distribution analysis: <a href="http://dolphin.ece.utexas.edu/research/Site/rep/filedist.tar.gz">http://dolphin.ece.utexas.edu/research/Site/rep/filedist.tar.gz</a></li>
+    </ol>
+    <p><br>
+    </p>
+    <hr> <a name="contact"></a>
+    <h3 style="text-align: left;">People:<br>
+    </h3>
+    <div style="text-align: left;">
+      <ul>
+        <li><a target="_blank" href="http://dolphin.ece.utexas.edu/research/Site/index.html">Baishakhi
+            Ray</a> (graduate student)<br>
+        </li>
+        <li><a target="_blank" href="http://users.ece.utexas.edu/~miryung/index.html">Miryung
+            Kim</a>&nbsp; (faculty)<br>
+        </li>
+      </ul>
+    </div>
+    <p> </p>
+    <hr><br>
+    <a name="support"></a>
+    <h3 style="text-align: left;">Support:</h3>
+    <div style="text-align: left;">This work is in part supported by National
+      Science Foundation under grants CCF-1149391, CCF-1043810, and CCF-1117902,
+      and by a Microsoft SEIF award.<br>
+      Detailed Funding information are available at <a href="http://users.ece.utexas.edu/~miryung/funding.html">http://users.ece.utexas.edu/~miryung/funding.html</a><br>
+    </div>
+    <p> </p>
+    <hr><br>
+    <div style="text-align: left;">For any information regarding the
+      tool/analysis please contact: <a href="mailto:rayb@utexas.edu">Baishakhi
+        Ray</a> <br>
+    </div>
+  
+
+
+</body><div class="gr-context gr-dict gr-context-loader gr-dict-freemium" style="display: none;"><span class="gr-triangle"></span><div class="gr-placeholder"></div><a href="http://www.grammarly.com/?utm_source=dict&utm_medium=link&utm_campaign=chrome_plg" target="_blank" class="gr-hint-settings"></a><strong class="gr-title"></strong><div class="gr-dict-content"></div></div><div class="b-freemium-editor" style="display: none;"><div class="b-freemium-editor-back"></div><iframe class="gr-freemium-ifr"></iframe></div></html>
