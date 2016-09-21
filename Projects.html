@@ -1,0 +1,303 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0033)./Projects.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<title>Baishakhi Ray: Projects</title>
+<meta property="og:title" content="Projects">
+<meta name="title" content="Projects">
+<meta property="og:url" content="./Projects.html">
+<meta http-equiv="Content-Location" content="Projects.html">
+    
+<script type="text/javascript" src="./header.js"></script>
+</head>
+
+<!-- Body Starts Here -->
+<body id="page_projects" gram_dict="true" style="display:none;">
+<div class="sf_outer_wrapper"><div class="sf_wrapper">
+  
+    <script type="text/javascript" src="./webHeader.js"></script>
+    <div class="sf_region4">
+			<div class="sf_pagetitle">
+                <div style="display:block;">
+			    <h1>Research Projects</h1> 
+			</div>
+            </div>
+		</div>
+		
+		<div class="sf_main_wrapper">
+        <div class="sf_main">
+        <div class="sf_region6">
+        <div class="sf_content">
+        <div class="LayoutContainer" style="display:block;">
+        <div style="display:block;overflow:hidden;">
+
+<!-- ======================================================================================= -->
+
+<h21>GitHub Analysis</h21>
+<p>
+Thanks to the large number of diverse open source projects available in software forges such as GitHub, it becomes possible to evaluate some long-standing questions about software engineering practices. Each of these project repositories hosts source code along with entire evolution history, description, mailing lists, bug database, etc. I implemented a number of code analysis and text analysis tools to gather different metrics from GitHub project repositories. Then applying a series of advanced data analysis methods from machine learning, random networks, visualization, and regression analysis techniques, I shed some light on how to improve software quality and developers’ productivity.
+</p>
+
+<ul style="list-style-type:square">
+
+  <li>
+  <strong>Effect of programming languages on software quality.</strong> To investigate whether
+  a programming language is the right tool for the job, we gathered a very large data set from
+  GitHub (728 projects, 63M lines of code, 29K authors, 1.5M commits, in 17 languages). Using a
+  mixed-methods approach, combining multiple regression modeling with visualization and text
+  analytics, we studied the effect of language features such as static v.s. dynamic typing,
+  strong v.s. weak typing on software quality. By triangulating findings from different
+  methods, and controlling for confounding effects such as code size, project age, and
+  contributors, we observed that a language design choice does have a significant, but modest
+  effect on software quality (<a href="Publication.html#paper-lang">see our FSE'14 paper</a>).
+  </li>
+  <br>
+  <li>
+  <strong>API stability and adoption in the Android Ecosystem.</strong> In today’s software
+  ecosystem, which is primarily governed by web, cloud, and mobile technologies, APIs perform a
+  key role to connect disparate software. Big players like Google, FaceBook, Microsoft
+  aggressively publish new APIs to accommodate new feature requests, bugs fixes, and
+  performance improvements. We investigated how such fast paced API evolution affects the
+  overall software ecosystem? Our study on Android API evolution showed that the developers are
+  hesitant to adopt fast evolving, unstable APIs. For instance, while Android updates 115 APIs
+  per month on average, clients adopt the new APIs rather slowly, with a median
+  lagging period of 16 months. Furthermore, client code with new APIs is typically more defect
+  prone than the ones without API adaptation. To the best of my knowledge, this is the first
+  work studying API adoption in a large software ecosystem, and the study suggests how to
+  promote API adoption and how to facilitate growth of the overall ecosystems 
+  (<a href="Publication.html#paper-android">see our ICSM'13 paper</a>).
+   </li>
+  <br>
+   <li>
+   <strong>Assert Use in GitHub Projects.</strong>
+   Assertions in a program are believed to improve software quality. We conducted a large scale
+   study on how developers typically use assertions in C and C++ code and showed that they play
+   positive role in improving code quality. We further characterized assertion usage along
+   different process and product metrics. Such detailed characterization of assertions will
+   help to predict relevant locations of useful assertions and eventually will improve code
+   quality (<a href="Publication.html#paper-assert">see our ICSE'15 paper</a>). 
+   </li>
+</ul>
+<!--In another study, I and my colleagues studied gender and tenure diversity in online programming teams and found that both gender and tenure diversity are positive and significant predictors of productivity. These results can inform decision-making on all levels, leading to better outcomes in recruiting and performance [UCTRb’14].
+-->
+
+<!-- Horizontal Line Starts -->	
+<div class="sf_extra7"><span></span></div>
+<div class="sf_region9">
+<div class="sf_footer"><div style="display:block;"></div></div>
+</div>
+<div class="sf_extra8"><span></span></div>
+<!-- Horizontal Line Ends -->
+
+<a name="rep"></a>
+<h21>Cross-System Porting Analysis</h21>
+
+    <table border="0">
+      <tbody>
+      <tr>
+          <td>
+            <p>
+            To maintain different variants of the same projects, developers often port similar
+            features or bug-fixes from one system to another.  This requires lot of repeated
+              work, which is often tedious and error-prone.  To automatically identify the
+              repeated work, we designed <a href="Repertoire.html"
+                target="_blank">Repertoire</a>, an source code change analysis tool that
+              compares the edit contents and the corresponding operations of program patches to
+              identify similar changes. Repertoire identifies repetitive changes with 94%
+              precision and 84% recall (<a href="Publication.html#paper-rep">see our FSE'12
+              tool-demo paper</a>). 
+            <br>
+            Using Repertoire, we showed that a significant amount duplicate work takes place
+            across the BSD product family.  In each BSD release, on average, more than twelve
+              thousand lines are ported from peer projects, and more than 25% of active
+                developers participate in cross-system porting in each release (<a
+                  href="Publication.html#paper-bsd">see our FSE'12 paper</a>).
+            <br>
+     
+            
+          </p>
+          </td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td style="background-color:white; width: 180px;"><code><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Patch1</strong><br>
+              **** Old ****<br>
+          <font size="3">
+              L1&nbsp; for(i=0;i&lt;MAX;i++){ <br>
+              L2 <font color="red">! x = array[i]+x; </font><br>
+              L3 <font color="red">! y = foo(x); </font><br>
+              L4 - x = x-y; <br>
+              L5 } <br>
+              <br>
+              **** New **** <br>
+              L6&nbsp; for(i=0;i&lt;MAX;i++) { <br>
+              L7 +&nbsp; y = x+y; <br>
+              L8 <font color="green">!&nbsp; x = array[i]+x; </font> <br>
+              L9 <font color="green">!&nbsp; y = foo(x,y); </font><br>
+              L10 }</code><code><font color="green"></font></code>
+          </font>
+          
+             </td>
+
+
+          <td style="background-color:white; width: 180px;"><code><strong align="center">&nbsp;
+                </strong><strong style="text-decoration: underline;" align="center"></strong></code><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <strong>Patch2</strong><br>
+              **** Old ****<br>
+          <font size="3">
+              L1 for(j=0;j&lt;MAX;j++) { <br>
+              L2 &nbsp; q = p + q;<br>
+              L3 <font color="red">! q = array[j]+p; </font> <br>
+              L4 <font color="red">! p = foo1(q); </font><br>
+              L5 }<br>
+              <br>
+              **** New ****<br>
+              L6 for(j=0;j&lt;MAX;j++) { <br>
+              L7 &nbsp; q = p + q;<br>
+              L8 <font color="green">! q = array[j] + q;</font><br>
+              L9 <font color="green">! p = foo1(p,q);</font><br>
+              L10 }</code><code> </code>
+          </font>
+          
+          </td>
+
+        </tr>
+      <tr>
+      <td>These results confirmed that the overhead of repetitive changes is non-trivial and 
+        suggests that automated tools would be helpful to facilitate the process.
+        <br>
+      Check out the code @ <a href="https://github.com/baishakhir/RepertoireTool" target="_blank">
+              https://github.com/baishakhir/RepertoireTool</a>
+
+      </td>
+      <th></th>
+      <th colspan="2"; align="center">Identifying Repetitive Changes</th>
+      </tr>
+      </tbody>
+    </table>
+
+<!-- Horizontal Line Starts -->	
+<div class="sf_extra7"><span></span></div>
+<div class="sf_region9">
+<div class="sf_footer"><div style="display:block;"></div></div>
+</div>
+<div class="sf_extra8"><span></span></div>
+<!-- Horizontal Line Ends -->
+
+<a name="spa"></a>
+<h21>SPA: Detecting Copy-Paste Error</h21>
+
+<br>
+
+<table style="width:100%">
+  <tr>
+    <td>
+    <p>
+    To implement repetitive changes, developers usually copy code from an existing
+    implementation and then paste and adapt it to fit the new context. An incorrect adaptation
+    often leads to a copy-paste error. Such errors are quite common in practice—in the last 3
+    years 182 copy-paste errors were reported in Linux. 
+    <br>
+    In order to automatically detect copy-paste errors, We investigated: (1) What are the
+    common types of copy-paste errors? (2) How can they be automatically detected?  By
+    analyzing the version histories of FreeBSD and Linux, We found five common types of
+    copy-paste errors and then leveraging this categorization We designed a two-stage analysis
+    technique to detect and characterize copy-paste errors. The first stage of the analysis,
+    SPA, detects and categorizes inconsistencies in repetitive changes based on a static
+    control and data dependence analysis.  SPA successfully identifies copy-paste errors with
+    65% to 73% precision, an improvement by 14 to 17 percentage points with respect to previous
+    tools (<a href="Publication.html#paper-spa">see our ASE'13 paper</a>). 
+    <br>
+    The second stage of the analysis, SPA++, uses the inconsistencies computed by SPA to direct
+    symbolic execution in order to generate program behaviors that are impacted by the
+    inconsistencies.  SPA++ further compares these program behaviors leveraging logical
+    equivalence checking (implemented with z3 theorem prover) and generates test inputs that
+    exercise program paths containing the reported inconsistencies. A case study shows that
+    SPA++ can refine the results reported by SPA and help developers analyze copy-paste
+    inconsistencies. We collaborated with researchers from NASA for this work.
+    <!-- (<a href="Publication.html#paper-spa++">see our  paper</a>). -->
+    </p>
+    </td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td style="width:15%">
+      <!--<img src="images/spa.jpg" align="middle"  width="200px"> -->
+    <img src="images/spa1.jpg" width="360px">
+    <br>
+    <br>
+    <img src="images/spa2.jpg" width="360px">
+    </td> 
+  </tr>
+</table>
+
+
+<!-- Horizontal Line Starts -->	
+<div class="sf_extra7"><span></span></div>
+<div class="sf_region9">
+<div class="sf_footer"><div style="display:block;"></div></div>
+</div>
+<div class="sf_extra8"><span></span></div>
+<!-- Horizontal Line Ends -->
+
+<a name="frank"></a>
+<h21>Frankencerts: Adversarial SSL/TLS Testing Framework</h21>
+
+<table style="width:100%">
+  <tr>
+    <td>
+      <p>
+      Nowadays in open software market, multiple software are available to users that
+      provide similar functionality. For example, there exists a pool of popular SSL/TLS
+      libraries (e.g., OpenSSL, GnuTLS, NSS, CyaSSL, GnuTLS, PolarSSL, MatrixSSL, etc.) for
+      securing network connections from man-in-the-middle attacks. Certificate validation is a
+      crucial part of SSL/TLS connection setup. Though implemented differently, the certificate
+      validation logic of these different libraries should serve the same purpose, following
+      the SSL/TLS protocol, i.e. for a given certificate, all of the libraries should either
+      accept or reject it. 
+      <br>
+      In collaboration with security researchers at the University of
+      Texas at Austin, we designed the first large-scale framework for testing certificate
+      validation logic in SSL/TLS implementations. First, we generated millions of synthetic
+      certificates by randomly mutating parts of real certificates and thus induced unusual
+      combinations of extensions and constraints. A valid SSL implementation should be able to
+      detect and reject the unusual mutants. Next, using a differential testing framework, we
+      checked whether one SSL/TLS implementation accepts a certificate while another rejects
+      the same certificate. We used such discrepancies as an oracle for finding flaws in
+      individual implementations. We uncovered 208 discrepancies between popular SSL/TLS
+      implementations, many of them are caused by serious security vulnerabilities (<a
+      href="Publication.html#paper-frank">see our S&P'14 paper</a>).
+    <br>
+    Check out the code @ <a href="https://github.com/sumanj/frankencert" target="_blank">https://github.com/sumanj/frankencert</a>
+    </p>
+    </td>
+    </td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td>
+      <!--<img src="images/spa.jpg" align="middle"  width="200px"> -->
+    <img src="images/fran.png" width="400px">
+    <br>
+    <br>
+    <img src="images/fran2.png" width="400px">
+    </td> 
+  </tr>
+</table>
+
+
+
+
+<!-- ======================================================================= -->
+   </div> <!-- style="display:block -->
+               </div> <!-- LayoutContainer -->
+              </div> <!-- sf_content -->
+           </div> <!-- sf_region6 -->
+          </div> <!-- sf_main -->
+     </div> <!-- sf_main_wrapper -->
+   
+    <script type="text/javascript" src="./footer.js"></script>
+
+  </div><!-- /sf_wrapper -->
+</div><!-- /sf_outer_wrapper -->
+    
+
+<script type="text/javascript">	
+  document.getElementById("page_projects").style.display = "block";
+</script>
