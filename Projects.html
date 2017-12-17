@@ -10,6 +10,11 @@
 <meta http-equiv="Content-Location" content="Projects.html">
     
 <script type="text/javascript" src="./header.js"></script>
+<style type="text/css">
+.auto-style1 {
+	color: #0F96B8;
+}
+</style>
 </head>
 
 <!-- Body Starts Here -->
@@ -33,8 +38,78 @@
         <div style="display:block;overflow:hidden;">
 
 <!-- ======================================================================================= -->
+<a name="bug"></a>
+<span class="auto-style1"><h21><strong>Detecting & Fixing Bugs Using Code Similarity</strong></h21>
+</span>
 
-<h21>GitHub Analysis</h21>
+<p>
+It has been shown that developers write not only similar code but also make similar mistakes and fix them similarly. 
+Thus, bugs and the corresponding corrected code often show repetitive patterns. I design algorithms and build tools that automatically 
+detect and repair code using such repetitive patterns. In particular, I studied the following bug categories:
+</p>
+<ul style="list-style-type:square">
+<li><strong>Error Handling Bugs in C.</strong>
+ Low-level languages like C often do not support any error handling primitives and leave it up to developers to create their own mechanisms 
+ for error propagation and handling. However, developers often make mistakes while writing the repetitive and tedious error handling code and 
+ inadvertently introduce bugs. For example, a large number of security flaws in SSL/TLS implementations result from incorrect error handling 
+ (e.g., CVE-2014-0092, CVE-2015-0208, CVE-2015-0288, CVE-2015-0285, CVE-2015-0292, etc.). These bugs are often hard to detect and localize using 
+ conventional automated bug-finding techniques because they do not display any obviously erroneous behaviors (e.g., crashes or assertion failures) 
+ but instead cause subtle inaccuracies that violate the intended security and privacy guarantees of SSL/TLS. Therefore, it is extremely important 
+ to detect and fix these bugs at an earlier stage of the development cycle, to minimize their disastrous side effects when unknowingly released 
+ to production. To understand the nature of error handling bugs that occur in widely used C programs, I conducted a comprehensive study of real-world 
+ post-production error handling bugs and their eventual fixes. Leveraging this knowledge, I then designed, implemented, and evaluated a toolchain 
+ [Usenix’16, FSE’17, ASE’16] based on under-constrained symbolic execution and AST analysis, that not only detects and characterizes different types 
+ of error handling bugs but also automatically fixes them. Several of these bug fixes were adopted by OpenSSL developers and resulted in one CVE. 
+ This work received the best paper award in FSE’17. 
+</li>
+<br>
+<br>
+<li><strong>Copy-paste Bugs.</strong>
+ While implementing new functionality similar to existing functionality, developers often copy and paste code from a source to a target location. 
+ While copy-pasting, they need to adapt the pasted code to the target context; a failure to properly adapt the code is known as copy-paste errors
+  and can have disastrous consequences. In order to automatically detect copy-paste errors, I investigated: (1) What are the common types of 
+  copy-paste errors? (2) How can they be automatically detected [ASE’13]? By analyzing the version histories of FreeBSD and Linux, I found five common 
+  types of copy-paste errors and then, leveraging this categorization, I designed a static analysis technique to detect and characterize copy-paste errors. 
+  My key insight was that all copied instances of a piece of code should behave similarly except for the differences caused by their contexts; the 
+  behavioral similarity was captured by program dependence graphs. Incorporating such code semantics in the analysis technique helped me to detect 
+  real copy-paste bugs in widely popular software like FreeBSD, Eclipse, Mozilla, etc.  I collaborated with researchers from NASA for this work, 
+  which was nominated for a distinguished paper award in ASE’13. In the above techniques, I focused on some particular types of bugs. However, a 
+  significant number of bugs may not fit any of the well-defined bug categories or violate specific well-known rules. Yet they may result in errors by 
+  violating the implicit rules of common coding practices [Kremenek’06]. I aim to develop novel static and dynamic program analysis techniques that 
+  can infer such implicit program rules so code elements that violate these rules can be automatically marked as potential bugs. 
+</li>
+<br>
+<br>
+<li><strong>Generic Bugs (using NLP models).</strong>  Researchers have demonstrated that the predictability of source code written 
+by ordinary developers to solve real-world problems is similar to that of natural language [Hindle'12]. Such naturalness/predictability have been 
+successfully captured by statistical language models and used to build suggestion engines, porting tools, coding standards checkers, and idiom miners. 
+This suggests that code that appears improbable, or surprising, to a good statistical language model is “unnatural” in some sense, and thus possibly 
+suspicious, i.e., buggy. I investigated this hypothesis in work published at ICSE'16: I considered a large corpus of bug fix commits, from 10 popular 
+widely-used Java projects, and built a language model of the source code and evaluated the naturalness (i.e., entropy) of buggy code and the corresponding 
+fixes as computed by the model. I found that code with bugs tends to be more entropic (i.e., unnatural), becoming less so as bugs are fixed.  This approach 
+can be used as an effective code inspection tool by focusing on highly entropic lines. I also showed that such entropy-based techniques could complement 
+generic static bug finders (PMD, FindBugs). 
+</li>
+<br>
+<br>
+<li><strong>
+Differential Testing.</strong> Nowadays in the open software market, multiple pieces of software are available to users that provide similar functionality. 
+For example, there is a pool of popular SSL/TLS libraries (e.g., OpenSSL, GnuTLS, NSS, CyaSSL, GnuTLS, PolarSSL, MatrixSSL, etc.) for securing network 
+connections from man-in-the-middle attacks. Such code may not be structurally similar but implements similar functionalities. For example, certificate 
+validation is a crucial part of SSL/TLS connection setup. Though implemented differently, the certificate validation logic of these different libraries 
+should serve the same purpose, following the SSL/TLS protocol: for a given certificate, all of the libraries should either accept it as valid or reject 
+it as invalid. In collaboration with security researchers at the University of Texas at Austin, we designed the first large-scale framework for testing 
+certificate validation logic in SSL/TLS implementations. First, we generated millions of synthetic certificates by randomly mutating parts of real 
+certificates and thus induced unusual combinations of extensions and constraints. A valid SSL implementation should be able to detect and reject the 
+unusual mutants. Next, using a differential testing framework, we checked whether one SSL/TLS implementation accepts a certificate while another rejects 
+the same certificate. We used such discrepancies as an oracle for finding flaws in individual implementations. We uncovered 208 discrepancies between 
+popular SSL/TLS implementations, many of them are caused by serious security vulnerabilities. This paper received the best student paper award at Oakland [S&P’14].
+</li>
+</ul>
+<!-- ======================================================================================= -->
+
+
+<span class="auto-style1"><h21><strong>GitHub Analysis</strong></h21></span>
 <p>
 Thanks to the large number of diverse open source projects available in software forges such as GitHub, it becomes possible to evaluate some long-standing questions about software engineering practices. Each of these project repositories hosts source code along with entire evolution history, description, mailing lists, bug database, etc. I implemented a number of code analysis and text analysis tools to gather different metrics from GitHub project repositories. Then applying a series of advanced data analysis methods from machine learning, random networks, visualization, and regression analysis techniques, I shed some light on how to improve software quality and developers’ productivity.
 </p>
@@ -53,6 +128,7 @@ Thanks to the large number of diverse open source projects available in software
   effect on software quality (<a href="Publication.html#paper-lang">see our FSE'14 paper</a>).
   </li>
   <br>
+  <br>
   <li>
   <strong>API stability and adoption in the Android Ecosystem.</strong> In today’s software
   ecosystem, which is primarily governed by web, cloud, and mobile technologies, APIs perform a
@@ -68,6 +144,7 @@ Thanks to the large number of diverse open source projects available in software
   promote API adoption and how to facilitate growth of the overall ecosystems 
   (<a href="Publication.html#paper-android">see our ICSM'13 paper</a>).
    </li>
+  <br>
   <br>
    <li>
    <strong>Assert Use in GitHub Projects.</strong>
