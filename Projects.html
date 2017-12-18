@@ -78,17 +78,9 @@ detect and repair code using such repetitive patterns. In particular, I studied 
 <br>
 <br>
 
-<!-- Horizontal Line Starts -->	
-<div class="sf_extra7"><span></span></div>
-<div class="sf_region9">
-<div class="sf_footer"><div style="display:block;"></div></div>
-</div>
-<div class="sf_extra8"><span></span></div>
-<!-- Horizontal Line Ends -->
+
 
 <a name="rep"></a>
-
-
  <table border="0">
       <tbody>
       <tr>
@@ -213,8 +205,11 @@ detect and repair code using such repetitive patterns. In particular, I studied 
 </table>
 <br>
 <br>
+<table>
+<tr>
+<td>
 <strong>Generic Bugs (using NLP models).</strong>  Researchers have demonstrated that the predictability of source code written 
-by ordinary developers to solve real-world problems is similar to that of natural language [Hindle'12]. Such naturalness/predictability have been 
+by ordinary developers to solve real-world problems is similar to that of natural language. Such naturalness/predictability have been 
 successfully captured by statistical language models and used to build suggestion engines, porting tools, coding standards checkers, and idiom miners. 
 This suggests that code that appears improbable, or surprising, to a good statistical language model is “unnatural” in some sense, and thus possibly 
 suspicious, i.e., buggy. I investigated this hypothesis in work published at ICSE'16: I considered a large corpus of bug fix commits, from 10 popular 
@@ -222,14 +217,25 @@ widely-used Java projects, and built a language model of the source code and eva
 fixes as computed by the model. I found that code with bugs tends to be more entropic (i.e., unnatural), becoming less so as bugs are fixed.  This approach 
 can be used as an effective code inspection tool by focusing on highly entropic lines. I also showed that such entropy-based techniques could complement 
 generic static bug finders (PMD, FindBugs). 
+</td>
+ </td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td style="width:15%">
+      <!--<img src="images/spa.jpg" align="middle"  width="200px"> -->
+    <img src="images/entropy.png" width="360px">
+       </td> 
+
+
+</tr>
+</table>
 <br>
 <br>
-<strong>
-Differential Testing.</strong><table style="width:100%">
+<table style="width:100%">
 <table>
   <tr>
     <td>
       <p>
+      <strong>Differential Testing.</strong>
       Nowadays in open software market, multiple software are available to users that
       provide similar functionality. For example, there exists a pool of popular SSL/TLS
       libraries (e.g., OpenSSL, GnuTLS, NSS, CyaSSL, GnuTLS, PolarSSL, MatrixSSL, etc.) for
@@ -268,14 +274,12 @@ Differential Testing.</strong><table style="width:100%">
 <!-- ======================================================================================= -->
 
 
-<span class="auto-style1"><h21><strong>GitHub Analysis</strong></h21></span>
+<span class="auto-style1"><h21><strong>Analytical Support for Improving Software 
+			Reliability</strong></h21></span>
 <p>
 Thanks to the large number of diverse open source projects available in software forges such as GitHub, it becomes possible to evaluate some long-standing questions about software engineering practices. Each of these project repositories hosts source code along with entire evolution history, description, mailing lists, bug database, etc. I implemented a number of code analysis and text analysis tools to gather different metrics from GitHub project repositories. Then applying a series of advanced data analysis methods from machine learning, random networks, visualization, and regression analysis techniques, I shed some light on how to improve software quality and developers’ productivity.
 </p>
 
-<ul style="list-style-type:square">
-
-  <li>
   <strong>Effect of programming languages on software quality.</strong> To investigate whether
   a programming language is the right tool for the job, we gathered a very large data set from
   GitHub (728 projects, 63M lines of code, 29K authors, 1.5M commits, in 17 languages). Using a
@@ -285,10 +289,10 @@ Thanks to the large number of diverse open source projects available in software
   methods, and controlling for confounding effects such as code size, project age, and
   contributors, we observed that a language design choice does have a significant, but modest
   effect on software quality (<a href="Publication.html#paper-lang">see our FSE'14 paper</a>).
-  </li>
+
   <br>
   <br>
-  <li>
+
   <strong>API stability and adoption in the Android Ecosystem.</strong> In today’s software
   ecosystem, which is primarily governed by web, cloud, and mobile technologies, APIs perform a
   key role to connect disparate software. Big players like Google, FaceBook, Microsoft
@@ -302,10 +306,10 @@ Thanks to the large number of diverse open source projects available in software
   work studying API adoption in a large software ecosystem, and the study suggests how to
   promote API adoption and how to facilitate growth of the overall ecosystems 
   (<a href="Publication.html#paper-android">see our ICSM'13 paper</a>).
-   </li>
+   
   <br>
   <br>
-   <li>
+  
    <strong>Assert Use in GitHub Projects.</strong>
    Assertions in a program are believed to improve software quality. We conducted a large scale
    study on how developers typically use assertions in C and C++ code and showed that they play
@@ -313,8 +317,7 @@ Thanks to the large number of diverse open source projects available in software
    different process and product metrics. Such detailed characterization of assertions will
    help to predict relevant locations of useful assertions and eventually will improve code
    quality (<a href="Publication.html#paper-assert">see our ICSE'15 paper</a>). 
-   </li>
-</ul>
+   
 <!--In another study, I and my colleagues studied gender and tenure diversity in online programming teams and found that both gender and tenure diversity are positive and significant predictors of productivity. These results can inform decision-making on all levels, leading to better outcomes in recruiting and performance [UCTRb’14].
 -->
 
