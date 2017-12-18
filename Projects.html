@@ -292,6 +292,52 @@ have found thousands of erroneous behaviors under different realistic driving co
 potentially fatal crashes, in the three top performing DNNs of the Udacity self-driving car challenge 
 (<a href="https://arxiv.org/abs/1708.08559">check our ICSE’18 paper</a>).
 </p>
+
+<!-- ====================================================================================== -->
+<a name="lang"></a>
+<span class="auto-style1"><h21><strong>Natural Language Models for Source Code</strong></h21></span>
+<p>
+
+Source code often follows code templates, i.e., frequently repeating code structures where the only differences are in parameters and variable names. This observation is, in
+particular, true for App development platforms like Android, where the apps are heavily dependent on the platform
+APIs. There are only a few valid ways of using these APIs, which result in repetitive code templates. I am
+investigating a novel language model for such API driven programming in collaboration with NLP expert Prof. Kai-Wei
+Chang of UCLA. We are in the process of designing a template-based neural language model that predicts the structural
+properties of the code by learning from the templates, while predicting local code properties by learning from
+sequential code structure. Android applications often undergo many code transformations, e.g., API update,
+obfuscation, etc. Such transformations are also repetitive and show similar patterns due to heavy API usage. For
+example, when an API is updated all the applications using the API eventually need to update their code accordingly. I 
+am also leveraging machine translation models to learn from previous transformations. In this case, the models are
+trained with the parallel corpora of original and transformed code versions. I believe that such models have significant
+potential for a plethora of Software Engineering applications including automatic code generation, bug fix, feature
+update, deobfuscation, malware detection, etc. For instance, I am collaborating with Miltos Allamanis of Microsoft
+Research (an NLP expert) to develop NLP models that can automatically repair buggy Android applications. Further, I
+am working with Gail Kaiser and her students at Columbia University, and Jonathan Bell from George Mason to
+automatically deobfuscate obfuscated APIs.
+			<p>
+
+			&nbsp;<p>
+
+<!-- ====================================================================================== -->
+<a name="big"></a>
+<span class="auto-style1"><h21><strong>Analyzing Configuration Parameters of Big-Data Frameworks</strong></h21></span>
+<p>
+
+Big data frameworks, e.g., MapReduce, Spark, etc. are often so complex that users
+don't know how to configure them to achieve their desired properties (safety, security, runtime performance, etc.). We
+are in the process of developing a meta-heuristic search technique for searching configuration space for combinatorial
+optimization of such qualities based on three main hypotheses: (1) scale-up: small big-data jobs can serve as low-cost
+proxies for evaluating objective functions with significant performance benefits for much larger jobs; (2) scale-out: highperforming
+configurations found for one class of jobs provide significant benefits for related classes; and (3) centaur
+effectiveness: humans can profitably guide algorithmic searches for high-performing configurations. Initials result for
+the Hadoop platform shows up to 70% performance improvement. We further plan to develop a domain-specific
+language and static analysis framework to express the constraints of configuration spaces. We believe these additional
+techniques will help to find bugs in a configuration space, and will further reduce the search space of the meta-heuristic
+technique to a great extent. I am collaborating with Prof. Kevin Sullivan of UVa in this project.			<p>
+
+			&nbsp;<p>
+
+
 <!-- ======================================================================================= -->
 <a name="gh"></a>
 
