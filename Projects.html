@@ -48,7 +48,10 @@ Thus, bugs and the corresponding corrected code often show repetitive patterns. 
 detect and repair code using such repetitive patterns. In particular, I studied the following bug categories:
 </p>
 
-<strong>Error Handling Bugs in C.</strong>
+<table>
+<tr>
+<td>
+<strong>Error Handling Bugs in C.</strong> 
  Low-level languages like C often do not support any error handling primitives and leave it up to developers to create their own mechanisms 
  for error propagation and handling. However, developers often make mistakes while writing the repetitive and tedious error handling code and 
  inadvertently introduce bugs. For example, a large number of security flaws in SSL/TLS implementations result from incorrect error handling 
@@ -61,18 +64,28 @@ detect and repair code using such repetitive patterns. In particular, I studied 
  [Usenix’16, FSE’17, ASE’16] based on under-constrained symbolic execution and AST analysis, that not only detects and characterizes different types 
  of error handling bugs but also automatically fixes them. Several of these bug fixes were adopted by OpenSSL developers and resulted in one CVE. 
  This work received the best paper award in FSE’17. 
-
+ </td>
+       <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td style="width:15%">
+      <!--<img src="images/spa.jpg" align="middle"  width="200px"> -->
+    <img src="images/errDoc.png" width="360px">
+    <br>
+    <br>
+    <img src="images/errDoc1.png" width="360px">
+    </td> 
+ </tr>
+</table>
 <br>
 <br>
 
 <a name="rep"></a>
 
-<strong>Copy-paste Bugs.</strong>
+
  <table border="0">
       <tbody>
       <tr>
           <td>
-            <p>
+          <strong>Copy-paste Bugs.</strong>
             To maintain different variants of the same projects, developers often port similar
             features or bug-fixes from one system to another.  This requires lot of repeated
               work, which is often tedious and error-prone.  To automatically identify the
@@ -89,9 +102,6 @@ detect and repair code using such repetitive patterns. In particular, I studied 
                 developers participate in cross-system porting in each release (<a
                   href="Publication.html#paper-bsd">see our FSE'12 paper</a>).
             <br>
-     
-            
-          </p>
           </td>
           <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
           <td style="background-color:white; width: 180px;"><code><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
