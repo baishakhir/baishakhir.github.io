@@ -273,6 +273,26 @@ generic static bug finders (PMD, FindBugs).
   </tr>
 </table>
 <!-- ======================================================================================= -->
+<a name="car"></a>
+<span class="auto-style1"><h21><strong>Testing Machine Learning-Based Systems</strong></h21></span>
+<p>
+DNN-based autonomous cars, using sensors like camera, LiDAR, etc., can drive without
+human intervention. Many major manufacturers including Tesla, GM, Ford, BMW, and Waymo/Google are working on
+building and testing different types of autonomous vehicles. However, despite their spectacular progress, DNNs, just
+like traditional software, often demonstrate incorrect or unexpected corner-case behaviors -- bugs -- that can lead to
+potentially fatal collisions. Several real-world accidents involving autonomous cars have already happened including
+one that resulted in a fatality. Most existing testing techniques for DNN-driven vehicles are heavily dependent on the
+manual collection of test data under different driving conditions, which becomes prohibitively expensive as the number
+of test conditions increases. In collaboration with Suman Jana and Junfeng Yang from Columbia University and Yinzhi
+Cao from Lehigh University, we are designing, implementing, and evaluating a systematic testing tool for automatically
+detecting erroneous behaviors of DNN-driven vehicles. Our tool is designed to automatically generate test cases
+leveraging real-world changes in driving conditions like rain, fog, lighting conditions, etc. We systematically explore
+different parts of the DNN logic by generating test inputs that maximize the numbers of activated neurons. So far we
+have found thousands of erroneous behaviors under different realistic driving conditions, many of which could lead to
+potentially fatal crashes, in the three top performing DNNs of the Udacity self-driving car challenge 
+(<a href="https://arxiv.org/abs/1708.08559">check our ICSE’18 paper</a>).
+</p>
+<!-- ======================================================================================= -->
 <a name="gh"></a>
 
 <span class="auto-style1"><h21><strong>Analytical Support for Improving Software Reliability</strong></h21></span>
