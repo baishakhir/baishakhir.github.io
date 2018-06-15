@@ -27,8 +27,8 @@ document.write("<div class=\"sf_header_wrapper\"> \
                   <span style=\"font-size: 22px; line-height: 26px; font-weight:500\">\
                     <font size=\"5\"><strong>Baishakhi Ray</strong></font><br/>\
                     Assistant Professor<br/>\
-                    University of Virginia<br/>\
-                    <a href=\"mailto:rayb@virginia.edu\">\
+                    Columbia University<br/>\
+                    <a href=\"mailto:rayb@cs.columbia.edu\">\
                         <img alt=\"\" src=\"./styles/email.png\">\
                     </a>\
                   </span>\
