@@ -35,9 +35,9 @@ document.write("<div class=\"sf_header_wrapper\"> \
                 </td>\
 		        <td>\
                 <span style=\"font-size: 18px; line-height: 20px; font-weight:500\">\
-		            Office: CEPSR <br>\
-		            Phone: TBD <br>\
-                    Fax: TBD <br>\
+		            Office: CEPSR <br/>\
+		            Phone: TBD <br/>\
+                Fax: TBD <br/>\
 		          </span>\ 		        </td>\
 		        <td rowspan=\"3\">\
                     <img alt=\"\" src=\"images/shoot.JPG\" height=\"180\" style=\"border-width: 0px; border-style: solid;\">\
