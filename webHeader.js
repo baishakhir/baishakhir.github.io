@@ -25,20 +25,28 @@ document.write("<div class=\"sf_header_wrapper\"> \
               <tr>\
                 <td>\
                   <span style=\"font-size: 22px; line-height: 26px; font-weight:500\">\
-                    <font size=\"5\"><strong>Baishakhi Ray</strong></font><br/>\
+                    <font size=\"6\"><strong>Baishakhi Ray</strong></font><br/>\
                     Assistant Professor<br/>\
                     Columbia University<br/>\
                     <a href=\"mailto:rayb@cs.columbia.edu\">\
-                        <img alt=\"\" src=\"./styles/email.png\">\
+                        rayb @ cs.columbia.edu\
                     </a>\
                   </span>\
                 </td>\
 		        <td>\
-	                <span style=\"font-size: 18px; line-height: 20px; font-weight:500\">\
+	              <!--<span style=\"font-size: 18px; line-height: 20px; font-weight:500\">\
 		            Office: Rice Hall, Room 505 <br>\
 		            Phone: (434) 982-2212 <br>\
                     Fax: (434) 982-2214 <br>\
-		          </span>\
+		          </span>-->\
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\
 		        </td>\
 		        <td rowspan=\"3\">\
                     <img alt=\"\" src=\"images/shoot.JPG\" height=\"180\" style=\"border-width: 0px; border-style: solid;\">\
