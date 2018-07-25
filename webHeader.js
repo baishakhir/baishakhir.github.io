@@ -34,13 +34,11 @@ document.write("<div class=\"sf_header_wrapper\"> \
                   </span>\
                 </td>\
 		        <td>\
-            <!--
-	                <span style=\"font-size: 18px; line-height: 20px; font-weight:500\">\
-		            Office: Rice Hall, Room 505 <br>\
-		            Phone: (434) 982-2212 <br>\
-                    Fax: (434) 982-2214 <br>\
-		          </span>\ -->
-		        </td>\
+                <span style=\"font-size: 18px; line-height: 20px; font-weight:500\">\
+		            Office: CEPSR <br>\
+		            Phone: TBD <br>\
+                    Fax: TBD <br>\
+		          </span>\ 		        </td>\
 		        <td rowspan=\"3\">\
                     <img alt=\"\" src=\"images/shoot.JPG\" height=\"180\" style=\"border-width: 0px; border-style: solid;\">\
                 </td>\
