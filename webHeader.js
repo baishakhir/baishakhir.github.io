@@ -29,7 +29,7 @@ document.write("<div class=\"sf_header_wrapper\"> \
                     Assistant Professor<br/>\
                     Columbia University<br/>\
                     <a href=\"mailto:rayb@cs.columbia.edu\">\
-                        <img alt=\"\" src=\"./styles/email.png\">\
+                        <img alt=\"\" src=\"./styles/email.png\" width=\"200\">\
                     </a>\
                   </span>\
                 </td>\
