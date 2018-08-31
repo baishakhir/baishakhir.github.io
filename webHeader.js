@@ -35,7 +35,7 @@ document.write("<div class=\"sf_header_wrapper\"> \
                 </td>\
 		        <td>\
                 <span style=\"font-size: 18px; line-height: 20px; font-weight:500\">\
-		            Office: CEPSR <br/>\
+		            Office: CEPSR 604 <br/>\
 		            Phone: TBD <br/>\
                 Fax: TBD <br/>\
 		          </span>\ 		        </td>\
