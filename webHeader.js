@@ -36,8 +36,8 @@ document.write("<div class=\"sf_header_wrapper\"> \
 		        <td>\
                 <span style=\"font-size: 18px; line-height: 20px; font-weight:500\">\
 		            Office: CEPSR 604 <br/>\
-		            Phone: TBD <br/>\
-                Fax: TBD <br/>\
+		            Phone: +1-212-939-7112 <br/>\
+                Fax: +1-212-666-0140 <br/>\
 		          </span>\ 		        </td>\
 		        <td rowspan=\"3\">\
                     <img alt=\"\" src=\"images/shoot.JPG\" height=\"180\" style=\"border-width: 0px; border-style: solid;\">\
