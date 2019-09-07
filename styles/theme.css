@@ -244,6 +244,7 @@ h1:after,
 	text-transform:none;
 }
 
+ul { padding-left: 1.2em; }
 /**
  * ------------------------------------------------------------------
  * @section CONTENT
