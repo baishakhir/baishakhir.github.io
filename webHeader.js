@@ -11,7 +11,7 @@ document.write("<div class=\"sf_header_wrapper\"> \
 		  <li class=\" sf_last_nav_item\"><a href=\"./Teaching.html\" target=\"_self\" onclick=\"\">Teaching</a></li>\
           <li class=\" sf_last_nav_item\"><a href=\"./Activities.html\" target=\"_self\" onclick=\"\">Activities</a></li>\
           <!-- <li class=\" sf_last_nav_item\"><a href=\"./Projects.html\" target=\"_self\" onclick=\"\">Projects</a></li> -->\
-          <li class=\" sf_last_nav_item\"><a href=\"https://ariselab.github.io/members\" target=\"_self\" onclick=\"\">Students</a></li> \
+          <li class=\" sf_last_nav_item\"><a href=\"https://www.ariselab.info/personnel\" target=\"_self\" onclick=\"\">Students</a></li> \
 		  <li class=\" sf_last_nav_item\"><a href=\"https://scholar.google.com/citations?user=VaAEb5YAAAAJ&hl=en\" target=\"_blank\" onclick=\"\">Google Scholar</a></li>\
          </ul>\
         </div>\
