@@ -1,99 +1,590 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<!-- saved from url=(0033)./Publication.html -->
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ray Family France 2026</title>
+  <style>
+    :root {
+      --bg: #f6f7f9;
+      --card: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --blue: #1f5eff;
+      --blue-soft: #eef3ff;
+      --gold: #b88746;
+      --shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+      --radius: 28px;
+    }
 
+    * { box-sizing: border-box; }
 
-<title>Baishakhi Ray: Activities</title>
-<meta property="og:title" content="Activities">
-<meta name="title" content="Activities">
-<meta property="og:url" content="./Activities.html">
-<meta http-equiv="Content-Location" content="Activities.html">
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
 
-<script type="text/javascript" src="./header.js"></script>
+    .hero {
+      min-height: 440px;
+      padding: 56px 24px;
+      background:
+        linear-gradient(120deg, rgba(10,18,35,.82), rgba(10,18,35,.42)),
+        url("https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1800&q=80");
+      background-size: cover;
+      background-position: center;
+      color: white;
+      display: flex;
+      align-items: flex-end;
+    }
 
+    .hero-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-size: 13px;
+      opacity: .8;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: clamp(46px, 7vw, 88px);
+      line-height: .95;
+      margin: 14px 0 18px;
+      letter-spacing: -0.06em;
+    }
+
+    .subtitle {
+      font-size: clamp(18px, 2vw, 25px);
+      opacity: .9;
+      max-width: 780px;
+      line-height: 1.4;
+    }
+
+    .stats {
+      margin-top: 34px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      padding: 12px 18px;
+      border: 1px solid rgba(255,255,255,.22);
+      background: rgba(255,255,255,.12);
+      backdrop-filter: blur(12px);
+      border-radius: 999px;
+      font-weight: 700;
+    }
+
+    main {
+      max-width: 1180px;
+      margin: -64px auto 80px;
+      padding: 0 24px;
+      position: relative;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1.9fr .9fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .panel {
+      background: rgba(255,255,255,.92);
+      border: 1px solid rgba(229,231,235,.9);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+    }
+
+    .section {
+      padding: 26px;
+    }
+
+    .section h2 {
+      font-size: 28px;
+      letter-spacing: -0.04em;
+      margin: 0 0 8px;
+    }
+
+    .section p {
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+    }
+
+    .tab {
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .tab.active {
+      background: var(--text);
+      color: white;
+      border-color: var(--text);
+    }
+
+    .day-card {
+      border-top: 1px solid var(--line);
+      padding: 24px 26px;
+    }
+
+    .day-top {
+      display: grid;
+      grid-template-columns: 110px 1fr auto;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .date {
+      color: var(--muted);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: 12px;
+    }
+
+    .day-title {
+      font-size: 25px;
+      font-weight: 850;
+      letter-spacing: -0.04em;
+      margin-top: 4px;
+    }
+
+    .badges {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .badge {
+      background: var(--blue-soft);
+      color: #1947b8;
+      border: 1px solid #dbe6ff;
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 750;
+    }
+
+    .badge.gold {
+      background: #fff7e8;
+      border-color: #f5deb4;
+      color: #8a5a19;
+    }
+
+    .expand {
+      border: 0;
+      background: #111827;
+      color: white;
+      border-radius: 999px;
+      padding: 10px 16px;
+      cursor: pointer;
+      font-weight: 800;
+    }
+
+    .timeline {
+      display: none;
+      margin-top: 24px;
+      padding-left: 8px;
+    }
+
+    .day-card.open .timeline {
+      display: block;
+      animation: fade .18s ease-out;
+    }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .event {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 18px;
+      padding: 15px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .time {
+      font-weight: 850;
+      color: var(--blue);
+    }
+
+    .event-title {
+      font-weight: 820;
+      margin-bottom: 4px;
+    }
+
+    .event-note {
+      color: var(--muted);
+      line-height: 1.45;
+      font-size: 15px;
+    }
+
+    .side {
+      position: sticky;
+      top: 20px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .side-card {
+      padding: 22px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(15,23,42,.06);
+    }
+
+    .side-card h3 {
+      margin: 0 0 14px;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+
+    .ticket {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 13px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .ticket:first-of-type { border-top: 0; }
+
+    .ticket strong { display: block; }
+    .ticket span { color: var(--muted); font-size: 14px; }
+
+    .mini-route {
+      display: grid;
+      gap: 10px;
+    }
+
+    .route-item {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      background: var(--blue);
+      border-radius: 50%;
+      flex: none;
+    }
+
+    .note-list {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 40px 20px 70px;
+    }
+
+    @media (max-width: 880px) {
+      main { margin-top: -42px; }
+      .layout { grid-template-columns: 1fr; }
+      .side { position: static; }
+      .day-top {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+      .expand { width: fit-content; }
+      .event {
+        grid-template-columns: 72px 1fr;
+      }
+    }
+  </style>
 </head>
-<body id="page_activity" gram_dict="true" style="display:none;">
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Ray Family Trip</div>
+      <h1>France 2026</h1>
+      <div class="subtitle">Paris, Normandy, Loire, Annecy, Provence, and the Riviera — starting with a polished Paris plan from Le Marais.</div>
+      <div class="stats">
+        <div class="stat">July 28 – Aug 22</div>
+        <div class="stat">6 Regions</div>
+        <div class="stat">Paris First</div>
+        <div class="stat">Family Friendly</div>
+      </div>
+    </div>
+  </header>
 
-<div class="sf_outer_wrapper"><div class="sf_wrapper">  
+  <main>
+    <div class="layout">
+      <section class="panel">
+        <div class="section">
+          <h2>Paris Itinerary</h2>
+          <p>Calendar-style daily plan. Click any day to expand the detailed timeline.</p>
+          <div class="tabs">
+            <button class="tab active" data-filter="all">All Days</button>
+            <button class="tab" data-filter="ticket">Tickets</button>
+            <button class="tab" data-filter="light">Light Days</button>
+            <button class="tab" data-filter="friend">With Friends</button>
+          </div>
+        </div>
 
-    <script type="text/javascript" src="./webHeader.js"></script>
+        <div id="days"></div>
+      </section>
 
-		<div class="sf_region4">
-			<div class="sf_pagetitle"><div style="display:block;">
-                <h1>Professional Activities</h1></div></div>
-		</div>
-		
-		<div class="sf_extra6"><span></span></div>
-		<div class="sf_extra11"><span></span></div>
-		<div class="sf_main_wrapper">
-			<div class="sf_main">
-				<div class="sf_region6">
-					<div class="sf_content"><div class="LayoutContainer" style="display:block;"><div><div style="display:block;overflow:hidden;"><br>
+      <aside class="side">
+        <div class="side-card">
+          <h3>Booked / Important</h3>
+          <div class="ticket">
+            <div><strong>Louvre</strong><span>Wed, July 29</span></div>
+            <strong>10:44 AM</strong>
+          </div>
+          <div class="ticket">
+            <div><strong>Eiffel Tower</strong><span>Thu, July 30</span></div>
+            <strong>8:00 PM</strong>
+          </div>
+          <div class="ticket">
+            <div><strong>Versailles</strong><span>Fri, July 31</span></div>
+            <strong>Full Day</strong>
+          </div>
+          <div class="ticket">
+            <div><strong>Catacombs</strong><span>Sat, Aug 1</span></div>
+            <strong>Morning</strong>
+          </div>
+        </div>
 
-<h3>Program Co-Chair</h3>
+        <div class="side-card">
+          <h3>Paris Flow</h3>
+          <div class="mini-route">
+            <div class="route-item"><span class="dot"></span> Jul 28 — Arrival / free day</div>
+            <div class="route-item"><span class="dot"></span> Jul 29 — Louvre + Seine</div>
+            <div class="route-item"><span class="dot"></span> Jul 30 — Notre-Dame + Eiffel</div>
+            <div class="route-item"><span class="dot"></span> Jul 31 — Versailles</div>
+            <div class="route-item"><span class="dot"></span> Aug 1 — Catacombs + Mosque + Montmartre</div>
+            <div class="route-item"><span class="dot"></span> Aug 2 — Flexible day</div>
+          </div>
+        </div>
 
-<ul style="list-style-type:square">
-  <li>2020: FSE tool demo track</li>
-  <li>2019: ICSE Artifact Evaluation Tool, ASE LBR</li>
-</ul>
+        <div class="side-card">
+          <h3>Family Notes</h3>
+          <ul class="note-list">
+            <li>Airbnb in Le Marais is the home base.</li>
+            <li>July 28 stays unscheduled after arrival.</li>
+            <li>Build in rest before Eiffel Tower night.</li>
+            <li>August 2 stays flexible because friends leave.</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </main>
 
-<h3>Program Committee</h3>
+  <footer>
+    Ray Family France 2026 · Paris plan
+  </footer>
 
-<ul style="list-style-type:square">
-  <li>2021: ICSE</li>
-  <li>2020: ICSE, FSE, ICLR, ISSTA, ICST, ICSE Doctoral Symposium, MAPL</li>
-  <li>2019: ICSE NIER and Workshop, ASE, MSR, ICSME</li>
-  <li>2018: ASIACCS, ASE, ICPC</li>
-  <li>2017: ASE (ERP), ICSE NIER, OOPSLA Onward, ICPC, MSR, ICSME</li>
-  <li>2016: ASE, MSR, ICSE Visions of 2025 and Beyond (V2025), ICSE Tool Demonstrations, FSE SRC, FSE NL+SE Workshop, ICSME Era, ISEC, APSEC</li>
-  <li>2015: MSR, mining challenge, ISEC, ISSTA Artifact</li>
-  <li>2014: FSE Artifact</li>
-  <li>2013: OOPSLA Artifact</li>
-</ul>
+  <script>
+    const itinerary = [
+      {
+        date: "Tue, July 28",
+        title: "Arrival Day",
+        tags: ["light", "friend"],
+        badges: ["Free Day", "Le Marais", "No Tickets"],
+        events: [
+          ["Afternoon", "Arrive in Paris", "Check into the Airbnb in Le Marais. Keep the day intentionally open."],
+          ["6:30 PM", "Gentle Le Marais wander", "Only if everyone has energy: bakery, ice cream, neighborhood streets."],
+          ["7:45 PM", "Easy dinner", "Stay close to the Airbnb."],
+          ["Evening", "Early night", "Recover from travel and jet lag."]
+        ]
+      },
+      {
+        date: "Wed, July 29",
+        title: "Louvre & Seine Cruise",
+        tags: ["ticket", "friend"],
+        badges: ["Louvre 10:44 AM", "Tuileries", "Seine Cruise"],
+        events: [
+          ["8:15 AM", "Wake up", "Slow morning at the Airbnb."],
+          ["8:45 AM", "Breakfast", "Airbnb breakfast or nearby bakery."],
+          ["9:40 AM", "Leave Airbnb", "Head toward the Louvre with buffer time."],
+          ["10:15 AM", "Arrive Louvre", "Find entrance and clear security."],
+          ["10:44 AM", "Louvre timed entry", "Booked ticket time."],
+          ["10:45–1:45", "Louvre highlights", "Mona Lisa, Winged Victory, Venus de Milo, Napoleon Apartments. Do not try to see everything."],
+          ["2:00 PM", "Lunch", "Lunch near the Louvre."],
+          ["3:15 PM", "Tuileries Garden", "Relaxed walk after the museum."],
+          ["4:00 PM", "Place de la Concorde", "Optional continuation if everyone has energy."],
+          ["5:00 PM", "Return to Airbnb", "Rest before dinner and evening cruise."],
+          ["7:00 PM", "Dinner", "Keep it simple."],
+          ["8:45 PM", "Seine River Cruise", "Good evening slot for summer light and illuminated Paris."],
+          ["10:15 PM", "Return Airbnb", "End the day."]
+        ]
+      },
+      {
+        date: "Thu, July 30",
+        title: "Notre-Dame & Eiffel Tower",
+        tags: ["ticket", "friend"],
+        badges: ["Eiffel 8:00 PM", "Sunset ~9:30 PM", "Sparkle 10 PM"],
+        events: [
+          ["8:30 AM", "Breakfast", "Start slowly."],
+          ["9:30 AM", "Leave Airbnb", "Short trip toward Île de la Cité."],
+          ["10:00 AM", "Notre-Dame", "Visit the area and exterior/interior depending on access and timing."],
+          ["11:15 AM", "Sainte-Chapelle", "Beautiful stained glass; keep this as the main indoor stop."],
+          ["12:30 PM", "Latin Quarter lunch", "Walk and lunch nearby."],
+          ["2:00 PM", "Return Airbnb", "Important rest before late Eiffel Tower evening."],
+          ["5:45 PM", "Early dinner", "Eat before heading to the tower."],
+          ["7:00 PM", "Leave Airbnb", "Allow time for transit and security."],
+          ["7:40 PM", "Arrive Eiffel Tower", "Security buffer."],
+          ["8:00 PM", "Eiffel Tower entry", "Booked ticket time."],
+          ["9:30 PM", "Sunset", "Late July sunset views."],
+          ["10:00 PM", "Sparkling lights", "Stay for the sparkle."],
+          ["10:30 PM", "Seine walk", "Optional if kids still have energy."],
+          ["11:00 PM", "Return Airbnb", "Late night."]
+        ]
+      },
+      {
+        date: "Fri, July 31",
+        title: "Versailles",
+        tags: ["ticket", "friend"],
+        badges: ["Full Day", "Gardens", "Trianons"],
+        events: [
+          ["7:30 AM", "Breakfast", "Earlier start."],
+          ["8:20 AM", "Leave Airbnb", "Head to Versailles."],
+          ["9:00 AM", "Enter Versailles", "Best to start early."],
+          ["Morning", "Palace visit", "Royal Apartments and Hall of Mirrors."],
+          ["12:30 PM", "Lunch", "Lunch on site or nearby."],
+          ["1:30 PM", "Gardens", "Do not rush this; kids may enjoy the outdoor space more than the palace."],
+          ["2:15 PM", "Golf cart or little train", "Worth it to reduce walking fatigue."],
+          ["3:00 PM", "Trianons + Queen’s Hamlet", "Grand Trianon, Petit Trianon, Queen’s Hamlet if energy allows."],
+          ["5:00 PM", "Return to Paris", "Back to Le Marais."],
+          ["7:00 PM", "Dinner", "Relaxed dinner."]
+        ]
+      },
+      {
+        date: "Sat, August 1",
+        title: "Catacombs, Mosque & Montmartre",
+        tags: ["ticket", "friend"],
+        badges: ["Catacombs", "Grande Mosquée", "Montmartre"],
+        events: [
+          ["8:00 AM", "Breakfast", "Start early."],
+          ["9:00 AM", "Catacombs", "Aim for morning timed entry."],
+          ["10:45 AM", "Travel toward mosque", "Walk or metro depending on energy."],
+          ["11:15 AM", "Grande Mosquée de Paris", "Visit and tea garden."],
+          ["12:30 PM", "Lunch", "Lunch near the mosque or nearby."],
+          ["2:00 PM", "Metro to Montmartre", "Move north for the afternoon."],
+          ["2:30 PM", "Explore Montmartre", "Streets, cafés, views."],
+          ["3:30 PM", "Sacré-Cœur", "Visit basilica and viewpoint."],
+          ["4:30 PM", "Place du Tertre", "Artists' square."],
+          ["6:30 PM", "Dinner", "Dinner in Montmartre or return to Le Marais."],
+          ["Evening", "Back to Airbnb", "All must-sees done before Aug 2."]
+        ]
+      },
+      {
+        date: "Sun, August 2",
+        title: "Flexible Paris Day",
+        tags: ["light", "friend"],
+        badges: ["No Bookings", "Friends Leave", "Bonus Day"],
+        events: [
+          ["Morning", "Sleep in", "No alarms."],
+          ["Late Morning", "Le Marais / Place des Vosges", "Slow neighborhood morning."],
+          ["Afternoon", "Choose your mood", "Shopping, bakery crawl, picnic, souvenirs, or revisit a favorite place."],
+          ["Evening", "Pack lightly", "Prepare for road trip to Normandy."]
+        ]
+      },
+      {
+        date: "Mon, August 3",
+        title: "Drive to Normandy",
+        tags: ["light"],
+        badges: ["Rental Car", "Bayeux", "Road Trip Begins"],
+        events: [
+          ["Morning", "Breakfast and pack", "Check out of Airbnb."],
+          ["Late Morning", "Pick up rental car", "Leave Paris after rush hour if possible."],
+          ["Afternoon", "Drive to Bayeux", "Start the Normandy portion of the trip."]
+        ]
+      }
+    ];
 
-<h3>Journal Reviewer</h3>
+    const daysContainer = document.getElementById("days");
 
-<ul style="list-style-type:square">
-  <li>IEEE Transactions on Software Engineering (<a href="http://www.computer.org/portal/web/tse" target="_blank">TSE</a>)</li> 
-  <li>Empirical Software Engineering (<a href="https://link.springer.com/journal/10664" target="_blank">EMSE</a>)</li> 
-  <li>ACM Transactions on Software Engineering and Methodology (<a href="http://tosem.acm.org/" target="_blank">TOSEM</a>)</li>
-  <li>Automated Software Engineering Journal (<a href="http://tosem.acm.org/" target="_blank">AuSE</a>)</li>
-  <li><a href="http://onlinelibrary.wiley.com/journal/10.1002/(ISSN)2047-7481;jsessionid=8E8EF3E73320C9C7FE1F68285E8AF9AB.f02t03" target="_blank">Journal of Software: Evolution and Process</a></li>
-  <li>CSI Journal Computer Standards & Interfaces (<a href="http://www.journals.elsevier.com/computer-standards-and-interfaces" target="_blank">CSI</a>)</li> 
-  <li>Information and Software Technology (<a href="http://www.journals.elsevier.com/information-and-software-technology/" target="_blank">IST</a>)</li>
+    function render(filter = "all") {
+      daysContainer.innerHTML = "";
 
-</ul>
+      itinerary
+        .filter(day => filter === "all" || day.tags.includes(filter))
+        .forEach((day, index) => {
+          const card = document.createElement("article");
+          card.className = "day-card" + (index === 0 ? " open" : "");
 
-<h3>External Reviewer</h3>
+          card.innerHTML = `
+            <div class="day-top">
+              <div>
+                <div class="date">${day.date}</div>
+                <div class="day-title">${day.title}</div>
+              </div>
 
-<ul style="list-style-type:square">
-  <li>CCS 2016</li>
-  <li>Automated Software Engineering, 2014 (<a href="http://ase2014.org/" target="_blank">ASE '14</a>)</li>
-  <li>Mining Software Repository, 2012 (<a href="http://2012.msrconf.org/" target="_blank">MSR '12</a>)</li>
-  <li><a href="http://splashcon.org/2012/" target="_blank">OOPSLA, 2012</a></li>
-</ul>
+              <div class="badges">
+                ${day.badges.map((b, i) => `<span class="badge ${i === 0 ? "gold" : ""}">${b}</span>`).join("")}
+              </div>
 
-<h3>Other</h3>
-<ul style="list-style-type:square">
-  <li>Vice President, Graduate Women in Engineering, <br>
-  Elecrtrical & Computer Engineering Department, The University of Texas at Austin </li>
-</ul>
+              <button class="expand">${index === 0 ? "Hide Timeline" : "Show Timeline"}</button>
+            </div>
 
-<!-- ======================================================================================= -->
+            <div class="timeline">
+              ${day.events.map(e => `
+                <div class="event">
+                  <div class="time">${e[0]}</div>
+                  <div>
+                    <div class="event-title">${e[1]}</div>
+                    <div class="event-note">${e[2]}</div>
+                  </div>
+                </div>
+              `).join("")}
+            </div>
+          `;
 
-<!-- ======================================================================= -->
-              </div> <!-- style="display:block -->
-               </div> <!-- LayoutContainer -->
-              </div> <!-- sf_content -->
-           </div> <!-- sf_region6 -->
-          </div> <!-- sf_main -->
-     </div> <!-- sf_main_wrapper -->
-   
-    <script type="text/javascript" src="./footer.js"></script> 
-  </div><!-- /sf_wrapper -->
-</div><!-- /sf_outer_wrapper -->
- <script type="text/javascript">	
-  document.getElementById("page_activity").style.display = "block";
-</script>
+          const button = card.querySelector(".expand");
+          button.addEventListener("click", () => {
+            card.classList.toggle("open");
+            button.textContent = card.classList.contains("open") ? "Hide Timeline" : "Show Timeline";
+          });
+
+          daysContainer.appendChild(card);
+        });
+    }
+
+    document.querySelectorAll(".tab").forEach(tab => {
+      tab.addEventListener("click", () => {
+        document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+        render(tab.dataset.filter);
+      });
+    });
+
+    render();
+  </script>
 </body>
 </html>
